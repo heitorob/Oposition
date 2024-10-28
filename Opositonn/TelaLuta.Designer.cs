@@ -38,6 +38,8 @@
             this.btnEngajar = new System.Windows.Forms.Button();
             this.btnProteger = new System.Windows.Forms.Button();
             this.btnPerfurar = new System.Windows.Forms.Button();
+            this.btnInfectar = new System.Windows.Forms.Button();
+            this.btnUltrajar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSaudeUsuario
@@ -137,6 +139,26 @@
             this.btnPerfurar.UseVisualStyleBackColor = true;
             this.btnPerfurar.Click += new System.EventHandler(this.btnPerfurar_Click);
             // 
+            // btnInfectar
+            // 
+            this.btnInfectar.Location = new System.Drawing.Point(585, 405);
+            this.btnInfectar.Name = "btnInfectar";
+            this.btnInfectar.Size = new System.Drawing.Size(182, 61);
+            this.btnInfectar.TabIndex = 1;
+            this.btnInfectar.Text = "Infectar";
+            this.btnInfectar.UseVisualStyleBackColor = true;
+            this.btnInfectar.Click += new System.EventHandler(this.btnInfectar_Click);
+            // 
+            // btnUltrajar
+            // 
+            this.btnUltrajar.Location = new System.Drawing.Point(21, 472);
+            this.btnUltrajar.Name = "btnUltrajar";
+            this.btnUltrajar.Size = new System.Drawing.Size(182, 61);
+            this.btnUltrajar.TabIndex = 1;
+            this.btnUltrajar.Text = "Ultrajar";
+            this.btnUltrajar.UseVisualStyleBackColor = true;
+            this.btnUltrajar.Click += new System.EventHandler(this.btnUltrajar_Click);
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -147,6 +169,8 @@
             this.Controls.Add(this.btnFlagelar);
             this.Controls.Add(this.btnMedicar);
             this.Controls.Add(this.btnCanalizar);
+            this.Controls.Add(this.btnUltrajar);
+            this.Controls.Add(this.btnInfectar);
             this.Controls.Add(this.btnPerfurar);
             this.Controls.Add(this.btnProteger);
             this.Controls.Add(this.btnInvestir);
@@ -174,6 +198,8 @@
         private System.Windows.Forms.Button btnEngajar;
         private System.Windows.Forms.Button btnProteger;
         private System.Windows.Forms.Button btnPerfurar;
+        private System.Windows.Forms.Button btnInfectar;
+        private System.Windows.Forms.Button btnUltrajar;
     }
 }
 
