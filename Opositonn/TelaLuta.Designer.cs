@@ -40,6 +40,17 @@
             this.btnPerfurar = new System.Windows.Forms.Button();
             this.btnInfectar = new System.Windows.Forms.Button();
             this.btnUltrajar = new System.Windows.Forms.Button();
+            this.imgEscudoUsuario = new System.Windows.Forms.PictureBox();
+            this.imgDecaimentoUsuario = new System.Windows.Forms.PictureBox();
+            this.imgEscudoInimigo = new System.Windows.Forms.PictureBox();
+            this.imgDecaimentoInimigo = new System.Windows.Forms.PictureBox();
+            this.btnRoubar = new System.Windows.Forms.Button();
+            this.btnAssaltar = new System.Windows.Forms.Button();
+            this.btnConfundir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoInimigo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoInimigo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSaudeUsuario
@@ -72,7 +83,7 @@
             // 
             // btnCanalizar
             // 
-            this.btnCanalizar.Location = new System.Drawing.Point(209, 338);
+            this.btnCanalizar.Location = new System.Drawing.Point(585, 338);
             this.btnCanalizar.Name = "btnCanalizar";
             this.btnCanalizar.Size = new System.Drawing.Size(182, 61);
             this.btnCanalizar.TabIndex = 1;
@@ -91,7 +102,7 @@
             // 
             // btnMedicar
             // 
-            this.btnMedicar.Location = new System.Drawing.Point(397, 338);
+            this.btnMedicar.Location = new System.Drawing.Point(21, 472);
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(182, 61);
             this.btnMedicar.TabIndex = 1;
@@ -101,7 +112,7 @@
             // 
             // btnFlagelar
             // 
-            this.btnFlagelar.Location = new System.Drawing.Point(585, 338);
+            this.btnFlagelar.Location = new System.Drawing.Point(21, 539);
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(182, 61);
             this.btnFlagelar.TabIndex = 1;
@@ -141,7 +152,7 @@
             // 
             // btnInfectar
             // 
-            this.btnInfectar.Location = new System.Drawing.Point(585, 405);
+            this.btnInfectar.Location = new System.Drawing.Point(397, 472);
             this.btnInfectar.Name = "btnInfectar";
             this.btnInfectar.Size = new System.Drawing.Size(182, 61);
             this.btnInfectar.TabIndex = 1;
@@ -151,7 +162,7 @@
             // 
             // btnUltrajar
             // 
-            this.btnUltrajar.Location = new System.Drawing.Point(21, 472);
+            this.btnUltrajar.Location = new System.Drawing.Point(585, 405);
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(182, 61);
             this.btnUltrajar.TabIndex = 1;
@@ -159,16 +170,97 @@
             this.btnUltrajar.UseVisualStyleBackColor = true;
             this.btnUltrajar.Click += new System.EventHandler(this.btnUltrajar_Click);
             // 
+            // imgEscudoUsuario
+            // 
+            this.imgEscudoUsuario.Image = global::Opositonn.Properties.Resources.placeholder_icones;
+            this.imgEscudoUsuario.Location = new System.Drawing.Point(438, 207);
+            this.imgEscudoUsuario.Name = "imgEscudoUsuario";
+            this.imgEscudoUsuario.Size = new System.Drawing.Size(40, 40);
+            this.imgEscudoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEscudoUsuario.TabIndex = 4;
+            this.imgEscudoUsuario.TabStop = false;
+            this.imgEscudoUsuario.Visible = false;
+            // 
+            // imgDecaimentoUsuario
+            // 
+            this.imgDecaimentoUsuario.Image = global::Opositonn.Properties.Resources.placeholder_icones;
+            this.imgDecaimentoUsuario.Location = new System.Drawing.Point(484, 207);
+            this.imgDecaimentoUsuario.Name = "imgDecaimentoUsuario";
+            this.imgDecaimentoUsuario.Size = new System.Drawing.Size(40, 40);
+            this.imgDecaimentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDecaimentoUsuario.TabIndex = 4;
+            this.imgDecaimentoUsuario.TabStop = false;
+            this.imgDecaimentoUsuario.Visible = false;
+            // 
+            // imgEscudoInimigo
+            // 
+            this.imgEscudoInimigo.Image = global::Opositonn.Properties.Resources.placeholder_icones;
+            this.imgEscudoInimigo.Location = new System.Drawing.Point(438, 85);
+            this.imgEscudoInimigo.Name = "imgEscudoInimigo";
+            this.imgEscudoInimigo.Size = new System.Drawing.Size(40, 40);
+            this.imgEscudoInimigo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEscudoInimigo.TabIndex = 4;
+            this.imgEscudoInimigo.TabStop = false;
+            this.imgEscudoInimigo.Visible = false;
+            // 
+            // imgDecaimentoInimigo
+            // 
+            this.imgDecaimentoInimigo.Image = global::Opositonn.Properties.Resources.placeholder_icones;
+            this.imgDecaimentoInimigo.Location = new System.Drawing.Point(484, 85);
+            this.imgDecaimentoInimigo.Name = "imgDecaimentoInimigo";
+            this.imgDecaimentoInimigo.Size = new System.Drawing.Size(40, 40);
+            this.imgDecaimentoInimigo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDecaimentoInimigo.TabIndex = 4;
+            this.imgDecaimentoInimigo.TabStop = false;
+            this.imgDecaimentoInimigo.Visible = false;
+            // 
+            // btnRoubar
+            // 
+            this.btnRoubar.Location = new System.Drawing.Point(209, 472);
+            this.btnRoubar.Name = "btnRoubar";
+            this.btnRoubar.Size = new System.Drawing.Size(182, 61);
+            this.btnRoubar.TabIndex = 1;
+            this.btnRoubar.Text = "Roubar";
+            this.btnRoubar.UseVisualStyleBackColor = true;
+            this.btnRoubar.Click += new System.EventHandler(this.btnRoubar_Click);
+            // 
+            // btnAssaltar
+            // 
+            this.btnAssaltar.Location = new System.Drawing.Point(209, 338);
+            this.btnAssaltar.Name = "btnAssaltar";
+            this.btnAssaltar.Size = new System.Drawing.Size(182, 61);
+            this.btnAssaltar.TabIndex = 1;
+            this.btnAssaltar.Text = "Assaltar";
+            this.btnAssaltar.UseVisualStyleBackColor = true;
+            this.btnAssaltar.Click += new System.EventHandler(this.btnAssaltar_Click);
+            // 
+            // btnConfundir
+            // 
+            this.btnConfundir.Location = new System.Drawing.Point(209, 539);
+            this.btnConfundir.Name = "btnConfundir";
+            this.btnConfundir.Size = new System.Drawing.Size(182, 61);
+            this.btnConfundir.TabIndex = 1;
+            this.btnConfundir.Text = "Confundir";
+            this.btnConfundir.UseVisualStyleBackColor = true;
+            this.btnConfundir.Click += new System.EventHandler(this.btnConfundir_Click);
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 881);
+            this.Controls.Add(this.imgDecaimentoInimigo);
+            this.Controls.Add(this.imgEscudoInimigo);
+            this.Controls.Add(this.imgDecaimentoUsuario);
+            this.Controls.Add(this.imgEscudoUsuario);
             this.Controls.Add(this.btnEngajar);
             this.Controls.Add(this.lblPoder);
             this.Controls.Add(this.btnFlagelar);
             this.Controls.Add(this.btnMedicar);
             this.Controls.Add(this.btnCanalizar);
+            this.Controls.Add(this.btnConfundir);
+            this.Controls.Add(this.btnAssaltar);
+            this.Controls.Add(this.btnRoubar);
             this.Controls.Add(this.btnUltrajar);
             this.Controls.Add(this.btnInfectar);
             this.Controls.Add(this.btnPerfurar);
@@ -181,6 +273,10 @@
             this.Name = "TelaLuta";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.TelaLuta_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoInimigo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoInimigo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,6 +296,13 @@
         private System.Windows.Forms.Button btnPerfurar;
         private System.Windows.Forms.Button btnInfectar;
         private System.Windows.Forms.Button btnUltrajar;
+        private System.Windows.Forms.PictureBox imgEscudoUsuario;
+        private System.Windows.Forms.PictureBox imgDecaimentoUsuario;
+        private System.Windows.Forms.PictureBox imgEscudoInimigo;
+        private System.Windows.Forms.PictureBox imgDecaimentoInimigo;
+        private System.Windows.Forms.Button btnRoubar;
+        private System.Windows.Forms.Button btnAssaltar;
+        private System.Windows.Forms.Button btnConfundir;
     }
 }
 

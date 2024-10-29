@@ -52,6 +52,18 @@ namespace Opositonn
             lblSaudeUsuario.Text = Saude[0].ToString("0");
             lblSaudeOpositor.Text = Saude[1].ToString("0");
             lblPoder.Text = Poder.ToString();
+
+            if (VerificadorEscudo[0]) imgEscudoUsuario.Visible = true;
+            else imgEscudoUsuario.Visible = false;
+
+            if (VerificadorEscudo[1]) imgEscudoInimigo.Visible = true;
+            else imgEscudoInimigo.Visible = false;
+
+            if (VerificadorDecaimento[0]) imgDecaimentoUsuario.Visible = true;
+            else imgDecaimentoUsuario.Visible = false;
+
+            if (VerificadorDecaimento[1]) imgDecaimentoInimigo.Visible = true;
+            else imgDecaimentoInimigo.Visible = false;
         }
 
         private void Investir(int User)
@@ -193,6 +205,73 @@ namespace Opositonn
             if (VerificadorEscudo[1 - User]) CoeficienteDano = Math.Max(0, CoeficienteDano - 16);
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            VerificadorDecaimento[1 - User] = true;
+
+            Atualizar();
+        }
+
+        private void Roubar(int User)
+        {
+            Analisar();
+
+            if (User == 0) Poder = Math.Max(0, Poder - 2);
+
+            if (rng.Next(0, 20) < CoeficientePrecisao[User])
+            {
+                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                return;
+            }
+
+            CoeficienteDano = 28;
+
+            if (VerificadorEscudo[1 - User]) CoeficienteDano = Math.Max(0, CoeficienteDano - 16);
+
+            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            Saude[User] = Math.Min(200, Saude[User] + CoeficienteDano);
+
+            Atualizar();
+        }
+
+        private void Assaltar(int User)
+        {
+            Analisar();
+
+            if (rng.Next(0, 20) < CoeficientePrecisao[User])
+            {
+                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                return;
+            }
+
+            CoeficienteDano = 12;
+
+            if (VerificadorEscudo[1 - User]) CoeficienteDano = Math.Max(0, CoeficienteDano - 8);
+
+            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            Atualizar();
+        }
+
+        private void Confundir(int User)
+        {
+            Analisar();
+
+            if (User == 0) Poder = Math.Max(0, Poder - 3);
+
+            if (rng.Next(0, 20) < CoeficientePrecisao[User] - 4)
+            {
+                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                return;
+            }
+
+            CoeficienteDano = 40;
+
+            if (VerificadorEscudo[1 - User]) CoeficienteDano = Math.Max(0, CoeficienteDano - 24);
+
+            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            CoeficientePrecisao[1 - User] = Math.Min(8, CoeficientePrecisao[1 - User] + 2);
 
             Atualizar();
         }
@@ -382,6 +461,60 @@ namespace Opositonn
             await Task.Delay(500);
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private async void btnRoubar_Click(object sender, EventArgs e)
+        {
+            if (Poder < 2) return;
+            if (rng.Next(0, 2) == 0)
+            {
+                Roubar(0);
+                await Task.Delay(500);
+                Investir(1);
+            }
+            else
+            {
+                Investir(1);
+                await Task.Delay(500);
+                Roubar(0);
+            }
+            await Task.Delay(500);
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private async void btnAssaltar_Click(object sender, EventArgs e)
+        {
+            Assaltar(0);
+            await Task.Delay(500);
+            Investir(1);
+            await Task.Delay(500);
+
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private async void btnConfundir_Click(object sender, EventArgs e)
+        {
+            if (Poder < 3) return;
+            if (rng.Next(0, 2) == 0)
+            {
+                Confundir(0);
+                await Task.Delay(500);
+                Investir(1);
+            }
+            else
+            {
+                Investir(1);
+                await Task.Delay(500);
+                Confundir(0);
+            }
+            await Task.Delay(500);
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - CoeficienteDano);
             Atualizar();
         }
     }
