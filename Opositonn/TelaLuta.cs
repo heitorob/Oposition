@@ -309,32 +309,6 @@ namespace Opositonn
             Atualizar();
         }
 
-        private void Assaltar(int User)
-        {
-            Analisar();
-
-            if (TempoAtordoamento[User] > 0)
-            {
-                TempoAtordoamento[User]--;
-                return;
-            }
-
-            if (rng.Next(0, 20) < CoeficientePrecisao[User])
-            {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
-
-            CoeficienteDano = 12;
-
-            if (VerificadorEscudo[1 - User]) CoeficienteDano = Math.Max(0, CoeficienteDano - 8);
-
-            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
-
-            Atualizar();
-        }
-
         private void Confundir(int User)
         {
             Analisar();
@@ -719,21 +693,6 @@ namespace Opositonn
             Atualizar();
         }
 
-        private async void btnAssaltar_Click(object sender, EventArgs e)
-        {
-            Assaltar(0);
-
-            await Task.Delay(500);
-
-            Investir(1);
-
-            await Task.Delay(500);
-
-            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
-            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
-            Atualizar();
-        }
-
         private async void btnConfundir_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
@@ -840,9 +799,9 @@ namespace Opositonn
         private async void btnBloquear_Click(object sender, EventArgs e)
         {
             if (EsperaBloquear[0] > 0) return;
-
             if (rng.Next(0, 2) == 0)
             {
+
                 Bloquear(0);
 
                 await Task.Delay(500);
