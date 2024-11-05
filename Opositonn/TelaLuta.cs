@@ -42,6 +42,8 @@ namespace Opositonn
             VerificadorDecaimento[1] = false;
             TempoAtordoamento[0] = 0;
             TempoAtordoamento[1] = 0;
+            EsperaBloquear[0] = 0;
+            EsperaBloquear[1] = 0;
         }
 
         private void Analisar()
@@ -74,11 +76,31 @@ namespace Opositonn
 
             if (TempoAtordoamento[1] > 0) imgAtordoamentoOpositor.Visible = true;
             else imgAtordoamentoOpositor.Visible = false;
+
+            ImprimirAuditar();
+        }
+
+        private void ImprimirAuditar()
+        {
+            if (Saude[1] == 0)
+            {
+                MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                this.Close();
+                return;
+            }
+            if (Saude[0] == 0)
+            {
+                MessageBox.Show("Derrota", "Derrota", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                this.Close();
+                return;
+            }
         }
 
         private void Investir(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -106,6 +128,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
+
             if (TempoAtordoamento[0] > 0)
             {
                 TempoAtordoamento[0]--;
@@ -120,6 +144,8 @@ namespace Opositonn
         private void Medicar(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -139,6 +165,8 @@ namespace Opositonn
         private void Flagelar(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -168,6 +196,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -187,6 +217,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -203,6 +235,8 @@ namespace Opositonn
         private void Perfurar(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -236,6 +270,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -252,6 +288,8 @@ namespace Opositonn
         private void Ultrajar(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -283,6 +321,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -312,6 +352,8 @@ namespace Opositonn
         private void Confundir(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -343,6 +385,8 @@ namespace Opositonn
         {
             Analisar();
 
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -372,6 +416,8 @@ namespace Opositonn
         private async void Colidir(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -406,6 +452,8 @@ namespace Opositonn
         private void Dilacerar(int User)
         {
             Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -442,7 +490,7 @@ namespace Opositonn
 
             TempoAtordoamento[1 - User] = 1;
 
-            EsperaBloquear[User] = 3;
+            EsperaBloquear[User] = 2;
 
             Atualizar();
         }
@@ -546,7 +594,7 @@ namespace Opositonn
 
         private async void btnEngajar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || CoeficientePrecisao[0] == 0) return;
+            if (Poder < 1) return;
             if (rng.Next(0, 2) == 0)
             {
                 Engajar(0);

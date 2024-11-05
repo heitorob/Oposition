@@ -92,6 +92,7 @@
             this.btnInvestir.Name = "btnInvestir";
             this.btnInvestir.Size = new System.Drawing.Size(182, 61);
             this.btnInvestir.TabIndex = 1;
+            this.btnInvestir.TabStop = false;
             this.btnInvestir.Text = "Investir";
             this.tipInfo.SetToolTip(this.btnInvestir, "Tira 16 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnInvestir.UseVisualStyleBackColor = true;
@@ -103,6 +104,7 @@
             this.btnCanalizar.Name = "btnCanalizar";
             this.btnCanalizar.Size = new System.Drawing.Size(182, 61);
             this.btnCanalizar.TabIndex = 1;
+            this.btnCanalizar.TabStop = false;
             this.btnCanalizar.Text = "Canalizar";
             this.tipInfo.SetToolTip(this.btnCanalizar, "Invoca 1 poder.");
             this.btnCanalizar.UseVisualStyleBackColor = true;
@@ -123,6 +125,7 @@
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(182, 61);
             this.btnMedicar.TabIndex = 1;
+            this.btnMedicar.TabStop = false;
             this.btnMedicar.Text = "Medicar";
             this.tipInfo.SetToolTip(this.btnMedicar, "Recupera 40 de saúde do Usuário.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnMedicar.UseVisualStyleBackColor = true;
@@ -134,6 +137,7 @@
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(182, 61);
             this.btnFlagelar.TabIndex = 1;
+            this.btnFlagelar.TabStop = false;
             this.btnFlagelar.Text = "Flagelar";
             this.tipInfo.SetToolTip(this.btnFlagelar, "Tira 60 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnFlagelar.UseVisualStyleBackColor = true;
@@ -145,6 +149,7 @@
             this.btnEngajar.Name = "btnEngajar";
             this.btnEngajar.Size = new System.Drawing.Size(182, 61);
             this.btnEngajar.TabIndex = 3;
+            this.btnEngajar.TabStop = false;
             this.btnEngajar.Text = "Engajar";
             this.tipInfo.SetToolTip(this.btnEngajar, "Aumenta a precisão em 20.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnEngajar.UseVisualStyleBackColor = true;
@@ -156,6 +161,7 @@
             this.btnProteger.Name = "btnProteger";
             this.btnProteger.Size = new System.Drawing.Size(182, 61);
             this.btnProteger.TabIndex = 1;
+            this.btnProteger.TabStop = false;
             this.btnProteger.Text = "Proteger";
             this.tipInfo.SetToolTip(this.btnProteger, "Invoca um Escudo.");
             this.btnProteger.UseVisualStyleBackColor = true;
@@ -167,6 +173,7 @@
             this.btnPerfurar.Name = "btnPerfurar";
             this.btnPerfurar.Size = new System.Drawing.Size(182, 61);
             this.btnPerfurar.TabIndex = 1;
+            this.btnPerfurar.TabStop = false;
             this.btnPerfurar.Text = "Perfurar";
             this.tipInfo.SetToolTip(this.btnPerfurar, "Tira 28 de saúde do Opositor.\r\nDestrói Escudos do Opositor.\r\nTira 12 de saúde a m" +
         "ais se destrói um Escudo.\r\nPrecisão - 80.");
@@ -179,6 +186,7 @@
             this.btnInfectar.Name = "btnInfectar";
             this.btnInfectar.Size = new System.Drawing.Size(182, 61);
             this.btnInfectar.TabIndex = 1;
+            this.btnInfectar.TabStop = false;
             this.btnInfectar.Text = "Infectar";
             this.tipInfo.SetToolTip(this.btnInfectar, "Aplica efeito de Decaimento no Opositor.");
             this.btnInfectar.UseVisualStyleBackColor = true;
@@ -190,6 +198,7 @@
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(182, 61);
             this.btnUltrajar.TabIndex = 1;
+            this.btnUltrajar.TabStop = false;
             this.btnUltrajar.Text = "Ultrajar";
             this.tipInfo.SetToolTip(this.btnUltrajar, "Tira 28 de saúde do Opositor.\r\nAplica efeito de Decaimento no Opositor.\r\nPrecisão" +
         " - 60.");
@@ -250,6 +259,7 @@
             this.btnRoubar.Name = "btnRoubar";
             this.btnRoubar.Size = new System.Drawing.Size(182, 61);
             this.btnRoubar.TabIndex = 1;
+            this.btnRoubar.TabStop = false;
             this.btnRoubar.Text = "Roubar";
             this.tipInfo.SetToolTip(this.btnRoubar, "Tira 28 de saúde do Opositor.\r\nRecupera 28 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnRoubar.UseVisualStyleBackColor = true;
@@ -261,6 +271,7 @@
             this.btnConfundir.Name = "btnConfundir";
             this.btnConfundir.Size = new System.Drawing.Size(182, 61);
             this.btnConfundir.TabIndex = 1;
+            this.btnConfundir.TabStop = false;
             this.btnConfundir.Text = "Confundir";
             this.tipInfo.SetToolTip(this.btnConfundir, "Tira 40 pontos de saúde do Opositor.\r\nReduz a precisão do Opositor em 10.\r\nPrecis" +
         "ão - 100.");
@@ -273,6 +284,7 @@
             this.btnAtordoar.Name = "btnAtordoar";
             this.btnAtordoar.Size = new System.Drawing.Size(182, 61);
             this.btnAtordoar.TabIndex = 1;
+            this.btnAtordoar.TabStop = false;
             this.btnAtordoar.Text = "Atordoar";
             this.tipInfo.SetToolTip(this.btnAtordoar, "Tira 40 de saúde do Opositor.\r\nAplica efeito de Atordoamento no Opositor.\r\nPrecis" +
         "ão - 60.");
@@ -309,6 +321,7 @@
             this.btnColidir.Name = "btnColidir";
             this.btnColidir.Size = new System.Drawing.Size(182, 61);
             this.btnColidir.TabIndex = 3;
+            this.btnColidir.TabStop = false;
             this.btnColidir.Text = "Colidir";
             this.tipInfo.SetToolTip(this.btnColidir, "Tira 40 de saúde do Opositor.\r\nTira 16 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnColidir.UseVisualStyleBackColor = true;
@@ -320,6 +333,7 @@
             this.btnDilacerar.Name = "btnDilacerar";
             this.btnDilacerar.Size = new System.Drawing.Size(182, 61);
             this.btnDilacerar.TabIndex = 1;
+            this.btnDilacerar.TabStop = false;
             this.btnDilacerar.Text = "Dilacerar";
             this.tipInfo.SetToolTip(this.btnDilacerar, "Tira metade da saúde do Opositor.\r\nPrecisão - 60.\r\nTempo de espera - 4 turnos.");
             this.btnDilacerar.UseVisualStyleBackColor = true;
@@ -331,6 +345,7 @@
             this.btnBloquear.Name = "btnBloquear";
             this.btnBloquear.Size = new System.Drawing.Size(182, 61);
             this.btnBloquear.TabIndex = 1;
+            this.btnBloquear.TabStop = false;
             this.btnBloquear.Text = "Bloquear";
             this.tipInfo.SetToolTip(this.btnBloquear, "Invoca 1 poder.\r\nAtordoa o Opositor.\r\nTempo de espera - 2 turnos.");
             this.btnBloquear.UseVisualStyleBackColor = true;
