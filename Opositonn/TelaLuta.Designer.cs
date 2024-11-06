@@ -60,6 +60,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnSacrificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
@@ -410,6 +411,17 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Opositor";
             // 
+            // btnSacrificar
+            // 
+            this.btnSacrificar.Location = new System.Drawing.Point(585, 352);
+            this.btnSacrificar.Name = "btnSacrificar";
+            this.btnSacrificar.Size = new System.Drawing.Size(182, 61);
+            this.btnSacrificar.TabIndex = 1;
+            this.btnSacrificar.TabStop = false;
+            this.btnSacrificar.Text = "Sacrificar";
+            this.btnSacrificar.UseVisualStyleBackColor = true;
+            this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -432,6 +444,7 @@
             this.Controls.Add(this.lblPoder);
             this.Controls.Add(this.btnFlagelar);
             this.Controls.Add(this.btnMedicar);
+            this.Controls.Add(this.btnSacrificar);
             this.Controls.Add(this.btnBloquear);
             this.Controls.Add(this.btnCanalizar);
             this.Controls.Add(this.btnDilacerar);
@@ -495,6 +508,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnSacrificar;
     }
 }
 

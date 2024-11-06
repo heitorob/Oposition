@@ -12,8 +12,8 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        double[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear;
-        double CoeficienteDano, Poder;
+        double[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear, EsperaProteger;
+        double CoeficienteDano, Poder, EsperaSacrificar, EsperaDilacerar;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
         Random rng = new Random();
@@ -101,6 +101,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -146,6 +147,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -167,6 +169,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -197,6 +200,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -218,6 +222,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -237,6 +242,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -271,6 +277,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -290,6 +297,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -322,6 +330,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -354,6 +363,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -386,6 +396,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -418,6 +429,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -454,6 +466,7 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -480,6 +493,8 @@ namespace Opositonn
         {
             Analisar();
 
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -491,6 +506,27 @@ namespace Opositonn
             TempoAtordoamento[1 - User] = 1;
 
             EsperaBloquear[User] = 2;
+
+            Atualizar();
+        }
+
+        private void Sacrificar()
+        {
+            Analisar();
+
+            EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
+
+            if (TempoAtordoamento[0] > 0)
+            {
+                TempoAtordoamento[0]--;
+                return;
+            }
+
+            Poder = Math.Min(3, Poder + 3);
+
+            Saude[0] = Math.Max(0, Saude[0] - 16);
+
+            EsperaSacrificar = 4;
 
             Atualizar();
         }
@@ -863,6 +899,32 @@ namespace Opositonn
                 await Task.Delay(500);
 
                 Bloquear(0);
+            }
+            await Task.Delay(500);
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private async void btnSacrificar_Click(object sender, EventArgs e)
+        {
+            if (EsperaSacrificar > 0 || Poder > 0) return;
+            if (rng.Next(0, 2) == 0)
+            {
+
+                Sacrificar();
+
+                await Task.Delay(500);
+
+                Investir(1);
+            }
+            else
+            {
+                Investir(1);
+
+                await Task.Delay(500);
+
+                Sacrificar();
             }
             await Task.Delay(500);
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
