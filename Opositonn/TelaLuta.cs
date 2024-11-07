@@ -172,7 +172,12 @@ namespace Opositonn
 
             Saude[User] = Math.Min(200, Saude[User] + 40);
 
+            string r = "Recuperou 40 de saúde.";
+            if (VerificadorDecaimento[User]) r += "\nRemoveu efeito de Decaimento."; 
+
             VerificadorDecaimento[User] = false;
+
+            MessageBox.Show(r, "Medicar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -205,6 +210,8 @@ namespace Opositonn
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.", "Flagelar", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -225,7 +232,12 @@ namespace Opositonn
 
             CoeficientePrecisao[User] = Math.Max(0, CoeficientePrecisao[User] - 4);
 
+            string r = "Aumentou a precisão em 20.";
+            if (VerificadorDecaimento[User]) r += "\nRemoveu efeito de Decaimento.";
+
             VerificadorDecaimento[User] = false;
+
+            MessageBox.Show(r, "Engajar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -246,6 +258,8 @@ namespace Opositonn
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
             VerificadorEscudo[User] = true;
+
+            MessageBox.Show("Invocou um Escudo.", "Proteger", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -274,13 +288,16 @@ namespace Opositonn
 
             CoeficienteDano = 28;
 
-            if (VerificadorEscudo[1 - User])
-            {
-                CoeficienteDano += 12;
-                VerificadorEscudo[1 - User] = false;
-            }
+            if (VerificadorEscudo[1 - User]) CoeficienteDano += 12;
+
+            string r = "Tirou " + CoeficienteDano + " de saúde.";
+            if (VerificadorEscudo[1 - User]) r += "\nDestruiu o Escudo da oposição.";
+
+            VerificadorEscudo[1 - User] = false;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            MessageBox.Show(r, "Perfurar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -301,6 +318,8 @@ namespace Opositonn
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             VerificadorDecaimento[1 - User] = true;
+
+            MessageBox.Show("Aplicou Decaimento.", "Infectar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -335,6 +354,8 @@ namespace Opositonn
 
             VerificadorDecaimento[1 - User] = true;
 
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.\nAplicou Decaimento.", "Ultrajar", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -367,6 +388,8 @@ namespace Opositonn
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
             Saude[User] = Math.Min(200, Saude[User] + CoeficienteDano);
+
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.\nRecuperou " + CoeficienteDano + " de saúde.", "Roubar", MessageBoxButtons.OK);
 
             Atualizar();
         }

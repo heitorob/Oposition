@@ -114,11 +114,14 @@
             // lblPoder
             // 
             this.lblPoder.AutoSize = true;
+            this.lblPoder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPoder.Location = new System.Drawing.Point(415, 228);
             this.lblPoder.Name = "lblPoder";
-            this.lblPoder.Size = new System.Drawing.Size(17, 19);
+            this.lblPoder.Size = new System.Drawing.Size(19, 21);
             this.lblPoder.TabIndex = 2;
             this.lblPoder.Text = "0";
+            this.tipInfo.SetToolTip(this.lblPoder, "Quantidade de poderes acumulados.\r\nPoderes são necessários para usar ataques espe" +
+        "ciais.\r\nMaximiza em 3 poderes.");
             // 
             // btnMedicar
             // 
@@ -419,6 +422,8 @@
             this.btnSacrificar.TabIndex = 1;
             this.btnSacrificar.TabStop = false;
             this.btnSacrificar.Text = "Sacrificar";
+            this.tipInfo.SetToolTip(this.btnSacrificar, "Invoca 3 poderes.\r\nTira 16 de saúde do Usuário.\r\nNão pode ser usado se Usuário já" +
+        " tiver algum poder acumulado.\r\nTempo de espera - 4 turnos.");
             this.btnSacrificar.UseVisualStyleBackColor = true;
             this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
             // 
