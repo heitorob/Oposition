@@ -12,8 +12,8 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        double[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear, EsperaProteger;
-        double CoeficienteDano, Poder, EsperaSacrificar, EsperaDilacerar;
+        int[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear;
+        int CoeficienteDano, Poder, EsperaSacrificar;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
         Random rng = new Random();
@@ -22,12 +22,12 @@ namespace Opositonn
         {
             InitializeComponent();
 
-            Saude = new double[2];
-            CoeficientePrecisao = new double[2];
+            Saude = new int[2];
+            CoeficientePrecisao = new int[2];
             VerificadorEscudo = new bool[2];
             VerificadorDecaimento = new bool[2];
-            TempoAtordoamento = new double[2];
-            EsperaBloquear = new double[2];
+            TempoAtordoamento = new int[2];
+            EsperaBloquear = new int[2];
         }
 
         private void TelaLuta_Load(object sender, EventArgs e)
@@ -48,15 +48,15 @@ namespace Opositonn
 
         private void Analisar()
         {
-            Saude[0] = Convert.ToDouble(lblSaudeUsuario.Text);
-            Saude[1] = Convert.ToDouble(lblSaudeOpositor.Text);
-            Poder = Convert.ToDouble(lblPoder.Text);
+            Saude[0] = Convert.ToInt16(lblSaudeUsuario.Text);
+            Saude[1] = Convert.ToInt16(lblSaudeOpositor.Text);
+            Poder = Convert.ToInt16(lblPoder.Text);
         }
 
         private void Atualizar()
         {
-            lblSaudeUsuario.Text = Saude[0].ToString("0");
-            lblSaudeOpositor.Text = Saude[1].ToString("0");
+            lblSaudeUsuario.Text = Saude[0].ToString();
+            lblSaudeOpositor.Text = Saude[1].ToString();
             lblPoder.Text = Poder.ToString();
 
             if (VerificadorEscudo[0]) imgEscudoUsuario.Visible = true;
@@ -76,6 +76,15 @@ namespace Opositonn
 
             if (TempoAtordoamento[1] > 0) imgAtordoamentoOpositor.Visible = true;
             else imgAtordoamentoOpositor.Visible = false;
+
+            if (Saude[0] <= 60) lblSaudeUsuario.ForeColor = Color.Red;
+            else lblSaudeUsuario.ForeColor = Color.Black;
+
+            if (Saude[1] <= 60) lblSaudeOpositor.ForeColor = Color.Red;
+            else lblSaudeOpositor.ForeColor = Color.Black;
+
+            if (Poder == 3) lblPoder.ForeColor = Color.DarkTurquoise;
+            else lblPoder.ForeColor = Color.Black;
 
             ImprimirAuditar();
         }
@@ -122,6 +131,8 @@ namespace Opositonn
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.", "Investir", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -138,6 +149,8 @@ namespace Opositonn
             }
 
             Poder = Math.Min(3, Poder + 1);
+
+            MessageBox.Show("Invocou 1 poder.", "Canalizar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -531,50 +544,30 @@ namespace Opositonn
             Atualizar();
         }
 
-        private async void btnInvestir_Click(object sender, EventArgs e)
+        private void btnInvestir_Click(object sender, EventArgs e)
         {
-            if (rng.Next(0, 2) == 0)
-            {
-                Investir(0);
+            Investir(0);
 
-                await Task.Delay(500);
+            Investir(1);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Investir(0);
-            }
-            await Task.Delay(500);
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+
             Atualizar();
         }
 
         private async void btnCanalizar_Click(object sender, EventArgs e)
         {
             if (Poder == 3) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Canalizar();
 
-                await Task.Delay(500);
+            Canalizar();
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Canalizar();
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -583,22 +576,15 @@ namespace Opositonn
         private async void btnMedicar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Medicar(0);
 
-                await Task.Delay(500);
+            Medicar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-                Medicar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -607,22 +593,15 @@ namespace Opositonn
         private async void btnFlagelar_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Flagelar(0);
 
-                await Task.Delay(500);
+            Flagelar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-                Flagelar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -631,22 +610,15 @@ namespace Opositonn
         private async void btnEngajar_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Engajar(0);
 
-                await Task.Delay(500);
+            Engajar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-                Engajar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -655,23 +627,15 @@ namespace Opositonn
         private async void btnProteger_Click(object sender, EventArgs e)
         {
             if (Poder < 1 || VerificadorEscudo[0]) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Proteger(0);
 
-                await Task.Delay(500);
+            Proteger(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Proteger(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -680,23 +644,15 @@ namespace Opositonn
         private async void btnPerfurar_Click(object sender, EventArgs e)
         {
             if (Poder < 1 || VerificadorEscudo[0]) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Perfurar(0);
 
-                await Task.Delay(500);
+            Perfurar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Perfurar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -705,23 +661,15 @@ namespace Opositonn
         private async void btnInfectar_Click(object sender, EventArgs e)
         {
             if (Poder < 2 || VerificadorDecaimento[1]) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Infectar(0);
 
-                await Task.Delay(500);
+            Infectar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Infectar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -730,23 +678,15 @@ namespace Opositonn
         private async void btnUltrajar_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Ultrajar(0);
 
-                await Task.Delay(500);
+            Ultrajar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Ultrajar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -755,23 +695,15 @@ namespace Opositonn
         private async void btnRoubar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Roubar(0);
 
-                await Task.Delay(500);
+            Roubar(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Roubar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -780,23 +712,15 @@ namespace Opositonn
         private async void btnConfundir_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
-            if (rng.Next(0, 2) == 0)
-            {
-                Confundir(0);
 
-                await Task.Delay(500);
+            Confundir(0);
 
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Confundir(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -805,24 +729,15 @@ namespace Opositonn
         private async void btnAtordoar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
-            if (rng.Next(0, 2) == 0)
-            {
 
-                Atordoar(0);
+            Atordoar(0);
 
-                await Task.Delay(500);
-
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Atordoar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -831,24 +746,15 @@ namespace Opositonn
         private async void btnColidir_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
-            if (rng.Next(0, 2) == 0)
-            {
 
-                Colidir(0);
+            Colidir(0);
 
-                await Task.Delay(500);
-
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Colidir(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -857,24 +763,15 @@ namespace Opositonn
         private async void btnDilacerar_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
-            if (rng.Next(0, 2) == 0)
-            {
 
-                Dilacerar(0);
+            Dilacerar(0);
 
-                await Task.Delay(500);
-
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Dilacerar(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -883,24 +780,15 @@ namespace Opositonn
         private async void btnBloquear_Click(object sender, EventArgs e)
         {
             if (EsperaBloquear[0] > 0) return;
-            if (rng.Next(0, 2) == 0)
-            {
 
-                Bloquear(0);
+            Bloquear(0);
 
-                await Task.Delay(500);
-
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Bloquear(0);
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
@@ -909,24 +797,15 @@ namespace Opositonn
         private async void btnSacrificar_Click(object sender, EventArgs e)
         {
             if (EsperaSacrificar > 0 || Poder > 0) return;
-            if (rng.Next(0, 2) == 0)
-            {
 
-                Sacrificar();
+            Sacrificar();
 
-                await Task.Delay(500);
-
-                Investir(1);
-            }
-            else
-            {
-                Investir(1);
-
-                await Task.Delay(500);
-
-                Sacrificar();
-            }
             await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
