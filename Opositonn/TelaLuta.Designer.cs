@@ -54,13 +54,14 @@
             this.btnDilacerar = new System.Windows.Forms.Button();
             this.btnBloquear = new System.Windows.Forms.Button();
             this.tipInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSacrificar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnSacrificar = new System.Windows.Forms.Button();
+            this.btnPrender = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
@@ -125,7 +126,7 @@
             // 
             // btnMedicar
             // 
-            this.btnMedicar.Location = new System.Drawing.Point(21, 655);
+            this.btnMedicar.Location = new System.Drawing.Point(21, 591);
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(182, 61);
             this.btnMedicar.TabIndex = 1;
@@ -137,7 +138,7 @@
             // 
             // btnFlagelar
             // 
-            this.btnFlagelar.Location = new System.Drawing.Point(21, 778);
+            this.btnFlagelar.Location = new System.Drawing.Point(21, 746);
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(182, 61);
             this.btnFlagelar.TabIndex = 1;
@@ -149,7 +150,7 @@
             // 
             // btnEngajar
             // 
-            this.btnEngajar.Location = new System.Drawing.Point(21, 468);
+            this.btnEngajar.Location = new System.Drawing.Point(21, 438);
             this.btnEngajar.Name = "btnEngajar";
             this.btnEngajar.Size = new System.Drawing.Size(182, 61);
             this.btnEngajar.TabIndex = 3;
@@ -161,7 +162,7 @@
             // 
             // btnProteger
             // 
-            this.btnProteger.Location = new System.Drawing.Point(21, 535);
+            this.btnProteger.Location = new System.Drawing.Point(21, 505);
             this.btnProteger.Name = "btnProteger";
             this.btnProteger.Size = new System.Drawing.Size(182, 61);
             this.btnProteger.TabIndex = 1;
@@ -173,7 +174,7 @@
             // 
             // btnPerfurar
             // 
-            this.btnPerfurar.Location = new System.Drawing.Point(209, 468);
+            this.btnPerfurar.Location = new System.Drawing.Point(209, 438);
             this.btnPerfurar.Name = "btnPerfurar";
             this.btnPerfurar.Size = new System.Drawing.Size(182, 61);
             this.btnPerfurar.TabIndex = 1;
@@ -186,7 +187,7 @@
             // 
             // btnInfectar
             // 
-            this.btnInfectar.Location = new System.Drawing.Point(397, 655);
+            this.btnInfectar.Location = new System.Drawing.Point(397, 591);
             this.btnInfectar.Name = "btnInfectar";
             this.btnInfectar.Size = new System.Drawing.Size(182, 61);
             this.btnInfectar.TabIndex = 1;
@@ -198,7 +199,7 @@
             // 
             // btnUltrajar
             // 
-            this.btnUltrajar.Location = new System.Drawing.Point(209, 535);
+            this.btnUltrajar.Location = new System.Drawing.Point(209, 505);
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(182, 61);
             this.btnUltrajar.TabIndex = 1;
@@ -259,7 +260,7 @@
             // 
             // btnRoubar
             // 
-            this.btnRoubar.Location = new System.Drawing.Point(209, 655);
+            this.btnRoubar.Location = new System.Drawing.Point(209, 591);
             this.btnRoubar.Name = "btnRoubar";
             this.btnRoubar.Size = new System.Drawing.Size(182, 61);
             this.btnRoubar.TabIndex = 1;
@@ -271,7 +272,7 @@
             // 
             // btnConfundir
             // 
-            this.btnConfundir.Location = new System.Drawing.Point(209, 778);
+            this.btnConfundir.Location = new System.Drawing.Point(209, 746);
             this.btnConfundir.Name = "btnConfundir";
             this.btnConfundir.Size = new System.Drawing.Size(182, 61);
             this.btnConfundir.TabIndex = 1;
@@ -284,7 +285,7 @@
             // 
             // btnAtordoar
             // 
-            this.btnAtordoar.Location = new System.Drawing.Point(585, 655);
+            this.btnAtordoar.Location = new System.Drawing.Point(21, 658);
             this.btnAtordoar.Name = "btnAtordoar";
             this.btnAtordoar.Size = new System.Drawing.Size(182, 61);
             this.btnAtordoar.TabIndex = 1;
@@ -321,7 +322,7 @@
             // 
             // btnColidir
             // 
-            this.btnColidir.Location = new System.Drawing.Point(397, 468);
+            this.btnColidir.Location = new System.Drawing.Point(397, 438);
             this.btnColidir.Name = "btnColidir";
             this.btnColidir.Size = new System.Drawing.Size(182, 61);
             this.btnColidir.TabIndex = 3;
@@ -333,7 +334,7 @@
             // 
             // btnDilacerar
             // 
-            this.btnDilacerar.Location = new System.Drawing.Point(397, 778);
+            this.btnDilacerar.Location = new System.Drawing.Point(397, 746);
             this.btnDilacerar.Name = "btnDilacerar";
             this.btnDilacerar.Size = new System.Drawing.Size(182, 61);
             this.btnDilacerar.TabIndex = 1;
@@ -360,6 +361,19 @@
             this.tipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.tipInfo.ToolTipTitle = "Informações";
             // 
+            // btnSacrificar
+            // 
+            this.btnSacrificar.Location = new System.Drawing.Point(585, 352);
+            this.btnSacrificar.Name = "btnSacrificar";
+            this.btnSacrificar.Size = new System.Drawing.Size(182, 61);
+            this.btnSacrificar.TabIndex = 1;
+            this.btnSacrificar.TabStop = false;
+            this.btnSacrificar.Text = "Sacrificar";
+            this.tipInfo.SetToolTip(this.btnSacrificar, "Invoca 3 poderes.\r\nTira 16 de saúde do Usuário.\r\nNão pode ser usado se Usuário já" +
+        " tiver algum poder acumulado.\r\nTempo de espera - 4 turnos.");
+            this.btnSacrificar.UseVisualStyleBackColor = true;
+            this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -372,7 +386,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 446);
+            this.label2.Location = new System.Drawing.Point(17, 416);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 19);
             this.label2.TabIndex = 5;
@@ -381,7 +395,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 633);
+            this.label3.Location = new System.Drawing.Point(17, 569);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 19);
             this.label3.TabIndex = 5;
@@ -390,7 +404,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 756);
+            this.label4.Location = new System.Drawing.Point(19, 724);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(179, 19);
             this.label4.TabIndex = 5;
@@ -414,24 +428,24 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Opositor";
             // 
-            // btnSacrificar
+            // btnPrender
             // 
-            this.btnSacrificar.Location = new System.Drawing.Point(585, 352);
-            this.btnSacrificar.Name = "btnSacrificar";
-            this.btnSacrificar.Size = new System.Drawing.Size(182, 61);
-            this.btnSacrificar.TabIndex = 1;
-            this.btnSacrificar.TabStop = false;
-            this.btnSacrificar.Text = "Sacrificar";
-            this.tipInfo.SetToolTip(this.btnSacrificar, "Invoca 3 poderes.\r\nTira 16 de saúde do Usuário.\r\nNão pode ser usado se Usuário já" +
-        " tiver algum poder acumulado.\r\nTempo de espera - 4 turnos.");
-            this.btnSacrificar.UseVisualStyleBackColor = true;
-            this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
+            this.btnPrender.Location = new System.Drawing.Point(209, 658);
+            this.btnPrender.Name = "btnPrender";
+            this.btnPrender.Size = new System.Drawing.Size(182, 61);
+            this.btnPrender.TabIndex = 1;
+            this.btnPrender.TabStop = false;
+            this.btnPrender.Text = "Prender";
+            this.tipInfo.SetToolTip(this.btnPrender, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
+        "");
+            this.btnPrender.UseVisualStyleBackColor = true;
+            this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
             // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 881);
+            this.ClientSize = new System.Drawing.Size(800, 820);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -456,6 +470,7 @@
             this.Controls.Add(this.btnConfundir);
             this.Controls.Add(this.btnRoubar);
             this.Controls.Add(this.btnUltrajar);
+            this.Controls.Add(this.btnPrender);
             this.Controls.Add(this.btnAtordoar);
             this.Controls.Add(this.btnInfectar);
             this.Controls.Add(this.btnPerfurar);
@@ -514,6 +529,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSacrificar;
+        private System.Windows.Forms.Button btnPrender;
     }
 }
 

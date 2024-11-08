@@ -12,7 +12,7 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        int[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear;
+        int[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear, AtordoamentoRecursivo;
         int CoeficienteDano, Poder, EsperaSacrificar;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
@@ -28,6 +28,7 @@ namespace Opositonn
             VerificadorDecaimento = new bool[2];
             TempoAtordoamento = new int[2];
             EsperaBloquear = new int[2];
+            AtordoamentoRecursivo = new int[2];
         }
 
         private void TelaLuta_Load(object sender, EventArgs e)
@@ -44,6 +45,8 @@ namespace Opositonn
             TempoAtordoamento[1] = 0;
             EsperaBloquear[0] = 0;
             EsperaBloquear[1] = 0;
+            AtordoamentoRecursivo[0] = 0;
+            AtordoamentoRecursivo[1] = 0;
         }
 
         private void Analisar()
@@ -71,10 +74,10 @@ namespace Opositonn
             if (VerificadorDecaimento[1]) imgDecaimentoOpositor.Visible = true;
             else imgDecaimentoOpositor.Visible = false;
 
-            if (TempoAtordoamento[0] > 0) imgAtordoamentoUsuario.Visible = true;
+            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) imgAtordoamentoUsuario.Visible = true;
             else imgAtordoamentoUsuario.Visible = false;
 
-            if (TempoAtordoamento[1] > 0) imgAtordoamentoOpositor.Visible = true;
+            if (TempoAtordoamento[1] > 0 || AtordoamentoRecursivo[1] > 0) imgAtordoamentoOpositor.Visible = true;
             else imgAtordoamentoOpositor.Visible = false;
 
             if (Saude[0] <= 60) lblSaudeUsuario.ForeColor = Color.Red;
@@ -111,6 +114,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -567,6 +577,26 @@ namespace Opositonn
             Atualizar();
         }
 
+        private void Prender(int User)
+        {
+            Analisar();
+
+            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (TempoAtordoamento[User] > 0)
+            {
+                TempoAtordoamento[User]--;
+                return;
+            }
+
+            if (User == 0) Poder = Math.Max(0, Poder - 2);
+
+            AtordoamentoRecursivo[1 - User] = 4;
+
+            Atualizar();
+        }
+
         private void btnInvestir_Click(object sender, EventArgs e)
         {
             Investir(0);
@@ -822,6 +852,23 @@ namespace Opositonn
             if (EsperaSacrificar > 0 || Poder > 0) return;
 
             Sacrificar();
+
+            await Task.Delay(500);
+
+            Investir(1);
+
+            await Task.Delay(500);
+
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private async void btnPrender_Click(object sender, EventArgs e)
+        {
+            if (Poder < 2) return;
+
+            Prender(0);
 
             await Task.Delay(500);
 
