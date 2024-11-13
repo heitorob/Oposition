@@ -92,6 +92,55 @@ namespace Opositonn
             ImprimirAuditar();
         }
 
+        private void HoraOpositor()
+        {
+            switch (rng.Next(0, 14))
+            {
+                case 0:
+                    Investir(1);
+                    break;
+                case 1:
+                    Medicar(1);
+                    break;
+                case 2:
+                    Flagelar(1);
+                    break;
+                case 3:
+                    Engajar(1);
+                    break;
+                case 4:
+                    Proteger(1);
+                    break;
+                case 5:
+                    Perfurar(1);
+                    break;
+                case 6:
+                    Infectar(1);
+                    break;
+                case 7:
+                    Ultrajar(1);
+                    break;
+                case 8:
+                    Roubar(1);
+                    break;
+                case 9:
+                    Confundir(1);
+                    break;
+                case 10:
+                    Atordoar(1);
+                    break;
+                case 11:
+                    Colidir(1);
+                    break;
+                case 12:
+                    Bloquear(1);
+                    break;
+                case 13:
+                    Prender(1);
+                    break;
+            }
+        }
+
         private void ImprimirAuditar()
         {
             if (Saude[1] == 0)
@@ -470,7 +519,7 @@ namespace Opositonn
             Atualizar();
         }
 
-        private async void Colidir(int User)
+        private void Colidir(int User)
         {
             Analisar();
 
@@ -499,8 +548,6 @@ namespace Opositonn
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
             Atualizar();
-
-            await Task.Delay(500);
 
             if (Saude[1 - User] > 0) Saude[User] = Math.Max(0, Saude[User] - 16);
 
@@ -601,7 +648,7 @@ namespace Opositonn
         {
             Investir(0);
 
-            Investir(1);
+            HoraOpositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -617,7 +664,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -634,7 +681,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -651,7 +698,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -668,7 +715,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -685,7 +732,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -702,7 +749,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -719,7 +766,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -736,7 +783,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -753,7 +800,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -770,7 +817,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -787,7 +834,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -804,7 +851,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -821,7 +868,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -838,7 +885,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -855,7 +902,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
@@ -872,7 +919,7 @@ namespace Opositonn
 
             await Task.Delay(500);
 
-            Investir(1);
+            HoraOpositor();
 
             await Task.Delay(500);
 
