@@ -483,6 +483,8 @@ namespace Opositonn
 
             CoeficientePrecisao[1 - User] = Math.Min(8, CoeficientePrecisao[1 - User] + 2);
 
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.\nReduziu a precosão em 20.", "Confundir", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -516,6 +518,8 @@ namespace Opositonn
 
             TempoAtordoamento[1 - User] = 1;
 
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.\nAplicou Atordoamento.", "Atordoar", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -547,9 +551,9 @@ namespace Opositonn
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
-            Atualizar();
-
             if (Saude[1 - User] > 0) Saude[User] = Math.Max(0, Saude[User] - 16);
+
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.\nSacrificou 16 de saúde.", "Sacrificar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -576,8 +580,11 @@ namespace Opositonn
                 return;
             }
 
-            if (VerificadorEscudo[1 - User]) Saude[1 - User] = Math.Max(0, Saude[1 - User] * 3 / 4);
-            else Saude[1 - User] = Math.Max(0, Saude[1 - User] * 1 / 2);
+            CoeficienteDano = Saude[1 - User] / 2;
+            if (VerificadorEscudo[User]) CoeficienteDano /= 2;
+            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
+
+            MessageBox.Show("Tirou " + CoeficienteDano + " de saúde.", "Dilacerar", MessageBoxButtons.OK);
 
             Atualizar();
         }
@@ -600,6 +607,8 @@ namespace Opositonn
 
             EsperaBloquear[User] = 2;
 
+            MessageBox.Show("Gerou 1 poder. Aplicou Atordoamento.", "Bloquear", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -621,6 +630,8 @@ namespace Opositonn
 
             EsperaSacrificar = 4;
 
+            MessageBox.Show("Gerou 3 poderes. Sacrificou 16 de saúde.", "Sacrificar", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -641,6 +652,8 @@ namespace Opositonn
 
             AtordoamentoRecursivo[1 - User] = 4;
 
+            MessageBox.Show("Aplicou Atordoamento Recursivo.", "Prender", MessageBoxButtons.OK);
+
             Atualizar();
         }
 
@@ -656,272 +669,208 @@ namespace Opositonn
             Atualizar();
         }
 
-        private async void btnCanalizar_Click(object sender, EventArgs e)
+        private void btnCanalizar_Click(object sender, EventArgs e)
         {
             if (Poder == 3) return;
 
             Canalizar();
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnMedicar_Click(object sender, EventArgs e)
+        private void btnMedicar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
 
             Medicar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnFlagelar_Click(object sender, EventArgs e)
+        private void btnFlagelar_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
 
             Flagelar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnEngajar_Click(object sender, EventArgs e)
+        private void btnEngajar_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
 
             Engajar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnProteger_Click(object sender, EventArgs e)
+        private void btnProteger_Click(object sender, EventArgs e)
         {
             if (Poder < 1 || VerificadorEscudo[0]) return;
 
             Proteger(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnPerfurar_Click(object sender, EventArgs e)
+        private void btnPerfurar_Click(object sender, EventArgs e)
         {
             if (Poder < 1 || VerificadorEscudo[0]) return;
 
             Perfurar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnInfectar_Click(object sender, EventArgs e)
+        private void btnInfectar_Click(object sender, EventArgs e)
         {
             if (Poder < 2 || VerificadorDecaimento[1]) return;
 
             Infectar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnUltrajar_Click(object sender, EventArgs e)
+        private void btnUltrajar_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
 
             Ultrajar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnRoubar_Click(object sender, EventArgs e)
+        private void btnRoubar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
 
             Roubar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnConfundir_Click(object sender, EventArgs e)
+        private void btnConfundir_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
 
             Confundir(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnAtordoar_Click(object sender, EventArgs e)
+        private void btnAtordoar_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
 
             Atordoar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnColidir_Click(object sender, EventArgs e)
+        private void btnColidir_Click(object sender, EventArgs e)
         {
             if (Poder < 1) return;
 
             Colidir(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnDilacerar_Click(object sender, EventArgs e)
+        private void btnDilacerar_Click(object sender, EventArgs e)
         {
             if (Poder < 3) return;
 
             Dilacerar(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnBloquear_Click(object sender, EventArgs e)
+        private void btnBloquear_Click(object sender, EventArgs e)
         {
             if (EsperaBloquear[0] > 0) return;
 
             Bloquear(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnSacrificar_Click(object sender, EventArgs e)
+        private void btnSacrificar_Click(object sender, EventArgs e)
         {
             if (EsperaSacrificar > 0 || Poder > 0) return;
 
             Sacrificar();
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
         }
 
-        private async void btnPrender_Click(object sender, EventArgs e)
+        private void btnPrender_Click(object sender, EventArgs e)
         {
             if (Poder < 2) return;
 
             Prender(0);
 
-            await Task.Delay(500);
-
             HoraOpositor();
-
-            await Task.Delay(500);
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
