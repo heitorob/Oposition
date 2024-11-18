@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace Opositonn
 {
+    public class Entidade
+    {
+        public int Saude { get; set; }
+        public int CoeficientePrecisao { get; set; }
+        public bool VerificadorEscudo { get; set; }
+        public bool VerificadorDecaimento { get; set; }
+        public int TempoAtordoamento { get; set; }
+        public int EsperaBloquear { get; set; }
+        public int AtordoamentoRecursivo { get; set; }
+    }
+
     public partial class TelaLuta : Form
     {
         int[] Saude, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear, AtordoamentoRecursivo;
         int CoeficienteDano, Poder, EsperaSacrificar;
         bool[] VerificadorEscudo, VerificadorDecaimento;
+
+        Entidade[] entidades = new Entidade[2];
 
         Random rng = new Random();
 
@@ -62,23 +75,17 @@ namespace Opositonn
             lblSaudeOpositor.Text = Saude[1].ToString();
             lblPoder.Text = Poder.ToString();
 
-            if (VerificadorEscudo[0]) imgEscudoUsuario.Visible = true;
-            else imgEscudoUsuario.Visible = false;
+            imgEscudoUsuario.Visible = VerificadorEscudo[0];
 
-            if (VerificadorEscudo[1]) imgEscudoOpositor.Visible = true;
-            else imgEscudoOpositor.Visible = false;
+            imgEscudoOpositor.Visible = VerificadorEscudo[1];
 
-            if (VerificadorDecaimento[0]) imgDecaimentoUsuario.Visible = true;
-            else imgDecaimentoUsuario.Visible = false;
+            imgDecaimentoUsuario.Visible = VerificadorDecaimento[0];
 
-            if (VerificadorDecaimento[1]) imgDecaimentoOpositor.Visible = true;
-            else imgDecaimentoOpositor.Visible = false;
+            imgDecaimentoOpositor.Visible = VerificadorDecaimento[1];
 
-            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) imgAtordoamentoUsuario.Visible = true;
-            else imgAtordoamentoUsuario.Visible = false;
+            imgAtordoamentoUsuario.Visible = TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0;
 
-            if (TempoAtordoamento[1] > 0 || AtordoamentoRecursivo[1] > 0) imgAtordoamentoOpositor.Visible = true;
-            else imgAtordoamentoOpositor.Visible = false;
+            imgAtordoamentoOpositor.Visible = TempoAtordoamento[1] > 0 || AtordoamentoRecursivo[1] > 0;
 
             if (Saude[0] <= 60) lblSaudeUsuario.ForeColor = Color.Red;
             else lblSaudeUsuario.ForeColor = Color.Black;
@@ -89,8 +96,7 @@ namespace Opositonn
             if (Poder == 3) lblPoder.ForeColor = Color.DarkTurquoise;
             else lblPoder.ForeColor = Color.Black;
 
-            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) btnReanimar.Visible = true;
-            else btnReanimar.Visible = false;
+            btnReanimar.Visible = TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0;
 
             ImprimirAuditar();
         }
