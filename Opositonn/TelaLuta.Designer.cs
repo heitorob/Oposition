@@ -55,13 +55,14 @@
             this.btnBloquear = new System.Windows.Forms.Button();
             this.tipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.btnSacrificar = new System.Windows.Forms.Button();
+            this.btnPrender = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnPrender = new System.Windows.Forms.Button();
+            this.btnReanimar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
@@ -374,6 +375,19 @@
             this.btnSacrificar.UseVisualStyleBackColor = true;
             this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
             // 
+            // btnPrender
+            // 
+            this.btnPrender.Location = new System.Drawing.Point(209, 658);
+            this.btnPrender.Name = "btnPrender";
+            this.btnPrender.Size = new System.Drawing.Size(182, 61);
+            this.btnPrender.TabIndex = 1;
+            this.btnPrender.TabStop = false;
+            this.btnPrender.Text = "Prender";
+            this.tipInfo.SetToolTip(this.btnPrender, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
+        "");
+            this.btnPrender.UseVisualStyleBackColor = true;
+            this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -428,18 +442,17 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Opositor";
             // 
-            // btnPrender
+            // btnReanimar
             // 
-            this.btnPrender.Location = new System.Drawing.Point(209, 658);
-            this.btnPrender.Name = "btnPrender";
-            this.btnPrender.Size = new System.Drawing.Size(182, 61);
-            this.btnPrender.TabIndex = 1;
-            this.btnPrender.TabStop = false;
-            this.btnPrender.Text = "Prender";
-            this.tipInfo.SetToolTip(this.btnPrender, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
-        "");
-            this.btnPrender.UseVisualStyleBackColor = true;
-            this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
+            this.btnReanimar.Location = new System.Drawing.Point(585, 505);
+            this.btnReanimar.Name = "btnReanimar";
+            this.btnReanimar.Size = new System.Drawing.Size(182, 61);
+            this.btnReanimar.TabIndex = 1;
+            this.btnReanimar.TabStop = false;
+            this.btnReanimar.Text = "Reanimar";
+            this.btnReanimar.UseVisualStyleBackColor = true;
+            this.btnReanimar.Visible = false;
+            this.btnReanimar.Click += new System.EventHandler(this.btnReanimar_Click);
             // 
             // TelaLuta
             // 
@@ -475,6 +488,7 @@
             this.Controls.Add(this.btnInfectar);
             this.Controls.Add(this.btnPerfurar);
             this.Controls.Add(this.btnProteger);
+            this.Controls.Add(this.btnReanimar);
             this.Controls.Add(this.btnInvestir);
             this.Controls.Add(this.lblSaudeOpositor);
             this.Controls.Add(this.lblSaudeUsuario);
@@ -530,6 +544,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSacrificar;
         private System.Windows.Forms.Button btnPrender;
+        private System.Windows.Forms.Button btnReanimar;
     }
 }
 

@@ -89,6 +89,9 @@ namespace Opositonn
             if (Poder == 3) lblPoder.ForeColor = Color.DarkTurquoise;
             else lblPoder.ForeColor = Color.Black;
 
+            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) btnReanimar.Visible = true;
+            else btnReanimar.Visible = false;
+
             ImprimirAuditar();
         }
 
@@ -201,6 +204,13 @@ namespace Opositonn
 
             EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
 
+            if (AtordoamentoRecursivo[0] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[0]) AtordoamentoRecursivo[0] = 0;
+                else AtordoamentoRecursivo[0]--;
+                return;
+            }
+
             if (TempoAtordoamento[0] > 0)
             {
                 TempoAtordoamento[0]--;
@@ -220,6 +230,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -247,6 +264,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -281,6 +305,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -308,6 +339,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -329,6 +367,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -368,6 +413,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -389,6 +441,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -425,6 +484,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -459,6 +525,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -495,6 +568,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -529,6 +609,13 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
 
             if (TempoAtordoamento[User] > 0)
             {
@@ -565,6 +652,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -595,6 +689,13 @@ namespace Opositonn
 
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -617,6 +718,13 @@ namespace Opositonn
             Analisar();
 
             EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
+
+            if (AtordoamentoRecursivo[0] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[0]) AtordoamentoRecursivo[0] = 0;
+                else AtordoamentoRecursivo[0]--;
+                return;
+            }
 
             if (TempoAtordoamento[0] > 0)
             {
@@ -642,6 +750,13 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
+            if (AtordoamentoRecursivo[User] > 0)
+            {
+                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) AtordoamentoRecursivo[User] = 0;
+                else AtordoamentoRecursivo[User]--;
+                return;
+            }
+
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
@@ -659,6 +774,8 @@ namespace Opositonn
 
         private void btnInvestir_Click(object sender, EventArgs e)
         {
+            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+
             Investir(0);
 
             HoraOpositor();
@@ -671,7 +788,7 @@ namespace Opositonn
 
         private void btnCanalizar_Click(object sender, EventArgs e)
         {
-            if (Poder == 3) return;
+            if (Poder == 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Canalizar();
 
@@ -684,7 +801,7 @@ namespace Opositonn
 
         private void btnMedicar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2) return;
+            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Medicar(0);
 
@@ -697,7 +814,7 @@ namespace Opositonn
 
         private void btnFlagelar_Click(object sender, EventArgs e)
         {
-            if (Poder < 3) return;
+            if (Poder < 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Flagelar(0);
 
@@ -710,7 +827,7 @@ namespace Opositonn
 
         private void btnEngajar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1) return;
+            if (Poder < 1 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Engajar(0);
 
@@ -723,7 +840,7 @@ namespace Opositonn
 
         private void btnProteger_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || VerificadorEscudo[0]) return;
+            if (Poder < 1 || VerificadorEscudo[0] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Proteger(0);
 
@@ -736,7 +853,7 @@ namespace Opositonn
 
         private void btnPerfurar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || VerificadorEscudo[0]) return;
+            if (Poder < 1 || VerificadorEscudo[0] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Perfurar(0);
 
@@ -749,7 +866,7 @@ namespace Opositonn
 
         private void btnInfectar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2 || VerificadorDecaimento[1]) return;
+            if (Poder < 2 || VerificadorDecaimento[1] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Infectar(0);
 
@@ -762,7 +879,7 @@ namespace Opositonn
 
         private void btnUltrajar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1) return;
+            if (Poder < 1 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Ultrajar(0);
 
@@ -775,7 +892,7 @@ namespace Opositonn
 
         private void btnRoubar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2) return;
+            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Roubar(0);
 
@@ -788,7 +905,7 @@ namespace Opositonn
 
         private void btnConfundir_Click(object sender, EventArgs e)
         {
-            if (Poder < 3) return;
+            if (Poder < 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Confundir(0);
 
@@ -801,7 +918,7 @@ namespace Opositonn
 
         private void btnAtordoar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2) return;
+            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Atordoar(0);
 
@@ -814,7 +931,7 @@ namespace Opositonn
 
         private void btnColidir_Click(object sender, EventArgs e)
         {
-            if (Poder < 1) return;
+            if (Poder < 1 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Colidir(0);
 
@@ -827,7 +944,7 @@ namespace Opositonn
 
         private void btnDilacerar_Click(object sender, EventArgs e)
         {
-            if (Poder < 3) return;
+            if (Poder < 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Dilacerar(0);
 
@@ -840,7 +957,7 @@ namespace Opositonn
 
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-            if (EsperaBloquear[0] > 0) return;
+            if (EsperaBloquear[0] > 0 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Bloquear(0);
 
@@ -853,7 +970,7 @@ namespace Opositonn
 
         private void btnSacrificar_Click(object sender, EventArgs e)
         {
-            if (EsperaSacrificar > 0 || Poder > 0) return;
+            if (EsperaSacrificar > 0 || Poder > 0 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Sacrificar();
 
@@ -866,9 +983,35 @@ namespace Opositonn
 
         private void btnPrender_Click(object sender, EventArgs e)
         {
-            if (Poder < 2) return;
+            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
 
             Prender(0);
+
+            HoraOpositor();
+
+            if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
+            if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
+            Atualizar();
+        }
+
+        private void btnReanimar_Click(object sender, EventArgs e)
+        {
+            if (TempoAtordoamento[0] > 0)
+            { 
+                TempoAtordoamento[0]--;
+                MessageBox.Show("Reanimou do Atordoamento.", "Atordoamento", MessageBoxButtons.OK);
+            }
+
+            if (rng.Next(0, 5) > AtordoamentoRecursivo[0])
+            {
+                AtordoamentoRecursivo[0] = 0;
+                MessageBox.Show("Se livrou das amarras.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                AtordoamentoRecursivo[0]--;
+                MessageBox.Show("Tentou se livrar das amarras, mas falhou.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+            }
 
             HoraOpositor();
 
