@@ -46,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TelaLuta.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="TelaLuta.cs" />
     <Compile Include="TelaLuta.Designer.cs">
       <DependentUpon>TelaLuta.cs</DependentUpon>
     </Compile>
