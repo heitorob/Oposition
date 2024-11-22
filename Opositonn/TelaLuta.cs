@@ -139,8 +139,70 @@ namespace Opositonn
             }
         }
 
-        private void HoraOpositor()
+        private void Usuario(int Ataque)
         {
+            if (!Condicional(0)) return;
+
+            switch (Ataque)
+            {
+                default:
+                    Investir(0);
+                    break;
+                case 1:
+                    Canalizar();
+                    break;
+                case 2:
+                    Sacrificar();
+                    break;
+                case 3:
+                    Bloquear(0);
+                    break;
+                case 4:
+                    Engajar(0);
+                    break;
+                case 5:
+                    Proteger(0);
+                    break;
+                case 6:
+                    Perfurar(0);
+                    break;
+                case 7:
+                    Ultrajar(0);
+                    break;
+                case 8:
+                    Colidir(0);
+                    break;
+                case 9:
+                    Medicar(0);
+                    break;
+                case 10:
+                    Atordoar(0);
+                    break;
+                case 11:
+                    Roubar(0);
+                    break;
+                case 12:
+                    Infectar(0);
+                    break;
+                case 13:
+                    Prender(0);
+                    break;
+                case 14:
+                    Flagelar(0);
+                    break;
+                case 15:
+                    Confundir(0);
+                    break;
+                case 17:
+                    Dilacerar(0);
+                    break;
+            }
+        }
+
+        private void Opositor()
+        {
+            if (!Condicional(1)) return;
+
             PoderOpositor = Math.Min(PoderOpositor + 1, 3);
 
             switch (AtaquesOpositor[rng.Next(0, PoderOpositor + 1)])
@@ -203,14 +265,19 @@ namespace Opositonn
             }
         }
 
+        private void MostrarMensagens(int T, int A)
+        {
+            string Turno = T == 0 ? "Usuário" : "Opositor";
+
+            MessageBox.Show("", "Turno do " + Turno, MessageBoxButtons.OK);
+        }
+
         private void Investir(int User)
         {
             Analisar();
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (rng.Next(0, 20) < CoeficientePrecisao[User])
             {
@@ -250,8 +317,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             Saude[User] = Math.Min(200, Saude[User] + 40);
@@ -272,8 +337,6 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Max(0, Poder - 3);
 
@@ -302,8 +365,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
             CoeficientePrecisao[User] = Math.Max(0, CoeficientePrecisao[User] - 4);
@@ -325,8 +386,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
             VerificadorEscudo[User] = true;
@@ -342,8 +401,6 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
@@ -377,8 +434,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             VerificadorDecaimento[1 - User] = true;
@@ -394,8 +449,6 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
@@ -426,8 +479,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             if (rng.Next(0, 20) < CoeficientePrecisao[User])
@@ -456,8 +507,6 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Max(0, Poder - 3);
 
@@ -488,8 +537,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             if (rng.Next(0, 20) < CoeficientePrecisao[User] + 4)
@@ -518,8 +565,6 @@ namespace Opositonn
 
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Max(0, Poder - 1);
 
@@ -550,8 +595,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 3);
 
             if (rng.Next(0, 20) < CoeficientePrecisao[User] + 4)
@@ -575,8 +618,6 @@ namespace Opositonn
             Analisar();
 
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (!Condicional(User)) return;
 
             if (User == 0) Poder = Math.Min(3, Poder + 1);
 
@@ -613,8 +654,6 @@ namespace Opositonn
             EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (!Condicional(User)) return;
-
             if (User == 0) Poder = Math.Max(0, Poder - 2);
 
             AtordoamentoRecursivo[1 - User] = 4;
@@ -626,11 +665,9 @@ namespace Opositonn
 
         private void btnInvestir_Click(object sender, EventArgs e)
         {
-            if (TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            Usuario(0);
 
-            Investir(0);
-
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -640,11 +677,11 @@ namespace Opositonn
 
         private void btnCanalizar_Click(object sender, EventArgs e)
         {
-            if (Poder == 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder == 3) return;
 
-            Canalizar();
+            Usuario(1);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -653,11 +690,11 @@ namespace Opositonn
 
         private void btnMedicar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 2) return;
 
             Medicar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -666,11 +703,11 @@ namespace Opositonn
 
         private void btnFlagelar_Click(object sender, EventArgs e)
         {
-            if (Poder < 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 3 || !Condicional(0)) return;
 
             Flagelar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -679,11 +716,11 @@ namespace Opositonn
 
         private void btnEngajar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 1 || !Condicional(0)) return;
 
             Engajar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -692,11 +729,11 @@ namespace Opositonn
 
         private void btnProteger_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || VerificadorEscudo[0] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 1 || VerificadorEscudo[0] || !Condicional(0)) return;
 
             Proteger(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -705,11 +742,11 @@ namespace Opositonn
 
         private void btnPerfurar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || VerificadorEscudo[0] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 1 || !Condicional(0)) return;
 
             Perfurar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -718,11 +755,11 @@ namespace Opositonn
 
         private void btnInfectar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2 || VerificadorDecaimento[1] || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 2 || VerificadorDecaimento[1] || !Condicional(0)) return;
 
             Infectar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -731,11 +768,11 @@ namespace Opositonn
 
         private void btnUltrajar_Click(object sender, EventArgs e)
         {
-            if (Poder < 1 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 1 || !Condicional(0)) return;
 
             Ultrajar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -744,11 +781,11 @@ namespace Opositonn
 
         private void btnRoubar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 2 || !Condicional(0)) return;
 
             Roubar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -757,11 +794,11 @@ namespace Opositonn
 
         private void btnConfundir_Click(object sender, EventArgs e)
         {
-            if (Poder < 3 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 3 || !Condicional(0)) return;
 
             Confundir(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -770,11 +807,11 @@ namespace Opositonn
 
         private void btnAtordoar_Click(object sender, EventArgs e)
         {
-            if (Poder < 2 || TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0) return;
+            if (Poder < 2 || !Condicional(0)) return;
 
             Atordoar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -787,7 +824,7 @@ namespace Opositonn
 
             Colidir(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -800,7 +837,7 @@ namespace Opositonn
 
             Dilacerar(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -813,7 +850,7 @@ namespace Opositonn
 
             Bloquear(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -826,7 +863,7 @@ namespace Opositonn
 
             Sacrificar();
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -839,7 +876,7 @@ namespace Opositonn
 
             Prender(0);
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
@@ -865,7 +902,7 @@ namespace Opositonn
                 MessageBox.Show("Está com Atordoamento Recursivo.", "Atordoamento Recursivo", MessageBoxButtons.OK);
             }
 
-            HoraOpositor();
+            Opositor();
 
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
