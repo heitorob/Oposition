@@ -56,6 +56,11 @@ namespace Opositonn
             AtaquesOpositor[2] = rng.Next(7, 12);
             AtaquesOpositor[3] = rng.Next(12, 15);
 
+            cmbEspecialL.SelectedItem = "Canalizar";
+            cmbEspecialF.SelectedItem = "Engajar";
+            cmbEspecialM.SelectedItem = "Medicar";
+            cmbEspecialS.SelectedItem = "Flagelar";
+
             numAtaqueOpositorI.Text = AtaquesOpositor[1].ToString();
             numAtaqueOpositorII.Text = AtaquesOpositor[2].ToString();
             numAtaqueOpositorIII.Text = AtaquesOpositor[3].ToString();
@@ -93,6 +98,7 @@ namespace Opositonn
             lblPoder.ForeColor = Poder == 3 ? Color.DarkTurquoise : Color.Black;
 
             btnReanimar.Visible = TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0;
+            btnInvestir.Visible = !btnReanimar.Visible;
 
             lblPoderOpositor.Text = PoderOpositor.ToString();
             numPrecisaoUsuario.Text = CoeficientePrecisao[0].ToString();
@@ -883,6 +889,134 @@ namespace Opositonn
             if (VerificadorDecaimento[1]) Saude[1] = Math.Max(0, Saude[1] - 8);
             if (VerificadorDecaimento[0]) Saude[0] = Math.Max(0, Saude[0] - 8);
             Atualizar();
+        }
+
+        private void cmbEspecialL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEspecialL.SelectedItem)
+            {
+                case "Canalizar":
+                    btnCanalizar.Visible = true;
+                    btnSacrificar.Visible = false;
+                    btnBloquear.Visible = false;
+                    break;
+                case "Sacrificar":
+                    btnCanalizar.Visible = false;
+                    btnSacrificar.Visible = true;
+                    btnBloquear.Visible = false;
+                    break;
+                case "Bloquear":
+                    btnCanalizar.Visible = false;
+                    btnSacrificar.Visible = false;
+                    btnBloquear.Visible = true;
+                    break;
+            }
+        }
+
+        private void cmbEspecialF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEspecialF.SelectedItem)
+            {
+                case "Engajar":
+                    btnEngajar.Visible = true;
+                    btnProteger.Visible = false;
+                    btnColidir.Visible = false;
+                    btnPerfurar.Visible = false;
+                    btnUltrajar.Visible = false;
+                    break;
+                case "Proteger":
+                    btnEngajar.Visible = false;
+                    btnProteger.Visible = true;
+                    btnColidir.Visible = false;
+                    btnPerfurar.Visible = false;
+                    btnUltrajar.Visible = false;
+                    break;
+                case "Colidir":
+                    btnEngajar.Visible = false;
+                    btnProteger.Visible = false;
+                    btnColidir.Visible = true;
+                    btnPerfurar.Visible = false;
+                    btnUltrajar.Visible = false;
+                    break;
+                case "Perfurar":
+                    btnEngajar.Visible = false;
+                    btnProteger.Visible = false;
+                    btnColidir.Visible = false;
+                    btnPerfurar.Visible = true;
+                    btnUltrajar.Visible = false;
+                    break;
+                case "Ultrajar":
+                    btnEngajar.Visible = false;
+                    btnProteger.Visible = false;
+                    btnColidir.Visible = false;
+                    btnPerfurar.Visible = false;
+                    btnUltrajar.Visible = true;
+                    break;
+            }
+        }
+
+        private void cmbEspecialM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEspecialM.SelectedItem)
+            {
+                case "Medicar":
+                    btnMedicar.Visible = true;
+                    btnAtordoar.Visible = false;
+                    btnRoubar.Visible = false;
+                    btnInfectar.Visible = false;
+                    btnPrender.Visible = false;
+                    break;
+                case "Atordoar":
+                    btnMedicar.Visible = false;
+                    btnAtordoar.Visible = true;
+                    btnRoubar.Visible = false;
+                    btnInfectar.Visible = false;
+                    btnPrender.Visible = false;
+                    break;
+                case "Roubar":
+                    btnMedicar.Visible = false;
+                    btnAtordoar.Visible = false;
+                    btnRoubar.Visible = true;
+                    btnInfectar.Visible = false;
+                    btnPrender.Visible = false;
+                    break;
+                case "Infectar":
+                    btnMedicar.Visible = false;
+                    btnAtordoar.Visible = false;
+                    btnRoubar.Visible = false;
+                    btnInfectar.Visible = true;
+                    btnPrender.Visible = false;
+                    break;
+                case "Prender":
+                    btnMedicar.Visible = false;
+                    btnAtordoar.Visible = false;
+                    btnRoubar.Visible = false;
+                    btnInfectar.Visible = false;
+                    btnPrender.Visible = true;
+                    break;
+            }
+        }
+
+        private void cmbEspecialS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEspecialS.SelectedItem)
+            {
+                case "Flagelar":
+                    btnFlagelar.Visible = true;
+                    btnConfundir.Visible = false;
+                    btnDilacerar.Visible = false;
+                    break;
+                case "Confundir":
+                    btnFlagelar.Visible = false;
+                    btnConfundir.Visible = true;
+                    btnDilacerar.Visible = false;
+                    break;
+                case "Dilacerar":
+                    btnFlagelar.Visible = false;
+                    btnConfundir.Visible = false;
+                    btnDilacerar.Visible = true;
+                    break;
+            }
         }
 
         private void chkDebug_CheckedChanged(object sender, EventArgs e)
