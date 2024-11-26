@@ -63,12 +63,27 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnReanimar = new System.Windows.Forms.Button();
+            this.chkDebug = new System.Windows.Forms.CheckBox();
+            this.grpDebug = new System.Windows.Forms.GroupBox();
+            this.lblPoderOpositor = new System.Windows.Forms.Label();
+            this.numAtaqueOpositorI = new System.Windows.Forms.NumericUpDown();
+            this.numAtaqueOpositorII = new System.Windows.Forms.NumericUpDown();
+            this.numAtaqueOpositorIII = new System.Windows.Forms.NumericUpDown();
+            this.numPrecisaoUsuario = new System.Windows.Forms.NumericUpDown();
+            this.numPrecisaoOpositor = new System.Windows.Forms.NumericUpDown();
+            this.btnRefletir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).BeginInit();
+            this.grpDebug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorII)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorIII)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSaudeUsuario
@@ -335,7 +350,7 @@
             // 
             // btnDilacerar
             // 
-            this.btnDilacerar.Location = new System.Drawing.Point(397, 746);
+            this.btnDilacerar.Location = new System.Drawing.Point(585, 746);
             this.btnDilacerar.Name = "btnDilacerar";
             this.btnDilacerar.Size = new System.Drawing.Size(182, 61);
             this.btnDilacerar.TabIndex = 1;
@@ -444,7 +459,7 @@
             // 
             // btnReanimar
             // 
-            this.btnReanimar.Location = new System.Drawing.Point(585, 505);
+            this.btnReanimar.Location = new System.Drawing.Point(275, 255);
             this.btnReanimar.Name = "btnReanimar";
             this.btnReanimar.Size = new System.Drawing.Size(182, 61);
             this.btnReanimar.TabIndex = 1;
@@ -454,11 +469,176 @@
             this.btnReanimar.Visible = false;
             this.btnReanimar.Click += new System.EventHandler(this.btnReanimar_Click);
             // 
+            // chkDebug
+            // 
+            this.chkDebug.AutoSize = true;
+            this.chkDebug.Font = new System.Drawing.Font("Bodoni MT", 10F);
+            this.chkDebug.Location = new System.Drawing.Point(21, 12);
+            this.chkDebug.Name = "chkDebug";
+            this.chkDebug.Size = new System.Drawing.Size(104, 22);
+            this.chkDebug.TabIndex = 6;
+            this.chkDebug.Text = "Menu Debug";
+            this.chkDebug.UseVisualStyleBackColor = true;
+            this.chkDebug.CheckedChanged += new System.EventHandler(this.chkDebug_CheckedChanged);
+            // 
+            // grpDebug
+            // 
+            this.grpDebug.Controls.Add(this.numAtaqueOpositorIII);
+            this.grpDebug.Controls.Add(this.numAtaqueOpositorII);
+            this.grpDebug.Controls.Add(this.numPrecisaoOpositor);
+            this.grpDebug.Controls.Add(this.numPrecisaoUsuario);
+            this.grpDebug.Controls.Add(this.numAtaqueOpositorI);
+            this.grpDebug.Controls.Add(this.lblPoderOpositor);
+            this.grpDebug.Location = new System.Drawing.Point(21, 40);
+            this.grpDebug.Name = "grpDebug";
+            this.grpDebug.Size = new System.Drawing.Size(237, 276);
+            this.grpDebug.TabIndex = 7;
+            this.grpDebug.TabStop = false;
+            this.grpDebug.Text = "Menu Debug";
+            this.grpDebug.Visible = false;
+            // 
+            // lblPoderOpositor
+            // 
+            this.lblPoderOpositor.AutoSize = true;
+            this.lblPoderOpositor.Font = new System.Drawing.Font("Bodoni MT", 12F);
+            this.lblPoderOpositor.Location = new System.Drawing.Point(6, 23);
+            this.lblPoderOpositor.Name = "lblPoderOpositor";
+            this.lblPoderOpositor.Size = new System.Drawing.Size(17, 19);
+            this.lblPoderOpositor.TabIndex = 0;
+            this.lblPoderOpositor.Text = "0";
+            // 
+            // numAtaqueOpositorI
+            // 
+            this.numAtaqueOpositorI.Location = new System.Drawing.Point(10, 103);
+            this.numAtaqueOpositorI.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorI.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorI.Name = "numAtaqueOpositorI";
+            this.numAtaqueOpositorI.Size = new System.Drawing.Size(37, 27);
+            this.numAtaqueOpositorI.TabIndex = 1;
+            this.numAtaqueOpositorI.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorI.ValueChanged += new System.EventHandler(this.numAtaqueOpositorI_ValueChanged);
+            // 
+            // numAtaqueOpositorII
+            // 
+            this.numAtaqueOpositorII.Location = new System.Drawing.Point(53, 103);
+            this.numAtaqueOpositorII.Maximum = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorII.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorII.Name = "numAtaqueOpositorII";
+            this.numAtaqueOpositorII.Size = new System.Drawing.Size(37, 27);
+            this.numAtaqueOpositorII.TabIndex = 1;
+            this.numAtaqueOpositorII.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorII.ValueChanged += new System.EventHandler(this.numAtaqueOpositorII_ValueChanged);
+            // 
+            // numAtaqueOpositorIII
+            // 
+            this.numAtaqueOpositorIII.Location = new System.Drawing.Point(96, 103);
+            this.numAtaqueOpositorIII.Maximum = new decimal(new int[] {
+            14,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorIII.Minimum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorIII.Name = "numAtaqueOpositorIII";
+            this.numAtaqueOpositorIII.Size = new System.Drawing.Size(37, 27);
+            this.numAtaqueOpositorIII.TabIndex = 1;
+            this.numAtaqueOpositorIII.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numAtaqueOpositorIII.ValueChanged += new System.EventHandler(this.numAtaqueOpositorIII_ValueChanged);
+            // 
+            // numPrecisaoUsuario
+            // 
+            this.numPrecisaoUsuario.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numPrecisaoUsuario.Location = new System.Drawing.Point(10, 58);
+            this.numPrecisaoUsuario.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numPrecisaoUsuario.Name = "numPrecisaoUsuario";
+            this.numPrecisaoUsuario.Size = new System.Drawing.Size(48, 27);
+            this.numPrecisaoUsuario.TabIndex = 1;
+            this.numPrecisaoUsuario.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.numPrecisaoUsuario.ValueChanged += new System.EventHandler(this.numPrecisaoUsuario_ValueChanged);
+            // 
+            // numPrecisaoOpositor
+            // 
+            this.numPrecisaoOpositor.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numPrecisaoOpositor.Location = new System.Drawing.Point(64, 58);
+            this.numPrecisaoOpositor.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numPrecisaoOpositor.Name = "numPrecisaoOpositor";
+            this.numPrecisaoOpositor.Size = new System.Drawing.Size(48, 27);
+            this.numPrecisaoOpositor.TabIndex = 1;
+            this.numPrecisaoOpositor.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.numPrecisaoOpositor.ValueChanged += new System.EventHandler(this.numPrecisaoOpositor_ValueChanged);
+            // 
+            // btnRefletir
+            // 
+            this.btnRefletir.Location = new System.Drawing.Point(397, 746);
+            this.btnRefletir.Name = "btnRefletir";
+            this.btnRefletir.Size = new System.Drawing.Size(182, 61);
+            this.btnRefletir.TabIndex = 1;
+            this.btnRefletir.TabStop = false;
+            this.btnRefletir.Text = "Refletir";
+            this.btnRefletir.UseVisualStyleBackColor = true;
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 820);
+            this.Controls.Add(this.grpDebug);
+            this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -479,6 +659,7 @@
             this.Controls.Add(this.btnSacrificar);
             this.Controls.Add(this.btnBloquear);
             this.Controls.Add(this.btnCanalizar);
+            this.Controls.Add(this.btnRefletir);
             this.Controls.Add(this.btnDilacerar);
             this.Controls.Add(this.btnConfundir);
             this.Controls.Add(this.btnRoubar);
@@ -504,6 +685,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).EndInit();
+            this.grpDebug.ResumeLayout(false);
+            this.grpDebug.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorII)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorIII)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,6 +733,15 @@
         private System.Windows.Forms.Button btnSacrificar;
         private System.Windows.Forms.Button btnPrender;
         private System.Windows.Forms.Button btnReanimar;
+        private System.Windows.Forms.CheckBox chkDebug;
+        private System.Windows.Forms.GroupBox grpDebug;
+        private System.Windows.Forms.Label lblPoderOpositor;
+        private System.Windows.Forms.NumericUpDown numAtaqueOpositorIII;
+        private System.Windows.Forms.NumericUpDown numAtaqueOpositorII;
+        private System.Windows.Forms.NumericUpDown numAtaqueOpositorI;
+        private System.Windows.Forms.NumericUpDown numPrecisaoUsuario;
+        private System.Windows.Forms.NumericUpDown numPrecisaoOpositor;
+        private System.Windows.Forms.Button btnRefletir;
     }
 }
 
