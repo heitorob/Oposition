@@ -12,7 +12,8 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        int[] Saude, Poder, CoeficientePrecisao, TempoAtordoamento, EsperaBloquear, AtordoamentoRecursivo, AtaquesOpositor;
+        int[] Saude, Poder, CoeficientePrecisao, TempoAtordoamento, AtordoamentoRecursivo, AtaquesOpositor;
+        int[,] TempoEspera;
         int CoeficienteDano, EsperaSacrificar;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
@@ -28,29 +29,20 @@ namespace Opositonn
             VerificadorEscudo = new bool[2];
             VerificadorDecaimento = new bool[2];
             TempoAtordoamento = new int[2];
-            EsperaBloquear = new int[2];
+            TempoEspera = new int[2, 5];
             AtordoamentoRecursivo = new int[2];
             AtaquesOpositor = new int[4];
         }
 
         private void TelaLuta_Load(object sender, EventArgs e)
         {
-            Saude[0] = 200;
-            Saude[1] = 200;
-            Poder[0] = 0;
-            Poder[1] = 0;
-            CoeficientePrecisao[0] = 80;
-            CoeficientePrecisao[1] = 80;
-            VerificadorEscudo[0] = false;
-            VerificadorEscudo[1] = false;
-            VerificadorDecaimento[0] = false;
-            VerificadorDecaimento[1] = false;
-            TempoAtordoamento[0] = 0;
-            TempoAtordoamento[1] = 0;
-            EsperaBloquear[0] = 0;
-            EsperaBloquear[1] = 0;
-            AtordoamentoRecursivo[0] = 0;
-            AtordoamentoRecursivo[1] = 0;
+            for (int User = 0; User <= 1; User ++) Saude[User] = 200;
+            for (int User = 0; User <= 1; User++) Poder[User] = 0;
+            for (int User = 0; User <= 1; User++) CoeficientePrecisao[User] = 80;
+            for (int User = 0; User <= 1; User++) VerificadorEscudo[User] = false;
+            for (int User = 0; User <= 1; User++) VerificadorDecaimento[User] = false;
+            for (int User = 0; User <= 1; User++) TempoAtordoamento[0] = 0;
+            for (int User = 0; User <= 1; User++) AtordoamentoRecursivo[0] = 0;
 
             AtaquesOpositor[0] = rng.Next(0, 2);
             AtaquesOpositor[1] = rng.Next(2, 8);
@@ -260,12 +252,12 @@ namespace Opositonn
 
         private void Investir(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Investir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -283,7 +275,7 @@ namespace Opositonn
 
         private void Canalizar(int User)
         {
-            EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
 
             Poder[User] = Math.Min(3, Poder[User] + 1);
 
@@ -294,7 +286,7 @@ namespace Opositonn
 
         private void Medicar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
@@ -310,14 +302,14 @@ namespace Opositonn
 
         private void Flagelar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Flagelar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -335,7 +327,7 @@ namespace Opositonn
 
         private void Engajar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
@@ -351,7 +343,7 @@ namespace Opositonn
 
         private void Proteger(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
@@ -365,14 +357,14 @@ namespace Opositonn
 
         private void Perfurar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Perfurar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -392,7 +384,7 @@ namespace Opositonn
 
         private void Infectar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
@@ -406,14 +398,14 @@ namespace Opositonn
 
         private void Ultrajar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Ultrajar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -433,14 +425,14 @@ namespace Opositonn
 
         private void Roubar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Roubar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -460,14 +452,14 @@ namespace Opositonn
 
         private void Confundir(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User] + 20)
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Confundir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -487,14 +479,14 @@ namespace Opositonn
 
         private void Atordoar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Atordoar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -514,14 +506,14 @@ namespace Opositonn
 
         private void Colidir(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Colidir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -541,14 +533,14 @@ namespace Opositonn
 
         private void Dilacerar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
 
             if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Dilacerar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
@@ -570,7 +562,7 @@ namespace Opositonn
 
             TempoAtordoamento[1 - User] = 1;
 
-            EsperaBloquear[User] = 2;
+            TempoEspera[User, 1] = 2;
 
             MessageBox.Show("Usou Bloquear.", "Bloquear", MessageBoxButtons.OK);
 
@@ -579,7 +571,7 @@ namespace Opositonn
 
         private void Sacrificar(int User)
         {
-            EsperaBloquear[0] = Math.Max(0, EsperaBloquear[0] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
 
             Poder[User] = Math.Min(3, Poder[User] + 3);
 
@@ -594,7 +586,7 @@ namespace Opositonn
 
         private void Prender(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
             if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
@@ -608,21 +600,15 @@ namespace Opositonn
 
         private void Assaltar(int User)
         {
-            EsperaBloquear[User] = Math.Max(0, EsperaBloquear[User] - 1);
+            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
             if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
 
-            if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
+            if (rng.Next(0, 100) > CoeficientePrecisao[User])
             {
-                MessageBox.Show("Foi por um triz, mas o ataque falhou!", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar Assaltar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
-
-            CoeficienteDano = 12;
-
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
-
-            Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
             CoeficientePrecisao[1 - User] = Math.Max(35, CoeficientePrecisao[1 - User] - 15);
 
@@ -673,7 +659,7 @@ namespace Opositonn
 
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-            if (EsperaBloquear[0] > 0) return;
+            if (TempoEspera[0, 1] > 0) return;
 
             Usuario(4, 0);
 
