@@ -12,9 +12,9 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        int[] Saude, Poder, CoeficientePrecisao, TempoAtordoamento, AtordoamentoRecursivo, AtaquesOpositor;
+        int[] Saude, Poder, Precisao, TempoAtordoamento, TempoRecursivo, AtaquesOpositor, Equipavel;
         int[,] TempoEspera;
-        int CoeficienteDano, EsperaSacrificar;
+        int CoeficienteDano;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
         public Random rng = new Random();
@@ -25,24 +25,25 @@ namespace Opositonn
 
             Saude = new int[2];
             Poder = new int[2];
-            CoeficientePrecisao = new int[2];
+            Precisao = new int[2];
             VerificadorEscudo = new bool[2];
             VerificadorDecaimento = new bool[2];
             TempoAtordoamento = new int[2];
             TempoEspera = new int[2, 5];
-            AtordoamentoRecursivo = new int[2];
+            TempoRecursivo = new int[2];
             AtaquesOpositor = new int[4];
+            Equipavel = new int[2];
         }
 
         private void TelaLuta_Load(object sender, EventArgs e)
         {
             for (int User = 0; User <= 1; User ++) Saude[User] = 200;
             for (int User = 0; User <= 1; User++) Poder[User] = 0;
-            for (int User = 0; User <= 1; User++) CoeficientePrecisao[User] = 80;
+            for (int User = 0; User <= 1; User++) Precisao[User] = 80;
             for (int User = 0; User <= 1; User++) VerificadorEscudo[User] = false;
             for (int User = 0; User <= 1; User++) VerificadorDecaimento[User] = false;
             for (int User = 0; User <= 1; User++) TempoAtordoamento[0] = 0;
-            for (int User = 0; User <= 1; User++) AtordoamentoRecursivo[0] = 0;
+            for (int User = 0; User <= 1; User++) TempoRecursivo[0] = 0;
 
             AtaquesOpositor[0] = rng.Next(0, 2);
             AtaquesOpositor[1] = rng.Next(2, 8);
@@ -79,9 +80,9 @@ namespace Opositonn
 
             imgDecaimentoOpositor.Visible = VerificadorDecaimento[1];
 
-            imgAtordoamentoUsuario.Visible = TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0;
+            imgAtordoamentoUsuario.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
 
-            imgAtordoamentoOpositor.Visible = TempoAtordoamento[1] > 0 || AtordoamentoRecursivo[1] > 0;
+            imgAtordoamentoOpositor.Visible = TempoAtordoamento[1] > 0 || TempoRecursivo[1] > 0;
 
             lblSaudeUsuario.ForeColor = Saude[0] <= 60 ? Color.Red : Color.Black;
 
@@ -89,27 +90,27 @@ namespace Opositonn
 
             lblPoder.ForeColor = Poder[0] == 3 ? Color.DarkTurquoise : Color.Black;
 
-            btnReanimar.Visible = TempoAtordoamento[0] > 0 || AtordoamentoRecursivo[0] > 0;
+            btnReanimar.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
 
             lblPoderOpositor.Text = Poder[1].ToString();
-            numPrecisaoUsuario.Text = CoeficientePrecisao[0].ToString();
-            numPrecisaoOpositor.Text = CoeficientePrecisao[1].ToString();
+            numPrecisaoUsuario.Text = Precisao[0].ToString();
+            numPrecisaoOpositor.Text = Precisao[1].ToString();
 
             TestarFim();
         }
 
         private bool Condicional(int User, int Custo)
         {
-            if (AtordoamentoRecursivo[User] > 0)
+            if (TempoRecursivo[User] > 0)
             {
-                if (rng.Next(0, 5) > AtordoamentoRecursivo[User]) 
+                if (rng.Next(0, 5) > TempoRecursivo[User]) 
                 { 
-                    AtordoamentoRecursivo[User] = 0;
+                    TempoRecursivo[User] = 0;
                     MessageBox.Show("Atordoamento Recursivo acabou.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    AtordoamentoRecursivo[User]--;
+                    TempoRecursivo[User]--;
                     MessageBox.Show("Está com Atordoamento Recursivo.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 return false;
@@ -127,6 +128,8 @@ namespace Opositonn
                 MessageBox.Show("Não acumulou Poderes suficientes.", "Faltam " + (Custo - Poder[User] + " Poderes."), MessageBoxButtons.OK);
                 return false;
             }
+            else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Custo);
+            else if (Custo > 0) Poder[User] = 0;
 
             return true;
         }
@@ -151,8 +154,8 @@ namespace Opositonn
         {
             for (int User = 0; User <= 1; User++)
             {
-                if (CoeficientePrecisao[User] < 80) CoeficientePrecisao[User] = Math.Min(80, CoeficientePrecisao[User] + 5);
-                else if (CoeficientePrecisao[User] > 80) CoeficientePrecisao[User] = Math.Max(80, CoeficientePrecisao[User] - 5);
+                if (Precisao[User] < (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Min(80, Precisao[User] + 5);
+                else if (Precisao[User] > (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Max(80, Precisao[User] - 5);
             }
 
             for (int User = 0; User <= 1; User++) if (VerificadorDecaimento[User]) Saude[User] = Math.Max(0, Saude[User] - 8);
@@ -253,9 +256,9 @@ namespace Opositonn
         private void Investir(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User])
             {
                 MessageBox.Show("Tentou usar Investir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -264,7 +267,8 @@ namespace Opositonn
 
             CoeficienteDano = 16;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
@@ -287,9 +291,7 @@ namespace Opositonn
         private void Medicar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
             Saude[User] = Math.Min(200, Saude[User] + 40);
 
@@ -303,11 +305,9 @@ namespace Opositonn
         private void Flagelar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User])
             {
                 MessageBox.Show("Tentou usar Flagelar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -316,7 +316,8 @@ namespace Opositonn
 
             CoeficienteDano = 60;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
@@ -328,11 +329,9 @@ namespace Opositonn
         private void Engajar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
-
-            CoeficientePrecisao[User] = Math.Min(CoeficientePrecisao[User] + 25, 125);
+            Precisao[User] = Math.Min(Precisao[User] + 25, 125);
 
             VerificadorDecaimento[User] = false;
 
@@ -344,9 +343,7 @@ namespace Opositonn
         private void Proteger(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
-
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
             VerificadorEscudo[User] = true;
 
@@ -358,11 +355,9 @@ namespace Opositonn
         private void Perfurar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User])
             {
                 MessageBox.Show("Tentou usar Perfurar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -385,11 +380,9 @@ namespace Opositonn
         private void Infectar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
-
-            VerificadorDecaimento[1 - User] = true;
+            VerificadorDecaimento[1 - User] = Equipavel[1 - User] < 3;
 
             MessageBox.Show("Usou Infectar.", "Infectar", MessageBoxButtons.OK);
 
@@ -399,11 +392,9 @@ namespace Opositonn
         private void Ultrajar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
+            if (rng.Next(0, 100) > Precisao[User] - 20)
             {
                 MessageBox.Show("Tentou usar Ultrajar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -412,11 +403,12 @@ namespace Opositonn
 
             CoeficienteDano = 28;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
-            VerificadorDecaimento[1 - User] = true;
+            VerificadorDecaimento[1 - User] = Equipavel[1 - User] < 3;
 
             MessageBox.Show("Usou Ultrajar.", "Ultrajar", MessageBoxButtons.OK);
 
@@ -426,11 +418,9 @@ namespace Opositonn
         private void Roubar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User])
             {
                 MessageBox.Show("Tentou usar Roubar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -439,7 +429,8 @@ namespace Opositonn
 
             CoeficienteDano = 28;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
@@ -453,11 +444,9 @@ namespace Opositonn
         private void Confundir(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User] + 20)
+            if (rng.Next(0, 100) > Precisao[User] + 20)
             {
                 MessageBox.Show("Tentou usar Confundir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -466,11 +455,12 @@ namespace Opositonn
 
             CoeficienteDano = 40;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
-            CoeficientePrecisao[1 - User] = Math.Max(35, CoeficientePrecisao[1 - User] - 25);
+            Precisao[1 - User] = Math.Max(35, Precisao[1 - User] - 25);
 
             MessageBox.Show("Usou Confundir.", "Confundir", MessageBoxButtons.OK);
 
@@ -480,11 +470,9 @@ namespace Opositonn
         private void Atordoar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
+            if (rng.Next(0, 100) > Precisao[User] - 20)
             {
                 MessageBox.Show("Tentou usar Atordoar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -493,11 +481,12 @@ namespace Opositonn
 
             CoeficienteDano = 40;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
-            TempoAtordoamento[1 - User] = 1;
+            TempoAtordoamento[1 - User] = Equipavel[1 - User] == 3 ? 0 : 1;
 
             MessageBox.Show("Usou Atordoar.", "Atordoar", MessageBoxButtons.OK);
 
@@ -507,11 +496,9 @@ namespace Opositonn
         private void Colidir(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 1);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User])
             {
                 MessageBox.Show("Tentou usar Colidir, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -520,7 +507,8 @@ namespace Opositonn
 
             CoeficienteDano = 40;
 
-            if (VerificadorEscudo[1 - User]) CoeficienteDano /= 2;
+            if (VerificadorEscudo[1 - User]) CoeficienteDano -= 12;
+            if (Equipavel[User] == 1) CoeficienteDano += 12;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - CoeficienteDano);
 
@@ -534,11 +522,9 @@ namespace Opositonn
         private void Dilacerar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 3);
-
-            if (rng.Next(0, 100) > CoeficientePrecisao[User] - 20)
+            if (rng.Next(0, 100) > Precisao[User] - 20)
             {
                 MessageBox.Show("Tentou usar Dilacerar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
@@ -556,11 +542,11 @@ namespace Opositonn
 
         private void Bloquear(int User)
         {
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
             if (User == 0) Poder[User] = Math.Min(3, Poder[User] + 1);
 
-            TempoAtordoamento[1 - User] = 1;
+            TempoAtordoamento[1 - User] = Equipavel[1 - User] == 3 ? 0 : 1;
 
             TempoEspera[User, 1] = 2;
 
@@ -577,7 +563,7 @@ namespace Opositonn
 
             Saude[0] = Math.Max(0, Saude[0] - 16);
 
-            EsperaSacrificar = 4;
+            TempoEspera[User, 0] = 4;
 
             MessageBox.Show("Usou Sacrificar.", "Sacrificar", MessageBoxButtons.OK);
 
@@ -587,11 +573,9 @@ namespace Opositonn
         private void Prender(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Max(0, Poder[User] - 2);
-
-            AtordoamentoRecursivo[1 - User] = 4;
+            TempoRecursivo[1 - User] = 4;
 
             MessageBox.Show("Usou Prender.", "Prender", MessageBoxButtons.OK);
 
@@ -601,16 +585,16 @@ namespace Opositonn
         private void Assaltar(int User)
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            if (User == 0) EsperaSacrificar = Math.Max(0, EsperaSacrificar - 1);
+            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (rng.Next(0, 100) > CoeficientePrecisao[User])
+            if (rng.Next(0, 100) > Precisao[User] - 20)
             {
                 MessageBox.Show("Tentou usar Assaltar, mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return;
             }
 
-            CoeficientePrecisao[1 - User] = Math.Max(35, CoeficientePrecisao[1 - User] - 15);
+            Precisao[1 - User] = Math.Max(35, Precisao[1 - User] - 15);
 
             MessageBox.Show("Usou Assaltar.", "Assaltar", MessageBoxButtons.OK);
 
@@ -648,7 +632,7 @@ namespace Opositonn
 
         private void btnSacrificar_Click(object sender, EventArgs e)
         {
-            if (EsperaSacrificar > 0 || Poder[0] > 0) return;
+            if (TempoEspera[0, 0] > 0 || Poder[0] > 0) return;
 
             Usuario(3, 0);
 
@@ -915,6 +899,19 @@ namespace Opositonn
                 EspeciaisSupremos[cmbEspecialS.SelectedItem.ToString()].Visible = true;
         }
 
+        private void cmbEquipavel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbEquipavel.SelectedItem)
+            {
+                case "Item de Dano":
+                    Equipavel[0] = 1; break;
+                case "Item de Precisão":
+                    Equipavel[0] = 2; break;
+                case "Item de Imunidade":
+                    Equipavel[0] = 4; break;
+            }
+        }
+
         private void chkDebug_CheckedChanged(object sender, EventArgs e)
         {
             grpDebug.Visible = chkDebug.Checked;
@@ -942,12 +939,12 @@ namespace Opositonn
 
         private void numPrecisaoUsuario_ValueChanged(object sender, EventArgs e)
         {
-            CoeficientePrecisao[0] = (int)numPrecisaoUsuario.Value;
+            Precisao[0] = (int)numPrecisaoUsuario.Value;
         }
 
         private void numPrecisaoOpositor_ValueChanged(object sender, EventArgs e)
         {
-            CoeficientePrecisao[1] = (int)numPrecisaoOpositor.Value;
+            Precisao[1] = (int)numPrecisaoOpositor.Value;
         }
     }
 }
