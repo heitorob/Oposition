@@ -78,6 +78,7 @@
             this.numPrecisaoOpositor = new System.Windows.Forms.NumericUpDown();
             this.numPrecisaoUsuario = new System.Windows.Forms.NumericUpDown();
             this.numAtaqueOpositor = new System.Windows.Forms.NumericUpDown();
+            this.numEquipavelOpositor = new System.Windows.Forms.NumericUpDown();
             this.numAtaqueOpositorI = new System.Windows.Forms.NumericUpDown();
             this.lblPoderOpositor = new System.Windows.Forms.Label();
             this.cmbEspecialS = new System.Windows.Forms.ComboBox();
@@ -100,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEquipavelOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -620,6 +622,7 @@
             this.grpDebug.Controls.Add(this.numPrecisaoOpositor);
             this.grpDebug.Controls.Add(this.numPrecisaoUsuario);
             this.grpDebug.Controls.Add(this.numAtaqueOpositor);
+            this.grpDebug.Controls.Add(this.numEquipavelOpositor);
             this.grpDebug.Controls.Add(this.numAtaqueOpositorI);
             this.grpDebug.Controls.Add(this.lblPoderOpositor);
             this.grpDebug.Location = new System.Drawing.Point(21, 40);
@@ -740,7 +743,7 @@
             // 
             this.numAtaqueOpositor.Location = new System.Drawing.Point(10, 103);
             this.numAtaqueOpositor.Maximum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -749,6 +752,20 @@
             this.numAtaqueOpositor.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositor.TabIndex = 1;
             this.numAtaqueOpositor.ValueChanged += new System.EventHandler(this.numAtaqueOpositor_ValueChanged);
+            // 
+            // numEquipavelOpositor
+            // 
+            this.numEquipavelOpositor.Location = new System.Drawing.Point(96, 121);
+            this.numEquipavelOpositor.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numEquipavelOpositor.Name = "numEquipavelOpositor";
+            this.numEquipavelOpositor.ReadOnly = true;
+            this.numEquipavelOpositor.Size = new System.Drawing.Size(37, 27);
+            this.numEquipavelOpositor.TabIndex = 1;
+            this.numEquipavelOpositor.ValueChanged += new System.EventHandler(this.numEquipavelOpositor_ValueChanged);
             // 
             // numAtaqueOpositorI
             // 
@@ -972,6 +989,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEquipavelOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1038,6 +1056,7 @@
         private System.Windows.Forms.Button btnAtordoarAlt;
         private System.Windows.Forms.Button btnInfectarAlt;
         private System.Windows.Forms.ComboBox cmbEquipavel;
+        private System.Windows.Forms.NumericUpDown numEquipavelOpositor;
     }
 }
 
