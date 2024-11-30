@@ -16,7 +16,7 @@ namespace Opositonn
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaLuta());
+            Application.Run(new TelaInicial());
         }
     }
 }

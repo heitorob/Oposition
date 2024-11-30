@@ -17,6 +17,12 @@ namespace Opositonn
         double CoeficienteDano;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
+        public int Ataque { get; set; }
+        public int ELivre { get; set; }
+        public int EFraco { get; set; }
+        public int EMedio { get; set; }
+        public int EForte { get; set; }
+
         public Random rng = new Random();
 
         public TelaLuta()
@@ -90,7 +96,7 @@ namespace Opositonn
 
             lblSaudeOpositor.ForeColor = Saude[1] <= 60 ? Color.Red : Color.Black;
 
-            lblPoder.ForeColor = Poder[0] == 3 ? Color.DarkTurquoise : Color.Black;
+            lblPoder.ForeColor = Poder[0] == (Equipavel[0] == 4 ? 4 : 3) ? Color.DarkTurquoise : Color.Black;
 
             btnReanimar.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
 
@@ -288,7 +294,7 @@ namespace Opositonn
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
 
-            Poder[User] = Math.Min(3, Poder[User] + 1);
+            Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + 1);
 
             MessageBox.Show("Usou Canalizar.", "Canalizar", MessageBoxButtons.OK);
 
@@ -517,7 +523,7 @@ namespace Opositonn
         {
             TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
-            if (User == 0) Poder[User] = Math.Min(3, Poder[User] + 1);
+            if (User == 0) Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + 1);
 
             TempoAtordoamento[1 - User] = Equipavel[1 - User] == 3 ? 0 : 1;
 
@@ -532,7 +538,7 @@ namespace Opositonn
         {
             TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
 
-            Poder[User] = Math.Min(3, Poder[User] + 3);
+            Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + Equipavel[User] == 4 ? 4 : 3);
 
             Saude[0] = Math.Max(0, Saude[0] - 16);
 
@@ -594,7 +600,7 @@ namespace Opositonn
 
         private void btnCanalizar_Click(object sender, EventArgs e)
         {
-            if (Poder[0] == 3) return;
+            if (Poder[0] == (Equipavel[0] == 4 ? 4 : 3)) return;
 
             Usuario(2, 0);
 
@@ -874,6 +880,8 @@ namespace Opositonn
                     Equipavel[0] = 2; break;
                 case "Item de Imunidade":
                     Equipavel[0] = 3; break;
+                case "Item de Poder":
+                    Equipavel[0] = 4; break;
             }
         }
 

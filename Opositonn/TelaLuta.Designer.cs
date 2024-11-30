@@ -127,6 +127,7 @@
             // 
             // btnInvestir
             // 
+            this.btnInvestir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInvestir.Location = new System.Drawing.Point(38, 352);
             this.btnInvestir.Name = "btnInvestir";
             this.btnInvestir.Size = new System.Drawing.Size(140, 40);
@@ -139,6 +140,7 @@
             // 
             // btnCanalizar
             // 
+            this.btnCanalizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCanalizar.Location = new System.Drawing.Point(184, 352);
             this.btnCanalizar.Name = "btnCanalizar";
             this.btnCanalizar.Size = new System.Drawing.Size(140, 40);
@@ -164,6 +166,7 @@
             // 
             // btnMedicar
             // 
+            this.btnMedicar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMedicar.Location = new System.Drawing.Point(476, 352);
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(140, 40);
@@ -176,6 +179,7 @@
             // 
             // btnFlagelar
             // 
+            this.btnFlagelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFlagelar.Location = new System.Drawing.Point(622, 352);
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(140, 40);
@@ -188,6 +192,7 @@
             // 
             // btnEngajar
             // 
+            this.btnEngajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEngajar.Location = new System.Drawing.Point(330, 352);
             this.btnEngajar.Name = "btnEngajar";
             this.btnEngajar.Size = new System.Drawing.Size(140, 40);
@@ -200,6 +205,7 @@
             // 
             // btnProteger
             // 
+            this.btnProteger.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnProteger.Location = new System.Drawing.Point(330, 352);
             this.btnProteger.Name = "btnProteger";
             this.btnProteger.Size = new System.Drawing.Size(140, 40);
@@ -212,6 +218,7 @@
             // 
             // btnPerfurar
             // 
+            this.btnPerfurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPerfurar.Location = new System.Drawing.Point(330, 352);
             this.btnPerfurar.Name = "btnPerfurar";
             this.btnPerfurar.Size = new System.Drawing.Size(140, 40);
@@ -225,6 +232,7 @@
             // 
             // btnInfectar
             // 
+            this.btnInfectar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInfectar.Location = new System.Drawing.Point(476, 352);
             this.btnInfectar.Name = "btnInfectar";
             this.btnInfectar.Size = new System.Drawing.Size(140, 40);
@@ -237,6 +245,7 @@
             // 
             // btnUltrajar
             // 
+            this.btnUltrajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUltrajar.Location = new System.Drawing.Point(330, 352);
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(140, 40);
@@ -300,6 +309,7 @@
             // 
             // btnRoubar
             // 
+            this.btnRoubar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRoubar.Location = new System.Drawing.Point(476, 352);
             this.btnRoubar.Name = "btnRoubar";
             this.btnRoubar.Size = new System.Drawing.Size(140, 40);
@@ -312,6 +322,7 @@
             // 
             // btnConfundir
             // 
+            this.btnConfundir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfundir.Location = new System.Drawing.Point(622, 352);
             this.btnConfundir.Name = "btnConfundir";
             this.btnConfundir.Size = new System.Drawing.Size(140, 40);
@@ -325,6 +336,7 @@
             // 
             // btnAtordoar
             // 
+            this.btnAtordoar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtordoar.Location = new System.Drawing.Point(476, 352);
             this.btnAtordoar.Name = "btnAtordoar";
             this.btnAtordoar.Size = new System.Drawing.Size(140, 40);
@@ -362,6 +374,7 @@
             // 
             // btnColidir
             // 
+            this.btnColidir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnColidir.Location = new System.Drawing.Point(330, 352);
             this.btnColidir.Name = "btnColidir";
             this.btnColidir.Size = new System.Drawing.Size(140, 40);
@@ -374,6 +387,7 @@
             // 
             // btnDilacerar
             // 
+            this.btnDilacerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDilacerar.Location = new System.Drawing.Point(622, 352);
             this.btnDilacerar.Name = "btnDilacerar";
             this.btnDilacerar.Size = new System.Drawing.Size(140, 40);
@@ -386,6 +400,7 @@
             // 
             // btnBloquear
             // 
+            this.btnBloquear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBloquear.Location = new System.Drawing.Point(184, 352);
             this.btnBloquear.Name = "btnBloquear";
             this.btnBloquear.Size = new System.Drawing.Size(140, 40);
@@ -404,6 +419,7 @@
             // 
             // btnSacrificar
             // 
+            this.btnSacrificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSacrificar.Location = new System.Drawing.Point(184, 352);
             this.btnSacrificar.Name = "btnSacrificar";
             this.btnSacrificar.Size = new System.Drawing.Size(140, 40);
@@ -417,6 +433,7 @@
             // 
             // btnPrender
             // 
+            this.btnPrender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrender.Location = new System.Drawing.Point(476, 352);
             this.btnPrender.Name = "btnPrender";
             this.btnPrender.Size = new System.Drawing.Size(140, 40);
@@ -430,6 +447,7 @@
             // 
             // btnAssaltar
             // 
+            this.btnAssaltar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAssaltar.Location = new System.Drawing.Point(38, 352);
             this.btnAssaltar.Name = "btnAssaltar";
             this.btnAssaltar.Size = new System.Drawing.Size(140, 40);
@@ -444,6 +462,7 @@
             // 
             // btnEngajarAlt
             // 
+            this.btnEngajarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEngajarAlt.Location = new System.Drawing.Point(476, 352);
             this.btnEngajarAlt.Name = "btnEngajarAlt";
             this.btnEngajarAlt.Size = new System.Drawing.Size(140, 40);
@@ -457,6 +476,7 @@
             // 
             // btnUltrajarAlt
             // 
+            this.btnUltrajarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUltrajarAlt.Location = new System.Drawing.Point(476, 352);
             this.btnUltrajarAlt.Name = "btnUltrajarAlt";
             this.btnUltrajarAlt.Size = new System.Drawing.Size(140, 40);
@@ -471,6 +491,7 @@
             // 
             // btnPerfurarAlt
             // 
+            this.btnPerfurarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPerfurarAlt.Location = new System.Drawing.Point(476, 352);
             this.btnPerfurarAlt.Name = "btnPerfurarAlt";
             this.btnPerfurarAlt.Size = new System.Drawing.Size(140, 40);
@@ -485,6 +506,7 @@
             // 
             // btnProtegerAlt
             // 
+            this.btnProtegerAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnProtegerAlt.Location = new System.Drawing.Point(476, 352);
             this.btnProtegerAlt.Name = "btnProtegerAlt";
             this.btnProtegerAlt.Size = new System.Drawing.Size(140, 40);
@@ -498,6 +520,7 @@
             // 
             // btnColidirAlt
             // 
+            this.btnColidirAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnColidirAlt.Location = new System.Drawing.Point(476, 352);
             this.btnColidirAlt.Name = "btnColidirAlt";
             this.btnColidirAlt.Size = new System.Drawing.Size(140, 40);
@@ -511,6 +534,7 @@
             // 
             // btnMedicarAlt
             // 
+            this.btnMedicarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMedicarAlt.Location = new System.Drawing.Point(622, 352);
             this.btnMedicarAlt.Name = "btnMedicarAlt";
             this.btnMedicarAlt.Size = new System.Drawing.Size(140, 40);
@@ -523,6 +547,7 @@
             // 
             // btnRoubarAlt
             // 
+            this.btnRoubarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRoubarAlt.Location = new System.Drawing.Point(622, 352);
             this.btnRoubarAlt.Name = "btnRoubarAlt";
             this.btnRoubarAlt.Size = new System.Drawing.Size(140, 40);
@@ -535,6 +560,7 @@
             // 
             // btnPrenderAlt
             // 
+            this.btnPrenderAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrenderAlt.Location = new System.Drawing.Point(622, 352);
             this.btnPrenderAlt.Name = "btnPrenderAlt";
             this.btnPrenderAlt.Size = new System.Drawing.Size(140, 40);
@@ -548,6 +574,7 @@
             // 
             // btnAtordoarAlt
             // 
+            this.btnAtordoarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtordoarAlt.Location = new System.Drawing.Point(622, 352);
             this.btnAtordoarAlt.Name = "btnAtordoarAlt";
             this.btnAtordoarAlt.Size = new System.Drawing.Size(140, 40);
@@ -561,6 +588,7 @@
             // 
             // btnInfectarAlt
             // 
+            this.btnInfectarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInfectarAlt.Location = new System.Drawing.Point(622, 352);
             this.btnInfectarAlt.Name = "btnInfectarAlt";
             this.btnInfectarAlt.Size = new System.Drawing.Size(140, 40);
@@ -593,6 +621,7 @@
             // 
             // btnReanimar
             // 
+            this.btnReanimar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReanimar.Location = new System.Drawing.Point(307, 306);
             this.btnReanimar.Name = "btnReanimar";
             this.btnReanimar.Size = new System.Drawing.Size(186, 40);
@@ -907,7 +936,8 @@
             this.cmbEquipavel.Items.AddRange(new object[] {
             "Item de Dano",
             "Item de Precisão",
-            "Item de Imunidade"});
+            "Item de Imunidade",
+            "Item de Poder"});
             this.cmbEquipavel.Location = new System.Drawing.Point(646, 265);
             this.cmbEquipavel.Name = "cmbEquipavel";
             this.cmbEquipavel.Size = new System.Drawing.Size(121, 27);
