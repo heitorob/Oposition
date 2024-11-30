@@ -14,7 +14,6 @@ namespace Opositonn
     {
         int[] Saude, Poder, Precisao, TempoAtordoamento, TempoRecursivo, AtaquesOpositor, Equipavel;
         int[,] TempoEspera;
-        double CoeficienteDano;
         bool[] VerificadorEscudo, VerificadorDecaimento;
 
         public int Ataque { get; set; }
@@ -62,6 +61,7 @@ namespace Opositonn
             cmbEspecialF.SelectedItem = "Engajar";
             cmbEspecialM.SelectedItem = "Medicar";
             cmbEspecialS.SelectedItem = "Flagelar";
+            cmbEquipavel.SelectedItem = "---";
 
             numAtaqueOpositor.Text = AtaquesOpositor[0].ToString();
             numAtaqueOpositorI.Text = AtaquesOpositor[1].ToString();
@@ -164,6 +164,11 @@ namespace Opositonn
             {
                 if (Precisao[User] < (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Min(80, Precisao[User] + 5);
                 else if (Precisao[User] > (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Max(80, Precisao[User] - 5);
+            }
+
+            for (int User = 0; User <= 1; User++)
+            {
+                for (int Ataque = 0; Ataque <= 4; Ataque++) TempoEspera[User, Ataque] = Math.Max(0, TempoEspera[User, Ataque] - 1);
             }
 
             for (int User = 0; User <= 1; User++) if (VerificadorDecaimento[User]) Saude[User] = Math.Max(0, Saude[User] - 8);
@@ -271,17 +276,21 @@ namespace Opositonn
             return (int)Dano;
         }
 
+        private bool CalcularAcerto(int User, int Coeficiente)
+        {
+            if (rng.Next(0, 100) > Precisao[User] + Coeficiente)
+            {
+                MessageBox.Show("Tentou usar " + Coeficiente + ", mas errou.", "Errou", MessageBoxButtons.OK);
+                Atualizar();
+                return false;
+            }
+
+            return true;
+        }
+
         private void Investir(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User])
-            {
-                MessageBox.Show("Tentou usar Investir, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, 0)) return;
 
             CalcularDano(User, 16);
 
@@ -292,7 +301,6 @@ namespace Opositonn
 
         private void Canalizar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
 
             Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + 1);
 
@@ -303,8 +311,6 @@ namespace Opositonn
 
         private void Medicar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
 
             Saude[User] = Math.Min(Equipavel[User] == 4 ? 300 : 200, Saude[User] + 40);
 
@@ -317,15 +323,7 @@ namespace Opositonn
 
         private void Flagelar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User])
-            {
-                MessageBox.Show("Tentou usar Flagelar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, 0)) return;
 
             CalcularDano(User, 60);
 
@@ -336,9 +334,6 @@ namespace Opositonn
 
         private void Engajar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
             Precisao[User] = Math.Min(Precisao[User] + 25, 125);
 
             VerificadorDecaimento[User] = false;
@@ -350,9 +345,6 @@ namespace Opositonn
 
         private void Proteger(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
             VerificadorEscudo[User] = true;
 
             MessageBox.Show("Usou Proteger.", "Proteger", MessageBoxButtons.OK);
@@ -362,23 +354,11 @@ namespace Opositonn
 
         private void Perfurar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
+            if (!CalcularAcerto(User, 0)) return;
 
-            if (rng.Next(0, 100) > Precisao[User])
-            {
-                MessageBox.Show("Tentou usar Perfurar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
-
-            CoeficienteDano = 28;
-
-            if (VerificadorEscudo[1 - User]) CoeficienteDano = 40;
+            CalcularDano(User, (VerificadorEscudo[1 - User] ? 50 : 28));
 
             VerificadorEscudo[1 - User] = false;
-
-            Saude[1 - User] = Math.Max(0, Saude[1 - User] - (int)CoeficienteDano);
 
             MessageBox.Show("Usou Perfurar.", "Perfurar", MessageBoxButtons.OK);
 
@@ -387,9 +367,6 @@ namespace Opositonn
 
         private void Infectar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
             VerificadorDecaimento[1 - User] = !(Equipavel[1 - User] == 3);
 
             MessageBox.Show("Usou Infectar.", "Infectar", MessageBoxButtons.OK);
@@ -399,15 +376,7 @@ namespace Opositonn
 
         private void Ultrajar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User] - 20)
-            {
-                MessageBox.Show("Tentou usar Ultrajar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, -20)) return;
 
             CalcularDano(User, 28);
 
@@ -420,15 +389,7 @@ namespace Opositonn
 
         private void Roubar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User])
-            {
-                MessageBox.Show("Tentou usar Roubar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, 0)) return;
 
             Saude[User] = Math.Min(200, Saude[User] + CalcularDano(User, 28));
 
@@ -439,15 +400,7 @@ namespace Opositonn
 
         private void Confundir(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User] + 20)
-            {
-                MessageBox.Show("Tentou usar Confundir, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, 20)) return;
 
             CalcularDano(User, 40);
 
@@ -460,15 +413,7 @@ namespace Opositonn
 
         private void Atordoar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User] - 20)
-            {
-                MessageBox.Show("Tentou usar Atordoar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, -20)) return;
 
             CalcularDano(User, 40);
 
@@ -481,15 +426,7 @@ namespace Opositonn
 
         private void Colidir(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User])
-            {
-                MessageBox.Show("Tentou usar Colidir, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, 0)) return;
 
             CalcularDano(User, 40);
 
@@ -502,15 +439,7 @@ namespace Opositonn
 
         private void Dilacerar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User] - 20)
-            {
-                MessageBox.Show("Tentou usar Dilacerar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, -20)) return;
 
             CalcularDano(User, Saude[1 - User] / 2);
 
@@ -521,13 +450,11 @@ namespace Opositonn
 
         private void Bloquear(int User)
         {
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
             if (User == 0) Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + 1);
 
             TempoAtordoamento[1 - User] = Equipavel[1 - User] == 3 ? 0 : 1;
 
-            TempoEspera[User, 1] = 2;
+            TempoEspera[User, 1] = 3;
 
             MessageBox.Show("Usou Bloquear.", "Bloquear", MessageBoxButtons.OK);
 
@@ -536,13 +463,11 @@ namespace Opositonn
 
         private void Sacrificar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-
             Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + Equipavel[User] == 4 ? 4 : 3);
 
             Saude[0] = Math.Max(0, Saude[0] - 16);
 
-            TempoEspera[User, 0] = 4;
+            TempoEspera[User, 0] = 5;
 
             MessageBox.Show("Usou Sacrificar.", "Sacrificar", MessageBoxButtons.OK);
 
@@ -551,10 +476,9 @@ namespace Opositonn
 
         private void Prender(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
             if (Equipavel[1 - User] != 3) TempoRecursivo[1 - User] = 4;
+
+            TempoEspera[User, 2] = 7;
 
             MessageBox.Show("Usou Prender.", "Prender", MessageBoxButtons.OK);
 
@@ -563,15 +487,7 @@ namespace Opositonn
 
         private void Assaltar(int User)
         {
-            TempoEspera[User, 1] = Math.Max(0, TempoEspera[User, 1] - 1);
-            TempoEspera[User, 0] = Math.Max(0, TempoEspera[User, 0] - 1);
-
-            if (rng.Next(0, 100) > Precisao[User] - 20)
-            {
-                MessageBox.Show("Tentou usar Assaltar, mas errou.", "Errou", MessageBoxButtons.OK);
-                Atualizar();
-                return;
-            }
+            if (!CalcularAcerto(User, -20)) return;
 
             Precisao[1 - User] = Math.Max(35, Precisao[1 - User] - 15);
 
@@ -759,6 +675,14 @@ namespace Opositonn
             Atualizar();
         }
 
+        private void btnFugir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente desistir?", "Fugir?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
         private void cmbAtaque_SelectedIndexChanged(object sender, EventArgs e)
         {
             var Ataques = new Dictionary<string, Button>
@@ -874,6 +798,8 @@ namespace Opositonn
         {
             switch (cmbEquipavel.SelectedItem)
             {
+                default:
+                    Equipavel[0] = 0; break;
                 case "Item de Dano":
                     Equipavel[0] = 1; break;
                 case "Item de Precisão":

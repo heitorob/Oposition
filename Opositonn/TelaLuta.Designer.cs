@@ -89,6 +89,7 @@
             this.prgUsuario = new System.Windows.Forms.ProgressBar();
             this.prgOpositor = new System.Windows.Forms.ProgressBar();
             this.cmbEquipavel = new System.Windows.Forms.ComboBox();
+            this.btnFugir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
@@ -934,6 +935,7 @@
             this.cmbEquipavel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEquipavel.FormattingEnabled = true;
             this.cmbEquipavel.Items.AddRange(new object[] {
+            "---",
             "Item de Dano",
             "Item de Precisão",
             "Item de Imunidade",
@@ -943,6 +945,18 @@
             this.cmbEquipavel.Size = new System.Drawing.Size(121, 27);
             this.cmbEquipavel.TabIndex = 8;
             this.cmbEquipavel.SelectedIndexChanged += new System.EventHandler(this.cmbEquipavel_SelectedIndexChanged);
+            // 
+            // btnFugir
+            // 
+            this.btnFugir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFugir.Location = new System.Drawing.Point(646, 306);
+            this.btnFugir.Name = "btnFugir";
+            this.btnFugir.Size = new System.Drawing.Size(121, 40);
+            this.btnFugir.TabIndex = 1;
+            this.btnFugir.TabStop = false;
+            this.btnFugir.Text = "Fugir";
+            this.btnFugir.UseVisualStyleBackColor = true;
+            this.btnFugir.Click += new System.EventHandler(this.btnFugir_Click);
             // 
             // TelaLuta
             // 
@@ -983,6 +997,7 @@
             this.Controls.Add(this.btnPerfurar);
             this.Controls.Add(this.btnProteger);
             this.Controls.Add(this.btnAssaltar);
+            this.Controls.Add(this.btnFugir);
             this.Controls.Add(this.btnReanimar);
             this.Controls.Add(this.btnInvestir);
             this.Controls.Add(this.lblSaudeOpositor);
@@ -1087,6 +1102,7 @@
         private System.Windows.Forms.Button btnInfectarAlt;
         private System.Windows.Forms.ComboBox cmbEquipavel;
         private System.Windows.Forms.NumericUpDown numEquipavelOpositor;
+        private System.Windows.Forms.Button btnFugir;
     }
 }
 
