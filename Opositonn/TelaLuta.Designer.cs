@@ -81,14 +81,8 @@
             this.numEquipavelOpositor = new System.Windows.Forms.NumericUpDown();
             this.numAtaqueOpositorI = new System.Windows.Forms.NumericUpDown();
             this.lblPoderOpositor = new System.Windows.Forms.Label();
-            this.cmbEspecialS = new System.Windows.Forms.ComboBox();
-            this.cmbEspecialL = new System.Windows.Forms.ComboBox();
-            this.cmbEspecialF = new System.Windows.Forms.ComboBox();
-            this.cmbEspecialM = new System.Windows.Forms.ComboBox();
-            this.cmbAtaque = new System.Windows.Forms.ComboBox();
             this.prgUsuario = new System.Windows.Forms.ProgressBar();
             this.prgOpositor = new System.Windows.Forms.ProgressBar();
-            this.cmbEquipavel = new System.Windows.Forms.ComboBox();
             this.btnFugir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
@@ -137,6 +131,7 @@
             this.btnInvestir.Text = "Investir";
             this.tipInfo.SetToolTip(this.btnInvestir, "Tira 16 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnInvestir.UseVisualStyleBackColor = true;
+            this.btnInvestir.Visible = false;
             this.btnInvestir.Click += new System.EventHandler(this.btnInvestir_Click);
             // 
             // btnCanalizar
@@ -150,6 +145,7 @@
             this.btnCanalizar.Text = "Canalizar";
             this.tipInfo.SetToolTip(this.btnCanalizar, "Invoca 1 poder.");
             this.btnCanalizar.UseVisualStyleBackColor = true;
+            this.btnCanalizar.Visible = false;
             this.btnCanalizar.Click += new System.EventHandler(this.btnCanalizar_Click);
             // 
             // lblPoder
@@ -176,6 +172,7 @@
             this.btnMedicar.Text = "Medicar";
             this.tipInfo.SetToolTip(this.btnMedicar, "Recupera 40 de saúde do Usuário.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnMedicar.UseVisualStyleBackColor = true;
+            this.btnMedicar.Visible = false;
             this.btnMedicar.Click += new System.EventHandler(this.btnMedicar_Click);
             // 
             // btnFlagelar
@@ -189,6 +186,7 @@
             this.btnFlagelar.Text = "Flagelar";
             this.tipInfo.SetToolTip(this.btnFlagelar, "Tira 60 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnFlagelar.UseVisualStyleBackColor = true;
+            this.btnFlagelar.Visible = false;
             this.btnFlagelar.Click += new System.EventHandler(this.btnFlagelar_Click);
             // 
             // btnEngajar
@@ -202,6 +200,7 @@
             this.btnEngajar.Text = "Engajar";
             this.tipInfo.SetToolTip(this.btnEngajar, "Aumenta a precisão em 20.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnEngajar.UseVisualStyleBackColor = true;
+            this.btnEngajar.Visible = false;
             this.btnEngajar.Click += new System.EventHandler(this.btnEngajar_Click);
             // 
             // btnProteger
@@ -215,6 +214,7 @@
             this.btnProteger.Text = "Proteger";
             this.tipInfo.SetToolTip(this.btnProteger, "Invoca um Escudo.");
             this.btnProteger.UseVisualStyleBackColor = true;
+            this.btnProteger.Visible = false;
             this.btnProteger.Click += new System.EventHandler(this.btnProteger_Click);
             // 
             // btnPerfurar
@@ -229,6 +229,7 @@
             this.tipInfo.SetToolTip(this.btnPerfurar, "Tira 28 de saúde do Opositor.\r\nDestrói Escudos do Opositor.\r\nTira 12 de saúde a m" +
         "ais se destrói um Escudo.\r\nPrecisão - 80.");
             this.btnPerfurar.UseVisualStyleBackColor = true;
+            this.btnPerfurar.Visible = false;
             this.btnPerfurar.Click += new System.EventHandler(this.btnPerfurar_Click);
             // 
             // btnInfectar
@@ -242,6 +243,7 @@
             this.btnInfectar.Text = "Infectar";
             this.tipInfo.SetToolTip(this.btnInfectar, "Aplica efeito de Decaimento no Opositor.");
             this.btnInfectar.UseVisualStyleBackColor = true;
+            this.btnInfectar.Visible = false;
             this.btnInfectar.Click += new System.EventHandler(this.btnInfectar_Click);
             // 
             // btnUltrajar
@@ -256,6 +258,7 @@
             this.tipInfo.SetToolTip(this.btnUltrajar, "Tira 28 de saúde do Opositor.\r\nAplica efeito de Decaimento no Opositor.\r\nPrecisão" +
         " - 60.");
             this.btnUltrajar.UseVisualStyleBackColor = true;
+            this.btnUltrajar.Visible = false;
             this.btnUltrajar.Click += new System.EventHandler(this.btnUltrajar_Click);
             // 
             // imgEscudoUsuario
@@ -319,6 +322,7 @@
             this.btnRoubar.Text = "Roubar";
             this.tipInfo.SetToolTip(this.btnRoubar, "Tira 28 de saúde do Opositor.\r\nRecupera 28 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnRoubar.UseVisualStyleBackColor = true;
+            this.btnRoubar.Visible = false;
             this.btnRoubar.Click += new System.EventHandler(this.btnRoubar_Click);
             // 
             // btnConfundir
@@ -333,6 +337,7 @@
             this.tipInfo.SetToolTip(this.btnConfundir, "Tira 40 pontos de saúde do Opositor.\r\nReduz a precisão do Opositor em 20.\r\nPrecis" +
         "ão - 100.");
             this.btnConfundir.UseVisualStyleBackColor = true;
+            this.btnConfundir.Visible = false;
             this.btnConfundir.Click += new System.EventHandler(this.btnConfundir_Click);
             // 
             // btnAtordoar
@@ -347,6 +352,7 @@
             this.tipInfo.SetToolTip(this.btnAtordoar, "Tira 40 de saúde do Opositor.\r\nAplica efeito de Atordoamento no Opositor.\r\nPrecis" +
         "ão - 60.");
             this.btnAtordoar.UseVisualStyleBackColor = true;
+            this.btnAtordoar.Visible = false;
             this.btnAtordoar.Click += new System.EventHandler(this.btnAtordoar_Click);
             // 
             // imgAtordoamentoUsuario
@@ -384,6 +390,7 @@
             this.btnColidir.Text = "Colidir";
             this.tipInfo.SetToolTip(this.btnColidir, "Tira 40 de saúde do Opositor.\r\nTira 16 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnColidir.UseVisualStyleBackColor = true;
+            this.btnColidir.Visible = false;
             this.btnColidir.Click += new System.EventHandler(this.btnColidir_Click);
             // 
             // btnDilacerar
@@ -397,6 +404,7 @@
             this.btnDilacerar.Text = "Dilacerar";
             this.tipInfo.SetToolTip(this.btnDilacerar, "Tira metade da saúde do Opositor.\r\nPrecisão - 60.\r\nTempo de espera - 4 turnos.");
             this.btnDilacerar.UseVisualStyleBackColor = true;
+            this.btnDilacerar.Visible = false;
             this.btnDilacerar.Click += new System.EventHandler(this.btnDilacerar_Click);
             // 
             // btnBloquear
@@ -410,6 +418,7 @@
             this.btnBloquear.Text = "Bloquear";
             this.tipInfo.SetToolTip(this.btnBloquear, "Invoca 1 poder.\r\nAtordoa o Opositor.\r\nTempo de espera - 2 turnos.");
             this.btnBloquear.UseVisualStyleBackColor = true;
+            this.btnBloquear.Visible = false;
             this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
             // 
             // tipInfo
@@ -430,6 +439,7 @@
             this.tipInfo.SetToolTip(this.btnSacrificar, "Invoca 3 poderes.\r\nTira 16 de saúde do Usuário.\r\nNão pode ser usado se Usuário já" +
         " tiver algum poder acumulado.\r\nTempo de espera - 4 turnos.");
             this.btnSacrificar.UseVisualStyleBackColor = true;
+            this.btnSacrificar.Visible = false;
             this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
             // 
             // btnPrender
@@ -444,6 +454,7 @@
             this.tipInfo.SetToolTip(this.btnPrender, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
         "");
             this.btnPrender.UseVisualStyleBackColor = true;
+            this.btnPrender.Visible = false;
             this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
             // 
             // btnAssaltar
@@ -544,6 +555,7 @@
             this.btnMedicarAlt.Text = "Medicar";
             this.tipInfo.SetToolTip(this.btnMedicarAlt, "Recupera 40 de saúde do Usuário.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnMedicarAlt.UseVisualStyleBackColor = true;
+            this.btnMedicarAlt.Visible = false;
             this.btnMedicarAlt.Click += new System.EventHandler(this.btnMedicar_Click);
             // 
             // btnRoubarAlt
@@ -557,6 +569,7 @@
             this.btnRoubarAlt.Text = "Roubar";
             this.tipInfo.SetToolTip(this.btnRoubarAlt, "Tira 28 de saúde do Opositor.\r\nRecupera 28 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnRoubarAlt.UseVisualStyleBackColor = true;
+            this.btnRoubarAlt.Visible = false;
             this.btnRoubarAlt.Click += new System.EventHandler(this.btnRoubar_Click);
             // 
             // btnPrenderAlt
@@ -571,6 +584,7 @@
             this.tipInfo.SetToolTip(this.btnPrenderAlt, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
         "");
             this.btnPrenderAlt.UseVisualStyleBackColor = true;
+            this.btnPrenderAlt.Visible = false;
             this.btnPrenderAlt.Click += new System.EventHandler(this.btnPrender_Click);
             // 
             // btnAtordoarAlt
@@ -585,6 +599,7 @@
             this.tipInfo.SetToolTip(this.btnAtordoarAlt, "Tira 40 de saúde do Opositor.\r\nAplica efeito de Atordoamento no Opositor.\r\nPrecis" +
         "ão - 60.");
             this.btnAtordoarAlt.UseVisualStyleBackColor = true;
+            this.btnAtordoarAlt.Visible = false;
             this.btnAtordoarAlt.Click += new System.EventHandler(this.btnAtordoar_Click);
             // 
             // btnInfectarAlt
@@ -598,6 +613,7 @@
             this.btnInfectarAlt.Text = "Infectar";
             this.tipInfo.SetToolTip(this.btnInfectarAlt, "Aplica efeito de Decaimento no Opositor.");
             this.btnInfectarAlt.UseVisualStyleBackColor = true;
+            this.btnInfectarAlt.Visible = false;
             this.btnInfectarAlt.Click += new System.EventHandler(this.btnInfectar_Click);
             // 
             // label5
@@ -831,89 +847,6 @@
             this.lblPoderOpositor.TabIndex = 0;
             this.lblPoderOpositor.Text = "0";
             // 
-            // cmbEspecialS
-            // 
-            this.cmbEspecialS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialS.FormattingEnabled = true;
-            this.cmbEspecialS.Items.AddRange(new object[] {
-            "Medicar",
-            "Atordoar",
-            "Roubar",
-            "Infectar",
-            "Prender",
-            "Flagelar",
-            "Confundir",
-            "Dilacerar"});
-            this.cmbEspecialS.Location = new System.Drawing.Point(646, 220);
-            this.cmbEspecialS.Name = "cmbEspecialS";
-            this.cmbEspecialS.Size = new System.Drawing.Size(121, 27);
-            this.cmbEspecialS.TabIndex = 8;
-            this.cmbEspecialS.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialS_SelectedIndexChanged);
-            // 
-            // cmbEspecialL
-            // 
-            this.cmbEspecialL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialL.FormattingEnabled = true;
-            this.cmbEspecialL.Items.AddRange(new object[] {
-            "Canalizar",
-            "Sacrificar",
-            "Bloquear"});
-            this.cmbEspecialL.Location = new System.Drawing.Point(646, 86);
-            this.cmbEspecialL.Name = "cmbEspecialL";
-            this.cmbEspecialL.Size = new System.Drawing.Size(121, 27);
-            this.cmbEspecialL.TabIndex = 8;
-            this.cmbEspecialL.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialL_SelectedIndexChanged);
-            // 
-            // cmbEspecialF
-            // 
-            this.cmbEspecialF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialF.FormattingEnabled = true;
-            this.cmbEspecialF.Items.AddRange(new object[] {
-            "Engajar",
-            "Proteger",
-            "Colidir",
-            "Perfurar",
-            "Ultrajar"});
-            this.cmbEspecialF.Location = new System.Drawing.Point(646, 130);
-            this.cmbEspecialF.Name = "cmbEspecialF";
-            this.cmbEspecialF.Size = new System.Drawing.Size(121, 27);
-            this.cmbEspecialF.TabIndex = 8;
-            this.cmbEspecialF.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialF_SelectedIndexChanged);
-            // 
-            // cmbEspecialM
-            // 
-            this.cmbEspecialM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEspecialM.FormattingEnabled = true;
-            this.cmbEspecialM.Items.AddRange(new object[] {
-            "Engajar",
-            "Proteger",
-            "Colidir",
-            "Perfurar",
-            "Ultrajar",
-            "Medicar",
-            "Atordoar",
-            "Roubar",
-            "Infectar",
-            "Prender"});
-            this.cmbEspecialM.Location = new System.Drawing.Point(646, 175);
-            this.cmbEspecialM.Name = "cmbEspecialM";
-            this.cmbEspecialM.Size = new System.Drawing.Size(121, 27);
-            this.cmbEspecialM.TabIndex = 8;
-            this.cmbEspecialM.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialM_SelectedIndexChanged);
-            // 
-            // cmbAtaque
-            // 
-            this.cmbAtaque.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAtaque.FormattingEnabled = true;
-            this.cmbAtaque.Items.AddRange(new object[] {
-            "Investir",
-            "Assaltar"});
-            this.cmbAtaque.Location = new System.Drawing.Point(646, 40);
-            this.cmbAtaque.Name = "cmbAtaque";
-            this.cmbAtaque.Size = new System.Drawing.Size(121, 27);
-            this.cmbAtaque.TabIndex = 8;
-            this.cmbAtaque.SelectedIndexChanged += new System.EventHandler(this.cmbAtaque_SelectedIndexChanged);
-            // 
             // prgUsuario
             // 
             this.prgUsuario.Location = new System.Drawing.Point(307, 226);
@@ -930,28 +863,12 @@
             this.prgOpositor.TabIndex = 9;
             this.prgOpositor.Value = 100;
             // 
-            // cmbEquipavel
-            // 
-            this.cmbEquipavel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEquipavel.FormattingEnabled = true;
-            this.cmbEquipavel.Items.AddRange(new object[] {
-            "---",
-            "Item de Dano",
-            "Item de Precisão",
-            "Item de Imunidade",
-            "Item de Poder"});
-            this.cmbEquipavel.Location = new System.Drawing.Point(646, 265);
-            this.cmbEquipavel.Name = "cmbEquipavel";
-            this.cmbEquipavel.Size = new System.Drawing.Size(121, 27);
-            this.cmbEquipavel.TabIndex = 8;
-            this.cmbEquipavel.SelectedIndexChanged += new System.EventHandler(this.cmbEquipavel_SelectedIndexChanged);
-            // 
             // btnFugir
             // 
             this.btnFugir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFugir.Location = new System.Drawing.Point(646, 306);
+            this.btnFugir.Location = new System.Drawing.Point(576, 306);
             this.btnFugir.Name = "btnFugir";
-            this.btnFugir.Size = new System.Drawing.Size(121, 40);
+            this.btnFugir.Size = new System.Drawing.Size(186, 40);
             this.btnFugir.TabIndex = 1;
             this.btnFugir.TabStop = false;
             this.btnFugir.Text = "Fugir";
@@ -965,12 +882,6 @@
             this.ClientSize = new System.Drawing.Size(800, 457);
             this.Controls.Add(this.prgOpositor);
             this.Controls.Add(this.prgUsuario);
-            this.Controls.Add(this.cmbAtaque);
-            this.Controls.Add(this.cmbEspecialL);
-            this.Controls.Add(this.cmbEspecialM);
-            this.Controls.Add(this.cmbEspecialF);
-            this.Controls.Add(this.cmbEquipavel);
-            this.Controls.Add(this.cmbEspecialS);
             this.Controls.Add(this.grpDebug);
             this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.label6);
@@ -1081,13 +992,8 @@
         private System.Windows.Forms.NumericUpDown numAtaqueOpositorI;
         private System.Windows.Forms.NumericUpDown numPrecisaoUsuario;
         private System.Windows.Forms.NumericUpDown numPrecisaoOpositor;
-        private System.Windows.Forms.ComboBox cmbEspecialS;
-        private System.Windows.Forms.ComboBox cmbEspecialL;
-        private System.Windows.Forms.ComboBox cmbEspecialF;
-        private System.Windows.Forms.ComboBox cmbEspecialM;
         private System.Windows.Forms.Button btnAssaltar;
         private System.Windows.Forms.NumericUpDown numAtaqueOpositor;
-        private System.Windows.Forms.ComboBox cmbAtaque;
         private System.Windows.Forms.ProgressBar prgUsuario;
         private System.Windows.Forms.ProgressBar prgOpositor;
         private System.Windows.Forms.Button btnEngajarAlt;
@@ -1100,7 +1006,6 @@
         private System.Windows.Forms.Button btnPrenderAlt;
         private System.Windows.Forms.Button btnAtordoarAlt;
         private System.Windows.Forms.Button btnInfectarAlt;
-        private System.Windows.Forms.ComboBox cmbEquipavel;
         private System.Windows.Forms.NumericUpDown numEquipavelOpositor;
         private System.Windows.Forms.Button btnFugir;
     }

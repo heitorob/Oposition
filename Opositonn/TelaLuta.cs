@@ -12,15 +12,15 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        int[] Saude, Poder, Precisao, TempoAtordoamento, TempoRecursivo, AtaquesOpositor, Equipavel;
+        int[] Saude, Poder, Precisao, TempoAtordoamento, TempoEscudo, TempoDecaimento, TempoRecursivo, AtaquesOpositor, Equipavel;
         int[,] TempoEspera;
-        bool[] VerificadorEscudo, VerificadorDecaimento;
 
-        public int Ataque { get; set; }
-        public int ELivre { get; set; }
-        public int EFraco { get; set; }
-        public int EMedio { get; set; }
-        public int EForte { get; set; }
+        public static string Ataque { get; set; }
+        public static string ELivre { get; set; }
+        public static string EFraco { get; set; }
+        public static string EMedio { get; set; }
+        public static string EForte { get; set; }
+        public static string IEquip { get; set; }
 
         public Random rng = new Random();
 
@@ -31,8 +31,8 @@ namespace Opositonn
             Saude = new int[2];
             Poder = new int[2];
             Precisao = new int[2];
-            VerificadorEscudo = new bool[2];
-            VerificadorDecaimento = new bool[2];
+            TempoEscudo = new int[2];
+            TempoDecaimento = new int[2];
             TempoAtordoamento = new int[2];
             TempoEspera = new int[2, 5];
             TempoRecursivo = new int[2];
@@ -45,32 +45,107 @@ namespace Opositonn
             for (int User = 0; User <= 1; User ++) Saude[User] = Equipavel[User] == 4 ? 300 : 200;
             for (int User = 0; User <= 1; User++) Poder[User] = 0;
             for (int User = 0; User <= 1; User++) Precisao[User] = 80;
-            for (int User = 0; User <= 1; User++) VerificadorEscudo[User] = false;
-            for (int User = 0; User <= 1; User++) VerificadorDecaimento[User] = false;
-            for (int User = 0; User <= 1; User++) TempoAtordoamento[0] = 0;
-            for (int User = 0; User <= 1; User++) TempoRecursivo[0] = 0;
+            for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoDecaimento[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
 
             AtaquesOpositor[0] = 0;
             AtaquesOpositor[1] = rng.Next(2, 8);
             AtaquesOpositor[2] = rng.Next(8, 13);
             AtaquesOpositor[3] = rng.Next(13, 16);
-            Equipavel[1] = rng.Next(1, 4);
-
-            cmbAtaque.SelectedItem = "Investir";
-            cmbEspecialL.SelectedItem = "Canalizar";
-            cmbEspecialF.SelectedItem = "Engajar";
-            cmbEspecialM.SelectedItem = "Medicar";
-            cmbEspecialS.SelectedItem = "Flagelar";
-            cmbEquipavel.SelectedItem = "---";
+            Equipavel[1] = rng.Next(0, 4);
 
             numAtaqueOpositor.Text = AtaquesOpositor[0].ToString();
             numAtaqueOpositorI.Text = AtaquesOpositor[1].ToString();
             numAtaqueOpositorII.Text = AtaquesOpositor[2].ToString();
             numAtaqueOpositorIII.Text = AtaquesOpositor[3].ToString();
             numEquipavelOpositor.Text = Equipavel[1].ToString();
+
+            var Ataques = new Dictionary<string, Button>
+            {
+                { "Investir", btnInvestir },
+                { "Assaltar", btnAssaltar }
+            };
+            foreach (var Ataque in Ataques.Values)
+                Ataque.Visible = false;
+            if (Ataque != null && Ataques.ContainsKey(Ataque.ToString()))
+                Ataques[Ataque.ToString()].Visible = true;
+
+            var EspeciaisLivres = new Dictionary<string, Button>
+            {
+                { "Canalizar", btnCanalizar },
+                { "Sacrificar", btnSacrificar },
+                { "Bloquear", btnBloquear }
+            };
+            foreach (var Especial in EspeciaisLivres.Values)
+                Especial.Visible = false;
+            if (ELivre != null && EspeciaisLivres.ContainsKey(ELivre.ToString()))
+                EspeciaisLivres[ELivre.ToString()].Visible = true;
+
+            var EspeciaisFracos = new Dictionary<string, Button>
+            {
+                { "Engajar", btnEngajar },
+                { "Proteger", btnProteger },
+                { "Colidir", btnColidir },
+                { "Perfurar", btnPerfurar },
+                { "Ultrajar", btnUltrajar }
+            };
+            foreach (var Especial in EspeciaisFracos.Values)
+                Especial.Visible = false;
+            if (EFraco != null && EspeciaisFracos.ContainsKey(EFraco.ToString()))
+                EspeciaisFracos[EFraco.ToString()].Visible = true;
+
+            var EspeciaisMedios = new Dictionary<string, Button>
+            {
+                { "Engajar", btnEngajarAlt },
+                { "Proteger", btnProtegerAlt },
+                { "Colidir", btnColidirAlt },
+                { "Perfurar", btnPerfurarAlt },
+                { "Ultrajar", btnUltrajarAlt },
+                { "Medicar", btnMedicar },
+                { "Atordoar", btnAtordoar },
+                { "Roubar", btnRoubar },
+                { "Infectar", btnInfectar },
+                { "Prender", btnPrender }
+            };
+            foreach (var Especial in EspeciaisMedios.Values)
+                Especial.Visible = false;
+            if (EMedio != null && EspeciaisMedios.ContainsKey(EMedio.ToString()))
+                EspeciaisMedios[EMedio.ToString()].Visible = true;
+
+            var EspeciaisSupremos = new Dictionary<string, Button>
+            {
+                { "Medicar", btnMedicarAlt },
+                { "Atordoar", btnAtordoarAlt },
+                { "Roubar", btnRoubarAlt },
+                { "Infectar", btnInfectarAlt },
+                { "Prender", btnPrenderAlt },
+                { "Flagelar", btnFlagelar },
+                { "Confundir", btnConfundir },
+                { "Dilacerar", btnDilacerar }
+            };
+            foreach (var Especial in EspeciaisSupremos.Values)
+                Especial.Visible = false;
+            if (EForte != null && EspeciaisSupremos.ContainsKey(EForte.ToString()))
+                EspeciaisSupremos[EForte.ToString()].Visible = true;
+
+            switch (IEquip)
+            {
+                default:
+                    Equipavel[0] = 0; break;
+                case "Item de Dano":
+                    Equipavel[0] = 1; break;
+                case "Item de Precisão":
+                    Equipavel[0] = 2; break;
+                case "Item de Imunidade":
+                    Equipavel[0] = 3; break;
+                case "Item de Poder":
+                    Equipavel[0] = 4; break;
+            }
         }
 
-        private void Atualizar()
+        private bool Atualizar()
         {
             lblSaudeUsuario.Text = Saude[0].ToString();
             lblSaudeOpositor.Text = Saude[1].ToString();
@@ -80,13 +155,13 @@ namespace Opositonn
 
             lblPoder.Text = Poder[0].ToString();
 
-            imgEscudoUsuario.Visible = VerificadorEscudo[0];
+            imgEscudoUsuario.Visible = TempoEscudo[0] > 0;
 
-            imgEscudoOpositor.Visible = VerificadorEscudo[1];
+            imgEscudoOpositor.Visible = TempoEscudo[1] > 0;
 
-            imgDecaimentoUsuario.Visible = VerificadorDecaimento[0];
+            imgDecaimentoUsuario.Visible = TempoDecaimento[0] > 0;
 
-            imgDecaimentoOpositor.Visible = VerificadorDecaimento[1];
+            imgDecaimentoOpositor.Visible = TempoDecaimento[1] > 0;
 
             imgAtordoamentoUsuario.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
 
@@ -104,7 +179,43 @@ namespace Opositonn
             numPrecisaoUsuario.Text = Precisao[0].ToString();
             numPrecisaoOpositor.Text = Precisao[1].ToString();
 
-            TestarFim();
+            var Botoes = new Dictionary<string, Button>
+            {
+                { "Investir", btnInvestir },
+                { "Assaltar", btnAssaltar },
+                { "Canalizar", btnCanalizar },
+                { "Sacrificar", btnSacrificar },
+                { "Bloquear", btnBloquear },
+                { "Engajar", btnEngajar },
+                { "Proteger", btnProteger },
+                { "Colidir", btnColidir },
+                { "Perfurar", btnPerfurar },
+                { "Ultrajar", btnUltrajar },
+                { "EngajarAlt", btnEngajarAlt },
+                { "ProtegerAtl", btnProtegerAlt },
+                { "ColidirAlt", btnColidirAlt },
+                { "PerfurarAlt", btnPerfurarAlt },
+                { "UltrajarAlt", btnUltrajarAlt },
+                { "Medicar", btnMedicar },
+                { "Atordoar", btnAtordoar },
+                { "Roubar", btnRoubar },
+                { "Infectar", btnInfectar },
+                { "Prender", btnPrender },
+                { "MedicarAlt", btnMedicarAlt },
+                { "AtordoarAlt", btnAtordoarAlt },
+                { "RoubarAlt", btnRoubarAlt },
+                { "InfectarAlt", btnInfectarAlt },
+                { "PrenderAlt", btnPrenderAlt },
+                { "Flagelar", btnFlagelar },
+                { "Confundir", btnConfundir },
+                { "Dilacerar", btnDilacerar }
+            };
+            foreach (var Botao in Botoes.Values)
+                Botao.Enabled = !btnReanimar.Visible;
+
+            if (TestarFim()) return true;
+
+            return false;
         }
 
         private bool Condicional(int User, int Custo)
@@ -142,20 +253,21 @@ namespace Opositonn
             return true;
         }
 
-        private void TestarFim()
+        private bool TestarFim()
         {
             if (Saude[1] == 0)
             {
                 MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Close();
-                return;
+                return true;
             }
             if (Saude[0] == 0)
             {
                 MessageBox.Show("Derrota", "Derrota", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Close();
-                return;
+                return true;
             }
+            return false;
         }
 
         private void Rodada()
@@ -167,11 +279,20 @@ namespace Opositonn
             }
 
             for (int User = 0; User <= 1; User++)
-            {
-                for (int Ataque = 0; Ataque <= 4; Ataque++) TempoEspera[User, Ataque] = Math.Max(0, TempoEspera[User, Ataque] - 1);
-            }
+                for (int Ataque = 0; Ataque <= 4; Ataque++) 
+                    TempoEspera[User, Ataque] = Math.Max(0, TempoEspera[User, Ataque] - 1);
 
-            for (int User = 0; User <= 1; User++) if (VerificadorDecaimento[User]) Saude[User] = Math.Max(0, Saude[User] - 8);
+            for (int User = 0; User <= 1; User++)
+                TempoEscudo[User] = Math.Max(0, TempoEscudo[User] - 1);
+
+            for (int User = 0; User <= 1; User++)
+                if (TempoDecaimento[User] > 0) 
+                    { 
+                        Saude[User] = Math.Max(0, Saude[User] - 8);
+                        TempoDecaimento[User]--;
+                    }
+
+            Atualizar();
         }
 
         private void Usuario(int Ataque, int Custo)
@@ -217,6 +338,8 @@ namespace Opositonn
                 case 17:
                     Dilacerar(0); break;
             }
+
+            if (Atualizar()) return;
 
             Opositor();
         }
@@ -264,11 +387,13 @@ namespace Opositonn
                 case 15:
                     Dilacerar(1); break;
             }
+
+            Atualizar();
         }
 
         private int CalcularDano(int User, double Dano)
         {
-            if (VerificadorEscudo[1 - User]) Dano *= 0.8;
+            if (TempoEscudo[1 - User] > 0) Dano *= 0.8;
             if (Equipavel[User] == 1) Dano *= 1.2;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - (int)Dano);
@@ -295,18 +420,13 @@ namespace Opositonn
             CalcularDano(User, 16);
 
             MessageBox.Show("Usou Investir", "Investir", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Canalizar(int User)
         {
-
             Poder[User] = Math.Min(Equipavel[User] == 4 ? 4 : 3, Poder[User] + 1);
 
             MessageBox.Show("Usou Canalizar.", "Canalizar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Medicar(int User)
@@ -314,11 +434,9 @@ namespace Opositonn
 
             Saude[User] = Math.Min(Equipavel[User] == 4 ? 300 : 200, Saude[User] + 40);
 
-            VerificadorDecaimento[User] = false;
+            TempoDecaimento[User] = 0;
 
             MessageBox.Show("Usou Medicar.", "Medicar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Flagelar(int User)
@@ -328,50 +446,40 @@ namespace Opositonn
             CalcularDano(User, 60);
 
             MessageBox.Show("Usou Flagelar.", "Flagelar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Engajar(int User)
         {
             Precisao[User] = Math.Min(Precisao[User] + 25, 125);
 
-            VerificadorDecaimento[User] = false;
+            TempoDecaimento[User] = 0;
 
             MessageBox.Show("Usou Engajar.", "Engajar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Proteger(int User)
         {
-            VerificadorEscudo[User] = true;
+            TempoEscudo[User] = 10;
 
             MessageBox.Show("Usou Proteger.", "Proteger", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Perfurar(int User)
         {
             if (!CalcularAcerto(User, 0)) return;
 
-            CalcularDano(User, (VerificadorEscudo[1 - User] ? 50 : 28));
+            CalcularDano(User, (TempoEscudo[1 - User] > 0 ? 50 : 28));
 
-            VerificadorEscudo[1 - User] = false;
+            TempoEscudo[1 - User] = 0;
 
             MessageBox.Show("Usou Perfurar.", "Perfurar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Infectar(int User)
         {
-            VerificadorDecaimento[1 - User] = !(Equipavel[1 - User] == 3);
+            TempoDecaimento[1 - User] = (Equipavel[1 - User] == 3) ? 0 : 10;
 
             MessageBox.Show("Usou Infectar.", "Infectar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Ultrajar(int User)
@@ -380,11 +488,9 @@ namespace Opositonn
 
             CalcularDano(User, 28);
 
-            VerificadorDecaimento[1 - User] = Equipavel[1 - User] < 3;
+            TempoDecaimento[1 - User] = (Equipavel[1 - User] == 3) ? 0 : 10;
 
             MessageBox.Show("Usou Ultrajar.", "Ultrajar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Roubar(int User)
@@ -394,8 +500,6 @@ namespace Opositonn
             Saude[User] = Math.Min(200, Saude[User] + CalcularDano(User, 28));
 
             MessageBox.Show("Usou Roubar.", "Roubar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Confundir(int User)
@@ -407,8 +511,6 @@ namespace Opositonn
             Precisao[1 - User] = Math.Max(35, Precisao[1 - User] - 25);
 
             MessageBox.Show("Usou Confundir.", "Confundir", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Atordoar(int User)
@@ -420,8 +522,6 @@ namespace Opositonn
             TempoAtordoamento[1 - User] = Equipavel[1 - User] == 3 ? 0 : 1;
 
             MessageBox.Show("Usou Atordoar.", "Atordoar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Colidir(int User)
@@ -433,8 +533,6 @@ namespace Opositonn
             if (Saude[1 - User] > 0) Saude[User] = Math.Max(0, Saude[User] - 16);
 
             MessageBox.Show("Usou Colidir.", "Colidir", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Dilacerar(int User)
@@ -444,8 +542,6 @@ namespace Opositonn
             CalcularDano(User, Saude[1 - User] / 2);
 
             MessageBox.Show("Usou Dilacerar.", "Dilacerar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Bloquear(int User)
@@ -457,8 +553,6 @@ namespace Opositonn
             TempoEspera[User, 1] = 3;
 
             MessageBox.Show("Usou Bloquear.", "Bloquear", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Sacrificar(int User)
@@ -470,8 +564,6 @@ namespace Opositonn
             TempoEspera[User, 0] = 5;
 
             MessageBox.Show("Usou Sacrificar.", "Sacrificar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Prender(int User)
@@ -481,19 +573,17 @@ namespace Opositonn
             TempoEspera[User, 2] = 7;
 
             MessageBox.Show("Usou Prender.", "Prender", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void Assaltar(int User)
         {
-            if (!CalcularAcerto(User, -20)) return;
+            if (!CalcularAcerto(User, 0)) return;
+
+            CalcularDano(User, 8);
 
             Precisao[1 - User] = Math.Max(35, Precisao[1 - User] - 15);
 
             MessageBox.Show("Usou Assaltar.", "Assaltar", MessageBoxButtons.OK);
-
-            Atualizar();
         }
 
         private void btnInvestir_Click(object sender, EventArgs e)
@@ -501,8 +591,6 @@ namespace Opositonn
             Usuario(0, 0);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnAssaltar_Click(object sender, EventArgs e)
@@ -510,8 +598,6 @@ namespace Opositonn
             Usuario(1, 0);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnCanalizar_Click(object sender, EventArgs e)
@@ -521,8 +607,6 @@ namespace Opositonn
             Usuario(2, 0);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnSacrificar_Click(object sender, EventArgs e)
@@ -532,8 +616,6 @@ namespace Opositonn
             Usuario(3, 0);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnBloquear_Click(object sender, EventArgs e)
@@ -543,8 +625,6 @@ namespace Opositonn
             Usuario(4, 0);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnEngajar_Click(object sender, EventArgs e)
@@ -552,8 +632,6 @@ namespace Opositonn
             Usuario(5, 1);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnProteger_Click(object sender, EventArgs e)
@@ -561,8 +639,6 @@ namespace Opositonn
             Usuario(6, 1);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnColidir_Click(object sender, EventArgs e)
@@ -570,8 +646,6 @@ namespace Opositonn
             Usuario(7, 1);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnPerfurar_Click(object sender, EventArgs e)
@@ -579,8 +653,6 @@ namespace Opositonn
             Usuario(8, 1);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnUltrajar_Click(object sender, EventArgs e)
@@ -588,8 +660,6 @@ namespace Opositonn
             Usuario(9, 1);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnMedicar_Click(object sender, EventArgs e)
@@ -597,8 +667,6 @@ namespace Opositonn
             Usuario(10, 2);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnAtordoar_Click(object sender, EventArgs e)
@@ -606,8 +674,6 @@ namespace Opositonn
             Usuario(11, 2);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnRoubar_Click(object sender, EventArgs e)
@@ -615,8 +681,6 @@ namespace Opositonn
             Usuario(12, 2);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnInfectar_Click(object sender, EventArgs e)
@@ -624,8 +688,6 @@ namespace Opositonn
             Usuario(13, 2);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnPrender_Click(object sender, EventArgs e)
@@ -633,8 +695,6 @@ namespace Opositonn
             Usuario(14, 2);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnFlagelar_Click(object sender, EventArgs e)
@@ -642,8 +702,6 @@ namespace Opositonn
             Usuario(15, 3);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnConfundir_Click(object sender, EventArgs e)
@@ -651,8 +709,6 @@ namespace Opositonn
             Usuario(16, 3);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnDilacerar_Click(object sender, EventArgs e)
@@ -660,8 +716,6 @@ namespace Opositonn
             Usuario(17, 3);
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnReanimar_Click(object sender, EventArgs e)
@@ -671,8 +725,6 @@ namespace Opositonn
             Opositor();
 
             Rodada();
-
-            Atualizar();
         }
 
         private void btnFugir_Click(object sender, EventArgs e)
@@ -680,134 +732,6 @@ namespace Opositonn
             if (MessageBox.Show("Deseja realmente desistir?", "Fugir?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 this.Close();
-            }
-        }
-
-        private void cmbAtaque_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var Ataques = new Dictionary<string, Button>
-            {
-                { "Investir", btnInvestir },
-                { "Assaltar", btnAssaltar }
-            };
-
-            foreach (var Ataque in Ataques.Values) Ataque.Visible = false;
-
-            if (cmbAtaque.SelectedItem != null && Ataques.ContainsKey(cmbAtaque.SelectedItem.ToString()))
-                Ataques[cmbAtaque.SelectedItem.ToString()].Visible = true;
-        }
-
-        private void cmbEspecialL_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var EspeciaisLivres = new Dictionary<string, Button>
-            {
-                { "Canalizar", btnCanalizar },
-                { "Sacrificar", btnSacrificar },
-                { "Bloquear", btnBloquear }
-            };
-
-            foreach (var Especial in EspeciaisLivres.Values) Especial.Visible = false;
-
-            if (cmbEspecialL.SelectedItem != null && EspeciaisLivres.ContainsKey(cmbEspecialL.SelectedItem.ToString()))
-                EspeciaisLivres[cmbEspecialL.SelectedItem.ToString()].Visible = true;
-        }
-
-        private void cmbEspecialF_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEspecialF.SelectedItem == cmbEspecialM.SelectedItem)
-            {
-                MessageBox.Show("Este ataque já está sendo usado. Escolha outro.", "Ataque já selecionado.", MessageBoxButtons.OK);
-                cmbEspecialF.SelectedIndex = -1;
-                return;
-            }
-
-            var EspeciaisFracos = new Dictionary<string, Button>
-            {
-                { "Engajar", btnEngajar },
-                { "Proteger", btnProteger },
-                { "Colidir", btnColidir },
-                { "Perfurar", btnPerfurar },
-                { "Ultrajar", btnUltrajar }
-            };
-
-            foreach (var Especial in EspeciaisFracos.Values) Especial.Visible = false;
-
-            if (cmbEspecialF.SelectedItem != null && EspeciaisFracos.ContainsKey(cmbEspecialF.SelectedItem.ToString()))
-                EspeciaisFracos[cmbEspecialF.SelectedItem.ToString()].Visible = true;
-        }
-
-        private void cmbEspecialM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEspecialM.SelectedItem == cmbEspecialF.SelectedItem || cmbEspecialM.SelectedItem == cmbEspecialS.SelectedItem)
-            {
-                MessageBox.Show("Este ataque já está sendo usado. Escolha outro.", "Ataque já selecionado.", MessageBoxButtons.OK);
-                cmbEspecialM.SelectedIndex = -1;
-                return;
-            }
-
-            var EspeciaisMedios = new Dictionary<string, Button>
-            {
-                { "Engajar", btnEngajarAlt },
-                { "Proteger", btnProtegerAlt },
-                { "Colidir", btnColidirAlt },
-                { "Perfurar", btnPerfurarAlt },
-                { "Ultrajar", btnUltrajarAlt },
-                { "Medicar", btnMedicar },
-                { "Atordoar", btnAtordoar },
-                { "Roubar", btnRoubar },
-                { "Infectar", btnInfectar },
-                { "Prender", btnPrender }
-            };
-
-            foreach (var Especial in EspeciaisMedios.Values)
-                Especial.Visible = false;
-
-            if (cmbEspecialM.SelectedItem != null && EspeciaisMedios.ContainsKey(cmbEspecialM.SelectedItem.ToString()))
-                EspeciaisMedios[cmbEspecialM.SelectedItem.ToString()].Visible = true;
-        }
-
-        private void cmbEspecialS_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEspecialS.SelectedItem == cmbEspecialM.SelectedItem)
-            {
-                MessageBox.Show("Este ataque já está sendo usado. Escolha outro.", "Ataque já selecionado.", MessageBoxButtons.OK);
-                cmbEspecialS.SelectedIndex = -1;
-                return;
-            }
-
-            var EspeciaisSupremos = new Dictionary<string, Button>
-            {
-                { "Medicar", btnMedicarAlt },
-                { "Atordoar", btnAtordoarAlt },
-                { "Roubar", btnRoubarAlt },
-                { "Infectar", btnInfectarAlt },
-                { "Prender", btnPrenderAlt },
-                { "Flagelar", btnFlagelar },
-                { "Confundir", btnConfundir },
-                { "Dilacerar", btnDilacerar }
-            };
-
-            foreach (var Especial in EspeciaisSupremos.Values)
-                Especial.Visible = false;
-
-            if (cmbEspecialS.SelectedItem != null && EspeciaisSupremos.ContainsKey(cmbEspecialS.SelectedItem.ToString()))
-                EspeciaisSupremos[cmbEspecialS.SelectedItem.ToString()].Visible = true;
-        }
-
-        private void cmbEquipavel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (cmbEquipavel.SelectedItem)
-            {
-                default:
-                    Equipavel[0] = 0; break;
-                case "Item de Dano":
-                    Equipavel[0] = 1; break;
-                case "Item de Precisão":
-                    Equipavel[0] = 2; break;
-                case "Item de Imunidade":
-                    Equipavel[0] = 3; break;
-                case "Item de Poder":
-                    Equipavel[0] = 4; break;
             }
         }
 
