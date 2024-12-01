@@ -683,12 +683,12 @@
             // 
             this.numAtaqueOpositorIII.Location = new System.Drawing.Point(53, 136);
             this.numAtaqueOpositorIII.Maximum = new decimal(new int[] {
-            15,
+            17,
             0,
             0,
             0});
             this.numAtaqueOpositorIII.Minimum = new decimal(new int[] {
-            13,
+            15,
             0,
             0,
             0});
@@ -697,7 +697,7 @@
             this.numAtaqueOpositorIII.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorIII.TabIndex = 1;
             this.numAtaqueOpositorIII.Value = new decimal(new int[] {
-            13,
+            15,
             0,
             0,
             0});
@@ -707,12 +707,12 @@
             // 
             this.numAtaqueOpositorII.Location = new System.Drawing.Point(10, 136);
             this.numAtaqueOpositorII.Maximum = new decimal(new int[] {
-            12,
+            14,
             0,
             0,
             0});
             this.numAtaqueOpositorII.Minimum = new decimal(new int[] {
-            8,
+            10,
             0,
             0,
             0});
@@ -721,7 +721,7 @@
             this.numAtaqueOpositorII.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorII.TabIndex = 1;
             this.numAtaqueOpositorII.Value = new decimal(new int[] {
-            8,
+            10,
             0,
             0,
             0});
@@ -817,12 +817,12 @@
             // 
             this.numAtaqueOpositorI.Location = new System.Drawing.Point(53, 103);
             this.numAtaqueOpositorI.Maximum = new decimal(new int[] {
-            7,
+            9,
             0,
             0,
             0});
             this.numAtaqueOpositorI.Minimum = new decimal(new int[] {
-            2,
+            4,
             0,
             0,
             0});
@@ -831,7 +831,7 @@
             this.numAtaqueOpositorI.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorI.TabIndex = 1;
             this.numAtaqueOpositorI.Value = new decimal(new int[] {
-            2,
+            4,
             0,
             0,
             0});

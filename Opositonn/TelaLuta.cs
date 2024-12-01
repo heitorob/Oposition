@@ -24,6 +24,8 @@ namespace Opositonn
 
         public Random rng = new Random();
 
+        Dictionary<int, (string Nome, int Custo, int Precisao, Button[] Botoes)> Bglhs;
+
         public TelaLuta()
         {
             InitializeComponent();
@@ -38,11 +40,33 @@ namespace Opositonn
             TempoRecursivo = new int[2];
             AtaquesOpositor = new int[4];
             Equipavel = new int[2];
+
+            Bglhs = new Dictionary<int, (string, int, int, Button[])>
+            {
+                { 0,  ("Investir",   0, 80,  new Button[] { btnInvestir,   null } ) },
+                { 1,  ("Assaltar",   0, 80,  new Button[] { btnAssaltar,   null } ) },
+                { 2,  ("Canalizar",  0, 0,   new Button[] { btnCanalizar,  null } ) },
+                { 3,  ("Sacrificar", 0, 0,   new Button[] { btnSacrificar, null } ) },
+                { 4,  ("Bloquear",   0, 0,   new Button[] { btnBloquear,   null } ) },
+                { 5,  ("Engajar",    1, 0,   new Button[] { btnEngajar,    btnEngajarAlt } ) },
+                { 6,  ("Proteger",   1, 0,   new Button[] { btnProteger,   btnProtegerAlt } ) },
+                { 7,  ("Colidir",    1, 80,  new Button[] { btnColidir,    btnColidirAlt } ) },
+                { 8,  ("Perfurar",   1, 80,  new Button[] { btnPerfurar,   btnPerfurarAlt } ) },
+                { 9,  ("Ultrajar",   1, 60,  new Button[] { btnUltrajar,   btnUltrajarAlt } ) },
+                { 10, ("Medicar",    2, 0,   new Button[] { btnMedicar,    btnMedicarAlt } ) },
+                { 11, ("Atordoar",   2, 60,  new Button[] { btnAtordoar,   btnAtordoarAlt } ) },
+                { 12, ("Roubar",     2, 80,  new Button[] { btnRoubar,     btnRoubarAlt } ) },
+                { 13, ("Infectar",   2, 0,   new Button[] { btnInfectar,   btnInfectarAlt } ) },
+                { 14, ("Prender",    2, 0,   new Button[] { btnPrender,    btnPrenderAlt } ) },
+                { 15, ("Flagelar",   3, 80,  new Button[] { btnFlagelar,   null } ) },
+                { 16, ("Confundir",  3, 100, new Button[] { btnConfundir,  null } ) },
+                { 17, ("Dilacerar",  3, 60,  new Button[] { btnDilacerar,  null } ) }
+            };
         }
 
         private void TelaLuta_Load(object sender, EventArgs e)
         {
-            for (int User = 0; User <= 1; User ++) Saude[User] = Equipavel[User] == 4 ? 300 : 200;
+            for (int User = 0; User <= 1; User++) Saude[User] = 200;
             for (int User = 0; User <= 1; User++) Poder[User] = 0;
             for (int User = 0; User <= 1; User++) Precisao[User] = 80;
             for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
@@ -51,9 +75,9 @@ namespace Opositonn
             for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
 
             AtaquesOpositor[0] = 0;
-            AtaquesOpositor[1] = rng.Next(2, 8);
-            AtaquesOpositor[2] = rng.Next(8, 13);
-            AtaquesOpositor[3] = rng.Next(13, 16);
+            AtaquesOpositor[1] = rng.Next(4, 10);
+            AtaquesOpositor[2] = rng.Next(10, 15);
+            AtaquesOpositor[3] = rng.Next(15, 18);
             Equipavel[1] = rng.Next(0, 4);
 
             numAtaqueOpositor.Text = AtaquesOpositor[0].ToString();
@@ -62,74 +86,16 @@ namespace Opositonn
             numAtaqueOpositorIII.Text = AtaquesOpositor[3].ToString();
             numEquipavelOpositor.Text = Equipavel[1].ToString();
 
-            var Ataques = new Dictionary<string, Button>
-            {
-                { "Investir", btnInvestir },
-                { "Assaltar", btnAssaltar }
-            };
-            foreach (var Ataque in Ataques.Values)
-                Ataque.Visible = false;
-            if (Ataque != null && Ataques.ContainsKey(Ataque.ToString()))
-                Ataques[Ataque.ToString()].Visible = true;
-
-            var EspeciaisLivres = new Dictionary<string, Button>
-            {
-                { "Canalizar", btnCanalizar },
-                { "Sacrificar", btnSacrificar },
-                { "Bloquear", btnBloquear }
-            };
-            foreach (var Especial in EspeciaisLivres.Values)
-                Especial.Visible = false;
-            if (ELivre != null && EspeciaisLivres.ContainsKey(ELivre.ToString()))
-                EspeciaisLivres[ELivre.ToString()].Visible = true;
-
-            var EspeciaisFracos = new Dictionary<string, Button>
-            {
-                { "Engajar", btnEngajar },
-                { "Proteger", btnProteger },
-                { "Colidir", btnColidir },
-                { "Perfurar", btnPerfurar },
-                { "Ultrajar", btnUltrajar }
-            };
-            foreach (var Especial in EspeciaisFracos.Values)
-                Especial.Visible = false;
-            if (EFraco != null && EspeciaisFracos.ContainsKey(EFraco.ToString()))
-                EspeciaisFracos[EFraco.ToString()].Visible = true;
-
-            var EspeciaisMedios = new Dictionary<string, Button>
-            {
-                { "Engajar", btnEngajarAlt },
-                { "Proteger", btnProtegerAlt },
-                { "Colidir", btnColidirAlt },
-                { "Perfurar", btnPerfurarAlt },
-                { "Ultrajar", btnUltrajarAlt },
-                { "Medicar", btnMedicar },
-                { "Atordoar", btnAtordoar },
-                { "Roubar", btnRoubar },
-                { "Infectar", btnInfectar },
-                { "Prender", btnPrender }
-            };
-            foreach (var Especial in EspeciaisMedios.Values)
-                Especial.Visible = false;
-            if (EMedio != null && EspeciaisMedios.ContainsKey(EMedio.ToString()))
-                EspeciaisMedios[EMedio.ToString()].Visible = true;
-
-            var EspeciaisSupremos = new Dictionary<string, Button>
-            {
-                { "Medicar", btnMedicarAlt },
-                { "Atordoar", btnAtordoarAlt },
-                { "Roubar", btnRoubarAlt },
-                { "Infectar", btnInfectarAlt },
-                { "Prender", btnPrenderAlt },
-                { "Flagelar", btnFlagelar },
-                { "Confundir", btnConfundir },
-                { "Dilacerar", btnDilacerar }
-            };
-            foreach (var Especial in EspeciaisSupremos.Values)
-                Especial.Visible = false;
-            if (EForte != null && EspeciaisSupremos.ContainsKey(EForte.ToString()))
-                EspeciaisSupremos[EForte.ToString()].Visible = true;
-
+            for (int Botao = 0; Botao <= 1; Botao++)
+                Bglhs[Botao].Botoes[0].Visible = Ataque == Bglhs[Botao].Nome;
+            for (int Botao = 2; Botao <= 4; Botao++)
+                Bglhs[Botao].Botoes[0].Visible = ELivre == Bglhs[Botao].Nome;
+            for (int Botao = 5; Botao <= 9; Botao++)
+                Bglhs[Botao].Botoes[0].Visible = EFraco == Bglhs[Botao].Nome;
+            for (int Botao = 5; Botao <= 14; Botao++)
+                Bglhs[Botao].Botoes[Botao < 10 ? 1 : 0].Visible = EMedio == Bglhs[Botao].Nome;
+            for (int Botao = 10; Botao <= 17; Botao++)
+                Bglhs[Botao].Botoes[Botao < 15 ? 1 : 0].Visible = EForte == Bglhs[Botao].Nome;
             switch (IEquip)
             {
                 default:
@@ -143,6 +109,10 @@ namespace Opositonn
                 case "Item de Poder":
                     Equipavel[0] = 4; break;
             }
+            for (int Botao = 0; Botao <= 17; Botao++)
+                for (int Alt = 0; Alt <= 1; Alt++)
+                    if (Bglhs[Botao].Botoes[Alt] != null)
+                        Bglhs[Botao].Botoes[Alt].Enabled = Poder[0] >= Bglhs[Botao].Custo;
         }
 
         private bool Atualizar()
@@ -179,58 +149,30 @@ namespace Opositonn
             numPrecisaoUsuario.Text = Precisao[0].ToString();
             numPrecisaoOpositor.Text = Precisao[1].ToString();
 
-            var Botoes = new Dictionary<string, Button>
-            {
-                { "Investir", btnInvestir },
-                { "Assaltar", btnAssaltar },
-                { "Canalizar", btnCanalizar },
-                { "Sacrificar", btnSacrificar },
-                { "Bloquear", btnBloquear },
-                { "Engajar", btnEngajar },
-                { "Proteger", btnProteger },
-                { "Colidir", btnColidir },
-                { "Perfurar", btnPerfurar },
-                { "Ultrajar", btnUltrajar },
-                { "EngajarAlt", btnEngajarAlt },
-                { "ProtegerAtl", btnProtegerAlt },
-                { "ColidirAlt", btnColidirAlt },
-                { "PerfurarAlt", btnPerfurarAlt },
-                { "UltrajarAlt", btnUltrajarAlt },
-                { "Medicar", btnMedicar },
-                { "Atordoar", btnAtordoar },
-                { "Roubar", btnRoubar },
-                { "Infectar", btnInfectar },
-                { "Prender", btnPrender },
-                { "MedicarAlt", btnMedicarAlt },
-                { "AtordoarAlt", btnAtordoarAlt },
-                { "RoubarAlt", btnRoubarAlt },
-                { "InfectarAlt", btnInfectarAlt },
-                { "PrenderAlt", btnPrenderAlt },
-                { "Flagelar", btnFlagelar },
-                { "Confundir", btnConfundir },
-                { "Dilacerar", btnDilacerar }
-            };
-            foreach (var Botao in Botoes.Values)
-                Botao.Enabled = !btnReanimar.Visible;
+            for (int Botao = 0; Botao <= 17; Botao++)
+                for (int Alt = 0; Alt <= 1; Alt++)
+                    if (Bglhs[Botao].Botoes[Alt] != null) 
+                        Bglhs[Botao].Botoes[Alt].Enabled = !btnReanimar.Visible && Poder[0] >= Bglhs[Botao].Custo;
 
             if (TestarFim()) return true;
 
             return false;
         }
 
-        private bool Condicional(int User, int Custo)
+        private bool Condicional(int User, int Ataque)
         {
             if (TempoRecursivo[User] > 0)
             {
-                if (rng.Next(0, 5) > TempoRecursivo[User]) 
+                if (rng.Next(0, 5) > TempoRecursivo[User] || TempoRecursivo[User] == 1)
                 { 
                     TempoRecursivo[User] = 0;
+                    MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                     MessageBox.Show("Atordoamento Recursivo acabou.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 else
                 {
                     TempoRecursivo[User]--;
-                    MessageBox.Show("Está com Atordoamento Recursivo.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                    MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 return false;
             }
@@ -238,17 +180,17 @@ namespace Opositonn
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
-                MessageBox.Show("Está com Atordoamento.", "Atordoamento", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento", MessageBoxButtons.OK);
                 return false;
             }
 
-            if (Poder[User] < Custo)
+            if (Poder[User] < Bglhs[Ataque].Custo)
             {
-                MessageBox.Show("Não acumulou Poderes suficientes.", "Faltam " + (Custo - Poder[User] + " Poderes."), MessageBoxButtons.OK);
+                MessageBox.Show("Não acumulou Poderes suficientes.\nPrecisa de " + Bglhs[Ataque].Custo + ".", "Sem Poderes Suficientes.", MessageBoxButtons.OK);
                 return false;
             }
-            else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Custo);
-            else if (Custo > 0) Poder[User] = 0;
+            else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Bglhs[Ataque].Custo);
+            else if (Bglhs[Ataque].Custo > 0) Poder[User] = 0;
 
             return true;
         }
@@ -274,8 +216,8 @@ namespace Opositonn
         {
             for (int User = 0; User <= 1; User++)
             {
-                if (Precisao[User] < (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Min(80, Precisao[User] + 5);
-                else if (Precisao[User] > (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Max(80, Precisao[User] - 5);
+                if (Precisao[User] < (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Min(Equipavel[User] == 2 ? 100 : 80, Precisao[User] + 5);
+                else if (Precisao[User] > (Equipavel[User] == 2 ? 100 : 80)) Precisao[User] = Math.Max(Equipavel[User] == 2 ? 100 : 80, Precisao[User] - 5);
             }
 
             for (int User = 0; User <= 1; User++)
@@ -287,24 +229,23 @@ namespace Opositonn
 
             for (int User = 0; User <= 1; User++)
                 if (TempoDecaimento[User] > 0) 
-                    { 
-                        Saude[User] = Math.Max(0, Saude[User] - 8);
-                        TempoDecaimento[User]--;
-                    }
-
-            Atualizar();
+                { 
+                    Saude[User] = Math.Max(0, Saude[User] - 8);
+                    TempoDecaimento[User]--;
+                    Atualizar();
+                }
         }
 
-        private void Usuario(int Ataque, int Custo)
+        private void Usuario(int Ataque)
         {
-            if (!Condicional(0, Custo)) return;
+            if (!Condicional(0, Ataque)) return;
 
             switch (Ataque)
             {
                 default:
                     Investir(0); break;
                 case 1:
-                    Assaltar(0); break;
+                    Assaltar(1); break;
                 case 2:
                     Canalizar(0); break;
                 case 3:
@@ -348,43 +289,42 @@ namespace Opositonn
         {
             if (Saude[1] < 180) Poder[1] = Math.Min(Poder[1] + 1, 4);
 
-            int A = rng.Next(0, Poder[1]);
+            int _escolha = rng.Next(0, Poder[1]);
+            int Escolha = AtaquesOpositor[_escolha];
 
-            if (!Condicional(1, A)) return;
+            if (!Condicional(1, Escolha)) return;
 
-            switch (AtaquesOpositor[A])
+            switch (Escolha)
             {
                 default:
                     Investir(1); break;
-                case 1:
-                    Assaltar(1); break;
-                case 2:
-                    Bloquear(1); break;
-                case 3:
-                    Engajar(1); break;
                 case 4:
-                    Proteger(1); break;
+                    Bloquear(1); break;
                 case 5:
-                    Colidir(1); break;
+                    Engajar(1); break;
                 case 6:
-                    Perfurar(1); break;
+                    Proteger(1); break;
                 case 7:
-                    Ultrajar(1); break;
+                    Colidir(1); break;
                 case 8:
-                    Medicar(1); break;
+                    Perfurar(1); break;
                 case 9:
-                    Atordoar(1); break;
+                    Ultrajar(1); break;
                 case 10:
-                    Roubar(1); break;
+                    Medicar(1); break;
                 case 11:
-                    Infectar(1); break;
+                    Atordoar(1); break;
                 case 12:
-                    Prender(1); break;
+                    Roubar(1); break;
                 case 13:
-                    Flagelar(1); break;
+                    Infectar(1); break;
                 case 14:
-                    Confundir(1); break;
+                    Prender(1); break;
                 case 15:
+                    Flagelar(1); break;
+                case 16:
+                    Confundir(1); break;
+                case 17:
                     Dilacerar(1); break;
             }
 
@@ -401,11 +341,11 @@ namespace Opositonn
             return (int)Dano;
         }
 
-        private bool CalcularAcerto(int User, int Coeficiente)
+        private bool CalcularAcerto(int User, int Ataque)
         {
-            if (rng.Next(0, 100) > Precisao[User] + Coeficiente)
+            if (rng.Next(0, 100) > Precisao[User] + Bglhs[Ataque].Precisao - 80)
             {
-                MessageBox.Show("Tentou usar " + Coeficiente + ", mas errou.", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return false;
             }
@@ -441,7 +381,7 @@ namespace Opositonn
 
         private void Flagelar(int User)
         {
-            if (!CalcularAcerto(User, 0)) return;
+            if (!CalcularAcerto(User, 15)) return;
 
             CalcularDano(User, 60);
 
@@ -466,7 +406,7 @@ namespace Opositonn
 
         private void Perfurar(int User)
         {
-            if (!CalcularAcerto(User, 0)) return;
+            if (!CalcularAcerto(User, 8)) return;
 
             CalcularDano(User, (TempoEscudo[1 - User] > 0 ? 50 : 28));
 
@@ -484,7 +424,7 @@ namespace Opositonn
 
         private void Ultrajar(int User)
         {
-            if (!CalcularAcerto(User, -20)) return;
+            if (!CalcularAcerto(User, 9)) return;
 
             CalcularDano(User, 28);
 
@@ -495,7 +435,7 @@ namespace Opositonn
 
         private void Roubar(int User)
         {
-            if (!CalcularAcerto(User, 0)) return;
+            if (!CalcularAcerto(User, 12)) return;
 
             Saude[User] = Math.Min(200, Saude[User] + CalcularDano(User, 28));
 
@@ -504,7 +444,7 @@ namespace Opositonn
 
         private void Confundir(int User)
         {
-            if (!CalcularAcerto(User, 20)) return;
+            if (!CalcularAcerto(User, 16)) return;
 
             CalcularDano(User, 40);
 
@@ -515,7 +455,7 @@ namespace Opositonn
 
         private void Atordoar(int User)
         {
-            if (!CalcularAcerto(User, -20)) return;
+            if (!CalcularAcerto(User, 11)) return;
 
             CalcularDano(User, 40);
 
@@ -526,7 +466,7 @@ namespace Opositonn
 
         private void Colidir(int User)
         {
-            if (!CalcularAcerto(User, 0)) return;
+            if (!CalcularAcerto(User, 7)) return;
 
             CalcularDano(User, 40);
 
@@ -537,7 +477,7 @@ namespace Opositonn
 
         private void Dilacerar(int User)
         {
-            if (!CalcularAcerto(User, -20)) return;
+            if (!CalcularAcerto(User, 17)) return;
 
             CalcularDano(User, Saude[1 - User] / 2);
 
@@ -577,7 +517,7 @@ namespace Opositonn
 
         private void Assaltar(int User)
         {
-            if (!CalcularAcerto(User, 0)) return;
+            if (!CalcularAcerto(User, 1)) return;
 
             CalcularDano(User, 8);
 
@@ -588,14 +528,14 @@ namespace Opositonn
 
         private void btnInvestir_Click(object sender, EventArgs e)
         {
-            Usuario(0, 0);
+            Usuario(0);
 
             Rodada();
         }
 
         private void btnAssaltar_Click(object sender, EventArgs e)
         {
-            Usuario(1, 0);
+            Usuario(1);
 
             Rodada();
         }
@@ -604,7 +544,7 @@ namespace Opositonn
         {
             if (Poder[0] == (Equipavel[0] == 4 ? 4 : 3)) return;
 
-            Usuario(2, 0);
+            Usuario(2);
 
             Rodada();
         }
@@ -613,7 +553,7 @@ namespace Opositonn
         {
             if (TempoEspera[0, 0] > 0 || Poder[0] > 0) return;
 
-            Usuario(3, 0);
+            Usuario(3);
 
             Rodada();
         }
@@ -622,98 +562,98 @@ namespace Opositonn
         {
             if (TempoEspera[0, 1] > 0) return;
 
-            Usuario(4, 0);
+            Usuario(4);
 
             Rodada();
         }
 
         private void btnEngajar_Click(object sender, EventArgs e)
         {
-            Usuario(5, 1);
+            Usuario(5);
 
             Rodada();
         }
 
         private void btnProteger_Click(object sender, EventArgs e)
         {
-            Usuario(6, 1);
+            Usuario(6);
 
             Rodada();
         }
 
         private void btnColidir_Click(object sender, EventArgs e)
         {
-            Usuario(7, 1);
+            Usuario(7);
 
             Rodada();
         }
 
         private void btnPerfurar_Click(object sender, EventArgs e)
         {
-            Usuario(8, 1);
+            Usuario(8);
 
             Rodada();
         }
 
         private void btnUltrajar_Click(object sender, EventArgs e)
         {
-            Usuario(9, 1);
+            Usuario(9);
 
             Rodada();
         }
 
         private void btnMedicar_Click(object sender, EventArgs e)
         {
-            Usuario(10, 2);
+            Usuario(10);
 
             Rodada();
         }
 
         private void btnAtordoar_Click(object sender, EventArgs e)
         {
-            Usuario(11, 2);
+            Usuario(11);
 
             Rodada();
         }
 
         private void btnRoubar_Click(object sender, EventArgs e)
         {
-            Usuario(12, 2);
+            Usuario(12);
 
             Rodada();
         }
 
         private void btnInfectar_Click(object sender, EventArgs e)
         {
-            Usuario(13, 2);
+            Usuario(13);
 
             Rodada();
         }
 
         private void btnPrender_Click(object sender, EventArgs e)
         {
-            Usuario(14, 2);
+            Usuario(14);
 
             Rodada();
         }
 
         private void btnFlagelar_Click(object sender, EventArgs e)
         {
-            Usuario(15, 3);
+            Usuario(15);
 
             Rodada();
         }
 
         private void btnConfundir_Click(object sender, EventArgs e)
         {
-            Usuario(16, 3);
+            Usuario(16);
 
             Rodada();
         }
 
         private void btnDilacerar_Click(object sender, EventArgs e)
         {
-            Usuario(17, 3);
+            Usuario(17);
 
             Rodada();
         }

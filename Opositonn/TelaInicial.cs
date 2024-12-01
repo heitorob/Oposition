@@ -17,7 +17,7 @@ namespace Opositonn
             InitializeComponent();
         }
 
-        private void TelaInicial_Load(object sender, EventArgs e)
+        private void TelaInicial_Shown(object sender, EventArgs e)
         {
             cmbAtaque.SelectedItem = "Investir";
             cmbEspecialL.SelectedItem = "Canalizar";
@@ -51,7 +51,7 @@ namespace Opositonn
 
         private void cmbEspecialF_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TelaLuta.EFraco != null && TelaLuta.EFraco == TelaLuta.EMedio)
+            if (cmbEspecialF.SelectedItem != null && cmbEspecialF.SelectedItem == cmbEspecialM.SelectedItem)
             {
                 MessageBox.Show("Este ataque já está selecionado. Escolha outro.", "Ataque Já Escolhido", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 cmbEspecialF.SelectedIndex = -1;
@@ -64,7 +64,7 @@ namespace Opositonn
 
         private void cmbEspecialM_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TelaLuta.EMedio != null && (TelaLuta.EMedio == TelaLuta.EFraco || TelaLuta.EMedio == TelaLuta.EForte))
+            if (cmbEspecialM.SelectedItem != null && (cmbEspecialM.SelectedItem == cmbEspecialF.SelectedItem || cmbEspecialM.SelectedItem == cmbEspecialS.SelectedItem))
             {
                 MessageBox.Show("Este ataque já está selecionado. Escolha outro.", "Ataque Já Escolhido", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 cmbEspecialM.SelectedIndex = -1;
@@ -77,10 +77,10 @@ namespace Opositonn
 
         private void cmbEspecialS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TelaLuta.EForte != null && TelaLuta.EForte == TelaLuta.EMedio)
+            if (cmbEspecialS.SelectedItem != null && cmbEspecialS.SelectedItem == cmbEspecialM.SelectedItem)
             {
                 MessageBox.Show("Este ataque já está selecionado. Escolha outro.", "Ataque Já Escolhido", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                cmbEspecialF.SelectedIndex = -1;
+                cmbEspecialS.SelectedIndex = -1;
                 TelaLuta.EForte = null;
                 return;
             }
