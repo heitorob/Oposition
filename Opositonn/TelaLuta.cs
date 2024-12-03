@@ -15,16 +15,16 @@ namespace Opositonn
         int[] Saude, Poder, Precisao, TempoAtordoamento, TempoEscudo, TempoDecaimento, TempoRecursivo, AtaquesOpositor, Equipavel;
         int[,] TempoEspera;
 
-        public static string Ataque { get; set; }
-        public static string ELivre { get; set; }
-        public static string EFraco { get; set; }
-        public static string EMedio { get; set; }
-        public static string EForte { get; set; }
-        public static string IEquip { get; set; }
+        public static int Ataque { get; set; }
+        public static int ELivre { get; set; }
+        public static int EFraco { get; set; }
+        public static int EMedio { get; set; }
+        public static int EForte { get; set; }
+        public static int IEquip { get; set; }
 
         public Random rng = new Random();
 
-        Dictionary<int, (string Nome, int Custo, int Precisao, Button[] Botoes)> Bglhs;
+        public static Dictionary<int, (string Nome, int Custo, int Precisao, Button[] Botoes)> Bglhs;
 
         public TelaLuta()
         {
@@ -74,6 +74,8 @@ namespace Opositonn
             for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
             for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
 
+            Equipavel[0] = IEquip;
+
             AtaquesOpositor[0] = 0;
             AtaquesOpositor[1] = rng.Next(4, 10);
             AtaquesOpositor[2] = rng.Next(10, 15);
@@ -96,19 +98,6 @@ namespace Opositonn
                 Bglhs[Botao].Botoes[Botao < 10 ? 1 : 0].Visible = EMedio == Bglhs[Botao].Nome;
             for (int Botao = 10; Botao <= 17; Botao++)
                 Bglhs[Botao].Botoes[Botao < 15 ? 1 : 0].Visible = EForte == Bglhs[Botao].Nome;
-            switch (IEquip)
-            {
-                default:
-                    Equipavel[0] = 0; break;
-                case "Item de Dano":
-                    Equipavel[0] = 1; break;
-                case "Item de Precisão":
-                    Equipavel[0] = 2; break;
-                case "Item de Imunidade":
-                    Equipavel[0] = 3; break;
-                case "Item de Poder":
-                    Equipavel[0] = 4; break;
-            }
             for (int Botao = 0; Botao <= 17; Botao++)
                 for (int Alt = 0; Alt <= 1; Alt++)
                     if (Bglhs[Botao].Botoes[Alt] != null)
