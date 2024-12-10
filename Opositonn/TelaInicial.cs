@@ -19,12 +19,6 @@ namespace Opositonn
 
         private void btnConfrontar_Click(object sender, EventArgs e)
         {
-            if (TelaLuta.Ataque == null || TelaLuta.ELivre == null || TelaLuta.EFraco == null || TelaLuta.EMedio == null || TelaLuta.EForte == null)
-            {
-                MessageBox.Show("Você não escolheu alguns ataques.\nComo vai encarar o Opositor assim?", "Build Incompleta", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                return;
-            }
-
             TelaLuta luta = new TelaLuta();
             luta.ShowDialog();
         }

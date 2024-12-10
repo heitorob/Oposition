@@ -12,15 +12,11 @@ namespace Opositonn
 {
     public partial class TelaLuta : Form
     {
-        int[] Saude, Poder, Precisao, TempoAtordoamento, TempoEscudo, TempoDecaimento, TempoRecursivo, AtaquesOpositor, Equipavel;
+        int[] Saude, Poder, Precisao, TempoAtordoamento, TempoEscudo, TempoDecaimento, TempoRecursivo, AtaquesOpositor;
         int[,] TempoEspera;
 
-        public static int Ataque { get; set; }
-        public static int ELivre { get; set; }
-        public static int EFraco { get; set; }
-        public static int EMedio { get; set; }
-        public static int EForte { get; set; }
-        public static int IEquip { get; set; }
+        public static int[] Ataque { get; set; }
+        public static int[] Equipavel { get; set; }
 
         public Random rng = new Random();
 
@@ -66,21 +62,19 @@ namespace Opositonn
 
         private void TelaLuta_Load(object sender, EventArgs e)
         {
-            for (int User = 0; User <= 1; User++) Saude[User] = 200;
-            for (int User = 0; User <= 1; User++) Poder[User] = 0;
-            for (int User = 0; User <= 1; User++) Precisao[User] = 80;
-            for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoDecaimento[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
-
-            Equipavel[0] = IEquip;
-
             AtaquesOpositor[0] = 0;
             AtaquesOpositor[1] = rng.Next(4, 10);
             AtaquesOpositor[2] = rng.Next(10, 15);
             AtaquesOpositor[3] = rng.Next(15, 18);
             Equipavel[1] = rng.Next(0, 4);
+
+            for (int User = 0; User <= 1; User++) Saude[User] = 200;
+            for (int User = 0; User <= 1; User++) Poder[User] = 0;
+            for (int User = 0; User <= 1; User++) Precisao[User] = Equipavel[User] == 2 ? 100 : 80;
+            for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoDecaimento[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
+            for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
 
             numAtaqueOpositor.Text = AtaquesOpositor[0].ToString();
             numAtaqueOpositorI.Text = AtaquesOpositor[1].ToString();
@@ -88,16 +82,12 @@ namespace Opositonn
             numAtaqueOpositorIII.Text = AtaquesOpositor[3].ToString();
             numEquipavelOpositor.Text = Equipavel[1].ToString();
 
-            for (int Botao = 0; Botao <= 1; Botao++)
-                Bglhs[Botao].Botoes[0].Visible = Ataque == Bglhs[Botao].Nome;
-            for (int Botao = 2; Botao <= 4; Botao++)
-                Bglhs[Botao].Botoes[0].Visible = ELivre == Bglhs[Botao].Nome;
-            for (int Botao = 5; Botao <= 9; Botao++)
-                Bglhs[Botao].Botoes[0].Visible = EFraco == Bglhs[Botao].Nome;
-            for (int Botao = 5; Botao <= 14; Botao++)
-                Bglhs[Botao].Botoes[Botao < 10 ? 1 : 0].Visible = EMedio == Bglhs[Botao].Nome;
-            for (int Botao = 10; Botao <= 17; Botao++)
-                Bglhs[Botao].Botoes[Botao < 15 ? 1 : 0].Visible = EForte == Bglhs[Botao].Nome;
+            for (int Botao = 0; Botao <= 17; Botao++)
+                Bglhs[Botao].Botoes[0].Visible = false;
+
+            foreach (int i in Ataque)
+                Bglhs[i].Botoes[0].Visible = true;
+
             for (int Botao = 0; Botao <= 17; Botao++)
                 for (int Alt = 0; Alt <= 1; Alt++)
                     if (Bglhs[Botao].Botoes[Alt] != null)
@@ -188,7 +178,7 @@ namespace Opositonn
         {
             if (Saude[1] == 0)
             {
-                MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                
                 this.Close();
                 return true;
             }

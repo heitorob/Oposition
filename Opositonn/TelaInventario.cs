@@ -16,11 +16,13 @@ namespace Opositonn
 
         Dictionary<int, Button> Equipaveis;
 
-        TelaLuta telaLuta = new TelaLuta();
+        readonly TelaLuta telaLuta = new TelaLuta();
 
         public TelaInventario()
         {
             InitializeComponent();
+
+            TelaLuta.Ataque = new int[5];
 
             Ataques = new Dictionary<int, (string, Button)>
             {
@@ -55,40 +57,34 @@ namespace Opositonn
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            for (int Ataque = 0; Ataque <= 1; Ataque++)
-                if (!Ataques[Ataque].Botoes.Enabled) TelaLuta.Ataque = TelaLuta.Bglhs[Ataque].Nome;
+            int n = 0;
 
-            for (int Ataque = 2; Ataque <= 4; Ataque++)
-                if (!Ataques[Ataque].Botoes.Enabled) TelaLuta.ELivre = TelaLuta.Bglhs[Ataque].Nome;
+            for (int i = 0; i <= 17; i++)
+                if (!Ataques[i].Botoes.Enabled)
+                {
+                    TelaLuta.Ataque[n] = i;
+                    n++;
+                }
 
-            for (int Ataque = 5; Ataque <= 9; Ataque++)
-                if (!Ataques[Ataque].Botoes.Enabled) TelaLuta.EFraco = TelaLuta.Bglhs[Ataque].Nome;
-
-            for (int Ataque = 10; Ataque <= 14; Ataque++)
-                if (!Ataques[Ataque].Botoes.Enabled) TelaLuta.EMedio = TelaLuta.Bglhs[Ataque].Nome;
-
-            for (int Ataque = 15; Ataque <= 17; Ataque++)
-                if (!Ataques[Ataque].Botoes.Enabled) TelaLuta.EForte = TelaLuta.Bglhs[Ataque].Nome;
-
-            for (int Equipavel = 1; Equipavel <= 4; Equipavel++)
+            for (int i = 1; i <= 4; i++)
             {
-                if (!Equipaveis[Equipavel].Enabled) TelaLuta.IEquip = Equipavel;
-                else TelaLuta.IEquip = 0;
+                if (!Equipaveis[i].Enabled) TelaLuta.Equipavel[0] = i;
+                else TelaLuta.Equipavel[0] = 0;
             }
 
             this.Close();
         }
 
-        private void SelecionarAtaque(int e, int E, int Selecionado)
+        private void SelecionarAtaque(int m, int n, int s)
         {
-            for (int Escopo = e; Escopo <= E; Escopo++)
-                Ataques[Escopo].Botoes.Enabled = Escopo != Selecionado;
+            for (int i = m; i <= n; i++)
+                Ataques[i].Botoes.Enabled = i != s;
         }
 
-        private void SelecionarEquipavel(int Selecionado)
+        private void SelecionarEquipavel(int s)
         {
-            for (int Equipavel = 1; Equipavel <= 4; Equipavel++)
-                Equipaveis[Equipavel].Enabled = Equipavel != Selecionado;
+            for (int i = 1; i <= 4; i++)
+                Equipaveis[i].Enabled = i != s;
         }
 
         private void btnEngajar_Click(object sender, EventArgs e)
@@ -203,7 +199,7 @@ namespace Opositonn
 
         private void TelaInventario_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
