@@ -59,7 +59,7 @@ namespace Opositonn
             {
                 if (!Ataques[i].Botoes.Enabled)
                 {
-                    TelaLuta.Ataque[0, n] = i >= 20 ? i - 19 : i;
+                    TelaLuta.Ataque[0, n] = (i >= 20) ? i - 19 : i;
                     n++;
                 }
             }

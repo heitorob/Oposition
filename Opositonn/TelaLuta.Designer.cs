@@ -880,6 +880,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 457);
+            this.ControlBox = false;
             this.Controls.Add(this.prgOpositor);
             this.Controls.Add(this.prgUsuario);
             this.Controls.Add(this.grpDebug);

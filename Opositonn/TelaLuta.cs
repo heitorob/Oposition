@@ -67,7 +67,7 @@ namespace Opositonn
 
             for (int User = 0; User <= 1; User++) Saude[User] = 200;
             for (int User = 0; User <= 1; User++) Poder[User] = 0;
-            for (int User = 0; User <= 1; User++) Precisao[User] = Ataque[User, 5 - User] == 2 ? 100 : 80;
+            for (int User = 0; User <= 1; User++) Precisao[User] = (Ataque[User, 5 - User] == 2) ? 100 : 80;
             for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
             for (int User = 0; User <= 1; User++) TempoDecaimento[User] = 0;
             for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
