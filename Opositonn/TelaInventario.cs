@@ -14,15 +14,13 @@ namespace Opositonn
     {
         Dictionary<int, (string Nome, Button Botoes)> Ataques;
 
-        Dictionary<int, Button> Equipaveis;
-
         readonly TelaLuta telaLuta = new TelaLuta();
 
         public TelaInventario()
         {
             InitializeComponent();
 
-            TelaLuta.Ataque = new int[5];
+            TelaLuta.Ataque = new int[2, 6];
 
             Ataques = new Dictionary<int, (string, Button)>
             {
@@ -43,15 +41,13 @@ namespace Opositonn
                 { 14, ("Prender", btnPrender) },
                 { 15, ("Flagelar", btnFlagelar) },
                 { 16, ("Confundir", btnConfundir) },
-                { 17, ("Dilacerar", btnDilacerar) }
-            };
-
-            Equipaveis = new Dictionary<int, Button>
-            {
-                { 1, btnEquipavelDano },
-                { 2, btnEquipavelPrecisao },
-                { 3, btnEquipavelImunidade },
-                { 4, btnEquipavelPoder }
+                { 17, ("Dilacerar", btnDilacerar) },
+                { 18, (string.Empty, btnVoltar) },
+                { 19, (string.Empty, btnVoltar) },
+                { 20, (string.Empty, btnEquipavelDano) },
+                { 21, (string.Empty, btnEquipavelPrecisao) },
+                { 22, (string.Empty, btnEquipavelImunidade) },
+                { 23, (string.Empty, btnEquipavelPoder) },
             };
         }
 
@@ -59,17 +55,13 @@ namespace Opositonn
         {
             int n = 0;
 
-            for (int i = 0; i <= 17; i++)
+            for (int i = 0; i <= 23; i++)
+            {
                 if (!Ataques[i].Botoes.Enabled)
                 {
-                    TelaLuta.Ataque[n] = i;
+                    TelaLuta.Ataque[0, n] = i >= 20 ? i - 19 : i;
                     n++;
                 }
-
-            for (int i = 1; i <= 4; i++)
-            {
-                if (!Equipaveis[i].Enabled) TelaLuta.Equipavel[0] = i;
-                else TelaLuta.Equipavel[0] = 0;
             }
 
             this.Close();
@@ -79,12 +71,6 @@ namespace Opositonn
         {
             for (int i = m; i <= n; i++)
                 Ataques[i].Botoes.Enabled = i != s;
-        }
-
-        private void SelecionarEquipavel(int s)
-        {
-            for (int i = 1; i <= 4; i++)
-                Equipaveis[i].Enabled = i != s;
         }
 
         private void btnEngajar_Click(object sender, EventArgs e)
@@ -115,6 +101,11 @@ namespace Opositonn
         private void btnInvestir_Click(object sender, EventArgs e)
         {
             SelecionarAtaque(0, 1, 0);
+        }
+
+        private void btnAssaltar_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(0, 1, 1);
         }
 
         private void btnCanalizar_Click(object sender, EventArgs e)
@@ -172,29 +163,24 @@ namespace Opositonn
             SelecionarAtaque(15, 17, 17);
         }
 
-        private void btnAssaltar_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(0, 1, 1);
-        }
-
         private void btnEquipavelDano_Click(object sender, EventArgs e)
         {
-            SelecionarEquipavel(1);
+            SelecionarAtaque(20, 23, 20);
         }
 
         private void btnEquipavelPrecisao_Click(object sender, EventArgs e)
         {
-            SelecionarEquipavel(2);
+            SelecionarAtaque(20, 23, 21);
         }
 
         private void btnEquipavelPoder_Click(object sender, EventArgs e)
         {
-            SelecionarEquipavel(4);
+            SelecionarAtaque(20, 23, 23);
         }
 
         private void btnEquipavelImunidade_Click(object sender, EventArgs e)
         {
-            SelecionarEquipavel(3);
+            SelecionarAtaque(20, 23, 22);
         }
 
         private void TelaInventario_Load(object sender, EventArgs e)
