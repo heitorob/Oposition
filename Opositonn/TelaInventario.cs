@@ -14,40 +14,36 @@ namespace Opositonn
     {
         Dictionary<int, (string Nome, Button Botoes)> Ataques;
 
-        readonly TelaLuta telaLuta = new TelaLuta();
-
         public TelaInventario()
         {
             InitializeComponent();
 
-            TelaLuta.Ataque = new int[2, 6];
-
             Ataques = new Dictionary<int, (string, Button)>
             {
-                { 0,  ("Investir", btnInvestir) },
-                { 1,  ("Assaltar", btnAssaltar) },
-                { 2,  ("Canalizar", btnCanalizar) },
-                { 3,  ("Sacrificar", btnSacrificar) },
-                { 4,  ("Bloquear", btnBloquear) },
-                { 5,  ("Engajar", btnEngajar) },
-                { 6,  ("Proteger", btnProteger) },
-                { 7,  ("Colidir", btnColidir) },
-                { 8,  ("Perfurar", btnPerfurar) },
-                { 9,  ("Ultrajar", btnUltrajar) },
-                { 10, ("Medicar", btnMedicar) },
-                { 11, ("Atordoar", btnAtordoar) },
-                { 12, ("Roubar", btnRoubar) },
-                { 13, ("Infectar", btnInfectar) },
-                { 14, ("Prender", btnPrender) },
-                { 15, ("Flagelar", btnFlagelar) },
-                { 16, ("Confundir", btnConfundir) },
-                { 17, ("Dilacerar", btnDilacerar) },
-                { 18, (string.Empty, btnVoltar) },
-                { 19, (string.Empty, btnVoltar) },
-                { 20, (string.Empty, btnEquipavelDano) },
-                { 21, (string.Empty, btnEquipavelPrecisao) },
-                { 22, (string.Empty, btnEquipavelImunidade) },
-                { 23, (string.Empty, btnEquipavelPoder) },
+                { 1,  ("Investir", btnInvestir) },
+                { 2,  ("Assaltar", btnAssaltar) },
+                { 3,  ("---Enganar---", btnEnganar) },
+                { 4,  ("Canalizar", btnCanalizar) },
+                { 5,  ("Sacrificar", btnSacrificar) },
+                { 6,  ("Bloquear", btnBloquear) },
+                { 7,  ("Engajar", btnEngajar) },
+                { 8,  ("Proteger", btnProteger) },
+                { 9,  ("Colidir", btnColidir) },
+                { 10, ("Perfurar", btnPerfurar) },
+                { 11, ("Ultrajar", btnUltrajar) },
+                { 12, ("Medicar", btnMedicar) },
+                { 13, ("Atordoar", btnAtordoar) },
+                { 14, ("Roubar", btnRoubar) },
+                { 15, ("Infectar", btnInfectar) },
+                { 16, ("Prender", btnPrender) },
+                { 17, ("Flagelar", btnFlagelar) },
+                { 18, ("Confundir", btnConfundir) },
+                { 19, ("---Refletir---", btnRefletir) },
+                { 20, ("Dilacerar", btnDilacerar) },
+                { 21, (string.Empty, btnEquipavelDano) },
+                { 22, (string.Empty, btnEquipavelPrecisao) },
+                { 23, (string.Empty, btnEquipavelImunidade) },
+                { 24, (string.Empty, btnEquipavelPoder) },
             };
         }
 
@@ -55,11 +51,11 @@ namespace Opositonn
         {
             int n = 0;
 
-            for (int i = 0; i <= 23; i++)
+            for (int i = 1; i <= 24; i++)
             {
                 if (!Ataques[i].Botoes.Enabled)
                 {
-                    TelaLuta.Ataque[0, n] = (i >= 20) ? i - 19 : i;
+                    TelaInicial.d[n] = i;
                     n++;
                 }
             }
@@ -73,117 +69,129 @@ namespace Opositonn
                 Ataques[i].Botoes.Enabled = i != s;
         }
 
-        private void btnEngajar_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(5, 9, 5);
-        }
-
-        private void btnProteger_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(5, 9, 6);
-        }
-
-        private void btnColidir_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(5, 9, 7);
-        }
-
-        private void btnPerfurar_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(5, 9, 8);
-        }
-
-        private void btnUltrajar_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(5, 9, 9);
-        }
-
         private void btnInvestir_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(0, 1, 0);
+            SelecionarAtaque(1, 3, 1);
         }
 
         private void btnAssaltar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(0, 1, 1);
+            SelecionarAtaque(1, 3, 2);
         }
 
         private void btnCanalizar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(2, 4, 2);
+            SelecionarAtaque(4, 6, 4);
         }
 
         private void btnSacrificar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(2, 4, 3);
+            SelecionarAtaque(4, 6, 5);
         }
 
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(2, 4, 4);
+            SelecionarAtaque(4, 6, 6);
+        }
+
+        private void btnEngajar_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(7, 11, 7);
+        }
+
+        private void btnProteger_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(7, 11, 8);
+        }
+
+        private void btnColidir_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(7, 11, 9);
+        }
+
+        private void btnPerfurar_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(7, 11, 10);
+        }
+
+        private void btnUltrajar_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(7, 11, 11);
         }
 
         private void btnMedicar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(10, 14, 10);
+            SelecionarAtaque(12, 16, 12);
         }
 
         private void btnAtordoar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(10, 14, 11);
+            SelecionarAtaque(12, 16, 13);
         }
 
         private void btnRoubar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(10, 14, 12);
+            SelecionarAtaque(12, 16, 14);
         }
 
         private void btnInfectar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(10, 14, 13);
+            SelecionarAtaque(12, 16, 15);
         }
 
         private void btnPrender_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(10, 14, 14);
+            SelecionarAtaque(12, 16, 16);
         }
 
         private void btnFlagelar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(15, 17, 15);
+            SelecionarAtaque(17, 20, 17);
         }
 
         private void btnConfundir_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(15, 17, 16);
+            SelecionarAtaque(17, 20, 18);
         }
 
         private void btnDilacerar_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(15, 17, 17);
+            SelecionarAtaque(17, 20, 20);
         }
 
         private void btnEquipavelDano_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(20, 23, 20);
+            SelecionarAtaque(21, 24, 21);
         }
 
         private void btnEquipavelPrecisao_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(20, 23, 21);
-        }
-
-        private void btnEquipavelPoder_Click(object sender, EventArgs e)
-        {
-            SelecionarAtaque(20, 23, 23);
+            SelecionarAtaque(21, 24, 22);
         }
 
         private void btnEquipavelImunidade_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(20, 23, 22);
+            SelecionarAtaque(21, 24, 23);
+        }
+
+        private void btnEquipavelPoder_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(21, 24, 24);
+        }
+
+        private void AindaNaoFunciona(object sender, EventArgs e)
+        {
+            MessageBox.Show("Este controle ainda não está pronto. Aproveite os outros.", 
+                "Controle Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void TelaInventario_Load(object sender, EventArgs e)
+        {
+            foreach (int i in TelaInicial.d)
+                if (i > 0) Ataques[i].Botoes.Enabled = false;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

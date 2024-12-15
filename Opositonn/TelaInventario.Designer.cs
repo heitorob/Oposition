@@ -51,13 +51,21 @@
             this.btnEquipavelImunidade = new System.Windows.Forms.Button();
             this.btnEquipavelPoder = new System.Windows.Forms.Button();
             this.btnEquipavelDano = new System.Windows.Forms.Button();
+            this.btnEnganar = new System.Windows.Forms.Button();
+            this.btnRefletir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEngajar
             // 
             this.btnEngajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEngajar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEngajar.Location = new System.Drawing.Point(48, 150);
+            this.btnEngajar.Location = new System.Drawing.Point(293, 103);
             this.btnEngajar.Name = "btnEngajar";
             this.btnEngajar.Size = new System.Drawing.Size(66, 56);
             this.btnEngajar.TabIndex = 0;
@@ -70,7 +78,7 @@
             // 
             this.btnProteger.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnProteger.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProteger.Location = new System.Drawing.Point(120, 150);
+            this.btnProteger.Location = new System.Drawing.Point(293, 165);
             this.btnProteger.Name = "btnProteger";
             this.btnProteger.Size = new System.Drawing.Size(66, 56);
             this.btnProteger.TabIndex = 0;
@@ -83,7 +91,7 @@
             // 
             this.btnColidir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnColidir.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnColidir.Location = new System.Drawing.Point(192, 150);
+            this.btnColidir.Location = new System.Drawing.Point(293, 227);
             this.btnColidir.Name = "btnColidir";
             this.btnColidir.Size = new System.Drawing.Size(66, 56);
             this.btnColidir.TabIndex = 0;
@@ -96,7 +104,7 @@
             // 
             this.btnPerfurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPerfurar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerfurar.Location = new System.Drawing.Point(264, 150);
+            this.btnPerfurar.Location = new System.Drawing.Point(293, 289);
             this.btnPerfurar.Name = "btnPerfurar";
             this.btnPerfurar.Size = new System.Drawing.Size(66, 56);
             this.btnPerfurar.TabIndex = 0;
@@ -109,7 +117,7 @@
             // 
             this.btnUltrajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUltrajar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUltrajar.Location = new System.Drawing.Point(336, 150);
+            this.btnUltrajar.Location = new System.Drawing.Point(293, 351);
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(66, 56);
             this.btnUltrajar.TabIndex = 0;
@@ -121,7 +129,7 @@
             // btnVoltar
             // 
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnVoltar.Location = new System.Drawing.Point(48, 376);
+            this.btnVoltar.Location = new System.Drawing.Point(83, 367);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(120, 40);
             this.btnVoltar.TabIndex = 1;
@@ -133,7 +141,7 @@
             // 
             this.btnMedicar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMedicar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMedicar.Location = new System.Drawing.Point(48, 224);
+            this.btnMedicar.Location = new System.Drawing.Point(398, 103);
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(66, 56);
             this.btnMedicar.TabIndex = 0;
@@ -146,7 +154,7 @@
             // 
             this.btnRoubar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRoubar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRoubar.Location = new System.Drawing.Point(192, 224);
+            this.btnRoubar.Location = new System.Drawing.Point(398, 227);
             this.btnRoubar.Name = "btnRoubar";
             this.btnRoubar.Size = new System.Drawing.Size(66, 56);
             this.btnRoubar.TabIndex = 0;
@@ -159,7 +167,7 @@
             // 
             this.btnAtordoar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtordoar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtordoar.Location = new System.Drawing.Point(120, 224);
+            this.btnAtordoar.Location = new System.Drawing.Point(398, 165);
             this.btnAtordoar.Name = "btnAtordoar";
             this.btnAtordoar.Size = new System.Drawing.Size(66, 56);
             this.btnAtordoar.TabIndex = 0;
@@ -172,7 +180,7 @@
             // 
             this.btnInfectar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInfectar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInfectar.Location = new System.Drawing.Point(264, 224);
+            this.btnInfectar.Location = new System.Drawing.Point(398, 289);
             this.btnInfectar.Name = "btnInfectar";
             this.btnInfectar.Size = new System.Drawing.Size(66, 56);
             this.btnInfectar.TabIndex = 0;
@@ -185,7 +193,7 @@
             // 
             this.btnPrender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrender.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrender.Location = new System.Drawing.Point(336, 224);
+            this.btnPrender.Location = new System.Drawing.Point(398, 351);
             this.btnPrender.Name = "btnPrender";
             this.btnPrender.Size = new System.Drawing.Size(66, 56);
             this.btnPrender.TabIndex = 0;
@@ -198,7 +206,7 @@
             // 
             this.btnFlagelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFlagelar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFlagelar.Location = new System.Drawing.Point(48, 298);
+            this.btnFlagelar.Location = new System.Drawing.Point(503, 103);
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(66, 56);
             this.btnFlagelar.TabIndex = 0;
@@ -211,7 +219,7 @@
             // 
             this.btnDilacerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDilacerar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDilacerar.Location = new System.Drawing.Point(192, 299);
+            this.btnDilacerar.Location = new System.Drawing.Point(503, 289);
             this.btnDilacerar.Name = "btnDilacerar";
             this.btnDilacerar.Size = new System.Drawing.Size(66, 56);
             this.btnDilacerar.TabIndex = 0;
@@ -224,7 +232,7 @@
             // 
             this.btnConfundir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfundir.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfundir.Location = new System.Drawing.Point(120, 299);
+            this.btnConfundir.Location = new System.Drawing.Point(503, 165);
             this.btnConfundir.Name = "btnConfundir";
             this.btnConfundir.Size = new System.Drawing.Size(66, 56);
             this.btnConfundir.TabIndex = 0;
@@ -237,7 +245,7 @@
             // 
             this.btnInvestir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInvestir.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvestir.Location = new System.Drawing.Point(48, 76);
+            this.btnInvestir.Location = new System.Drawing.Point(83, 103);
             this.btnInvestir.Name = "btnInvestir";
             this.btnInvestir.Size = new System.Drawing.Size(66, 56);
             this.btnInvestir.TabIndex = 0;
@@ -250,7 +258,7 @@
             // 
             this.btnAssaltar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAssaltar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssaltar.Location = new System.Drawing.Point(120, 76);
+            this.btnAssaltar.Location = new System.Drawing.Point(83, 165);
             this.btnAssaltar.Name = "btnAssaltar";
             this.btnAssaltar.Size = new System.Drawing.Size(66, 56);
             this.btnAssaltar.TabIndex = 0;
@@ -263,7 +271,7 @@
             // 
             this.btnCanalizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCanalizar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCanalizar.Location = new System.Drawing.Point(264, 76);
+            this.btnCanalizar.Location = new System.Drawing.Point(188, 103);
             this.btnCanalizar.Name = "btnCanalizar";
             this.btnCanalizar.Size = new System.Drawing.Size(66, 56);
             this.btnCanalizar.TabIndex = 0;
@@ -276,7 +284,7 @@
             // 
             this.btnBloquear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBloquear.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBloquear.Location = new System.Drawing.Point(408, 76);
+            this.btnBloquear.Location = new System.Drawing.Point(188, 227);
             this.btnBloquear.Name = "btnBloquear";
             this.btnBloquear.Size = new System.Drawing.Size(66, 56);
             this.btnBloquear.TabIndex = 0;
@@ -289,7 +297,7 @@
             // 
             this.btnSacrificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSacrificar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSacrificar.Location = new System.Drawing.Point(336, 76);
+            this.btnSacrificar.Location = new System.Drawing.Point(188, 165);
             this.btnSacrificar.Name = "btnSacrificar";
             this.btnSacrificar.Size = new System.Drawing.Size(66, 56);
             this.btnSacrificar.TabIndex = 0;
@@ -302,7 +310,7 @@
             // 
             this.btnEquipavelPrecisao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelPrecisao.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelPrecisao.Location = new System.Drawing.Point(620, 150);
+            this.btnEquipavelPrecisao.Location = new System.Drawing.Point(689, 103);
             this.btnEquipavelPrecisao.Name = "btnEquipavelPrecisao";
             this.btnEquipavelPrecisao.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelPrecisao.TabIndex = 2;
@@ -315,7 +323,7 @@
             // 
             this.btnEquipavelImunidade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelImunidade.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelImunidade.Location = new System.Drawing.Point(620, 219);
+            this.btnEquipavelImunidade.Location = new System.Drawing.Point(617, 165);
             this.btnEquipavelImunidade.Name = "btnEquipavelImunidade";
             this.btnEquipavelImunidade.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelImunidade.TabIndex = 3;
@@ -328,7 +336,7 @@
             // 
             this.btnEquipavelPoder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelPoder.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelPoder.Location = new System.Drawing.Point(548, 219);
+            this.btnEquipavelPoder.Location = new System.Drawing.Point(689, 165);
             this.btnEquipavelPoder.Name = "btnEquipavelPoder";
             this.btnEquipavelPoder.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelPoder.TabIndex = 4;
@@ -341,7 +349,7 @@
             // 
             this.btnEquipavelDano.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelDano.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelDano.Location = new System.Drawing.Point(548, 150);
+            this.btnEquipavelDano.Location = new System.Drawing.Point(617, 103);
             this.btnEquipavelDano.Name = "btnEquipavelDano";
             this.btnEquipavelDano.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelDano.TabIndex = 5;
@@ -350,12 +358,111 @@
             this.btnEquipavelDano.UseVisualStyleBackColor = true;
             this.btnEquipavelDano.Click += new System.EventHandler(this.btnEquipavelDano_Click);
             // 
+            // btnEnganar
+            // 
+            this.btnEnganar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEnganar.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnganar.Location = new System.Drawing.Point(83, 227);
+            this.btnEnganar.Name = "btnEnganar";
+            this.btnEnganar.Size = new System.Drawing.Size(66, 56);
+            this.btnEnganar.TabIndex = 0;
+            this.btnEnganar.TabStop = false;
+            this.btnEnganar.Text = "-Enganar-";
+            this.btnEnganar.UseVisualStyleBackColor = true;
+            this.btnEnganar.Click += new System.EventHandler(this.AindaNaoFunciona);
+            // 
+            // btnRefletir
+            // 
+            this.btnRefletir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefletir.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefletir.Location = new System.Drawing.Point(503, 227);
+            this.btnRefletir.Name = "btnRefletir";
+            this.btnRefletir.Size = new System.Drawing.Size(66, 56);
+            this.btnRefletir.TabIndex = 0;
+            this.btnRefletir.TabStop = false;
+            this.btnRefletir.Text = "-Refletir-";
+            this.btnRefletir.UseVisualStyleBackColor = true;
+            this.btnRefletir.Click += new System.EventHandler(this.AindaNaoFunciona);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label1.Location = new System.Drawing.Point(83, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 21);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Ataques";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Location = new System.Drawing.Point(195, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Livres";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label3.Location = new System.Drawing.Point(298, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 21);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Fracos";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label4.Location = new System.Drawing.Point(402, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 21);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Médios";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label5.Location = new System.Drawing.Point(509, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 21);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Fortes";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label6.Location = new System.Drawing.Point(640, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 21);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Equipáveis";
+            // 
             // TelaInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEquipavelPrecisao);
             this.Controls.Add(this.btnEquipavelImunidade);
             this.Controls.Add(this.btnEquipavelPoder);
@@ -373,6 +480,8 @@
             this.Controls.Add(this.btnBloquear);
             this.Controls.Add(this.btnProteger);
             this.Controls.Add(this.btnCanalizar);
+            this.Controls.Add(this.btnRefletir);
+            this.Controls.Add(this.btnEnganar);
             this.Controls.Add(this.btnDilacerar);
             this.Controls.Add(this.btnFlagelar);
             this.Controls.Add(this.btnRoubar);
@@ -386,6 +495,7 @@
             this.Text = "TelaInventario";
             this.Load += new System.EventHandler(this.TelaInventario_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -414,5 +524,13 @@
         private System.Windows.Forms.Button btnEquipavelImunidade;
         private System.Windows.Forms.Button btnEquipavelPoder;
         private System.Windows.Forms.Button btnEquipavelDano;
+        private System.Windows.Forms.Button btnEnganar;
+        private System.Windows.Forms.Button btnRefletir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

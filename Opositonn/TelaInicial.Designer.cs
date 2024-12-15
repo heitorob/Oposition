@@ -98,6 +98,7 @@
             this.Name = "TelaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaInicial";
+            this.Shown += new System.EventHandler(this.TelaInicial_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

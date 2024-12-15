@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLuta));
             this.lblSaudeUsuario = new System.Windows.Forms.Label();
             this.lblSaudeOpositor = new System.Windows.Forms.Label();
@@ -54,20 +53,9 @@
             this.btnColidir = new System.Windows.Forms.Button();
             this.btnDilacerar = new System.Windows.Forms.Button();
             this.btnBloquear = new System.Windows.Forms.Button();
-            this.tipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.btnSacrificar = new System.Windows.Forms.Button();
             this.btnPrender = new System.Windows.Forms.Button();
             this.btnAssaltar = new System.Windows.Forms.Button();
-            this.btnEngajarAlt = new System.Windows.Forms.Button();
-            this.btnUltrajarAlt = new System.Windows.Forms.Button();
-            this.btnPerfurarAlt = new System.Windows.Forms.Button();
-            this.btnProtegerAlt = new System.Windows.Forms.Button();
-            this.btnColidirAlt = new System.Windows.Forms.Button();
-            this.btnMedicarAlt = new System.Windows.Forms.Button();
-            this.btnRoubarAlt = new System.Windows.Forms.Button();
-            this.btnPrenderAlt = new System.Windows.Forms.Button();
-            this.btnAtordoarAlt = new System.Windows.Forms.Button();
-            this.btnInfectarAlt = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnReanimar = new System.Windows.Forms.Button();
@@ -84,6 +72,7 @@
             this.prgUsuario = new System.Windows.Forms.ProgressBar();
             this.prgOpositor = new System.Windows.Forms.ProgressBar();
             this.btnFugir = new System.Windows.Forms.Button();
+            this.provisorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
@@ -129,7 +118,6 @@
             this.btnInvestir.TabIndex = 1;
             this.btnInvestir.TabStop = false;
             this.btnInvestir.Text = "Investir";
-            this.tipInfo.SetToolTip(this.btnInvestir, "Tira 16 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnInvestir.UseVisualStyleBackColor = true;
             this.btnInvestir.Visible = false;
             this.btnInvestir.Click += new System.EventHandler(this.btnInvestir_Click);
@@ -143,7 +131,6 @@
             this.btnCanalizar.TabIndex = 1;
             this.btnCanalizar.TabStop = false;
             this.btnCanalizar.Text = "Canalizar";
-            this.tipInfo.SetToolTip(this.btnCanalizar, "Invoca 1 poder.");
             this.btnCanalizar.UseVisualStyleBackColor = true;
             this.btnCanalizar.Visible = false;
             this.btnCanalizar.Click += new System.EventHandler(this.btnCanalizar_Click);
@@ -158,8 +145,6 @@
             this.lblPoder.Size = new System.Drawing.Size(21, 24);
             this.lblPoder.TabIndex = 2;
             this.lblPoder.Text = "0";
-            this.tipInfo.SetToolTip(this.lblPoder, "Quantidade de poderes acumulados.\r\nPoderes são necessários para usar ataques espe" +
-        "ciais.\r\nMaximiza em 3 poderes.");
             // 
             // btnMedicar
             // 
@@ -170,7 +155,6 @@
             this.btnMedicar.TabIndex = 1;
             this.btnMedicar.TabStop = false;
             this.btnMedicar.Text = "Medicar";
-            this.tipInfo.SetToolTip(this.btnMedicar, "Recupera 40 de saúde do Usuário.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnMedicar.UseVisualStyleBackColor = true;
             this.btnMedicar.Visible = false;
             this.btnMedicar.Click += new System.EventHandler(this.btnMedicar_Click);
@@ -184,7 +168,6 @@
             this.btnFlagelar.TabIndex = 1;
             this.btnFlagelar.TabStop = false;
             this.btnFlagelar.Text = "Flagelar";
-            this.tipInfo.SetToolTip(this.btnFlagelar, "Tira 60 de saúde do Opositor.\r\nPrecisão - 80.");
             this.btnFlagelar.UseVisualStyleBackColor = true;
             this.btnFlagelar.Visible = false;
             this.btnFlagelar.Click += new System.EventHandler(this.btnFlagelar_Click);
@@ -198,7 +181,6 @@
             this.btnEngajar.TabIndex = 3;
             this.btnEngajar.TabStop = false;
             this.btnEngajar.Text = "Engajar";
-            this.tipInfo.SetToolTip(this.btnEngajar, "Aumenta a precisão em 20.\r\nRemove efeito de Decaimento do Usuário.");
             this.btnEngajar.UseVisualStyleBackColor = true;
             this.btnEngajar.Visible = false;
             this.btnEngajar.Click += new System.EventHandler(this.btnEngajar_Click);
@@ -212,7 +194,6 @@
             this.btnProteger.TabIndex = 1;
             this.btnProteger.TabStop = false;
             this.btnProteger.Text = "Proteger";
-            this.tipInfo.SetToolTip(this.btnProteger, "Invoca um Escudo.");
             this.btnProteger.UseVisualStyleBackColor = true;
             this.btnProteger.Visible = false;
             this.btnProteger.Click += new System.EventHandler(this.btnProteger_Click);
@@ -226,8 +207,6 @@
             this.btnPerfurar.TabIndex = 1;
             this.btnPerfurar.TabStop = false;
             this.btnPerfurar.Text = "Perfurar";
-            this.tipInfo.SetToolTip(this.btnPerfurar, "Tira 28 de saúde do Opositor.\r\nDestrói Escudos do Opositor.\r\nTira 12 de saúde a m" +
-        "ais se destrói um Escudo.\r\nPrecisão - 80.");
             this.btnPerfurar.UseVisualStyleBackColor = true;
             this.btnPerfurar.Visible = false;
             this.btnPerfurar.Click += new System.EventHandler(this.btnPerfurar_Click);
@@ -241,7 +220,6 @@
             this.btnInfectar.TabIndex = 1;
             this.btnInfectar.TabStop = false;
             this.btnInfectar.Text = "Infectar";
-            this.tipInfo.SetToolTip(this.btnInfectar, "Aplica efeito de Decaimento no Opositor.");
             this.btnInfectar.UseVisualStyleBackColor = true;
             this.btnInfectar.Visible = false;
             this.btnInfectar.Click += new System.EventHandler(this.btnInfectar_Click);
@@ -255,8 +233,6 @@
             this.btnUltrajar.TabIndex = 1;
             this.btnUltrajar.TabStop = false;
             this.btnUltrajar.Text = "Ultrajar";
-            this.tipInfo.SetToolTip(this.btnUltrajar, "Tira 28 de saúde do Opositor.\r\nAplica efeito de Decaimento no Opositor.\r\nPrecisão" +
-        " - 60.");
             this.btnUltrajar.UseVisualStyleBackColor = true;
             this.btnUltrajar.Visible = false;
             this.btnUltrajar.Click += new System.EventHandler(this.btnUltrajar_Click);
@@ -270,7 +246,6 @@
             this.imgEscudoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgEscudoUsuario.TabIndex = 4;
             this.imgEscudoUsuario.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgEscudoUsuario, "Reduz o dano recebido em 12.\r\nO ataque Perfurar remove este efeito.");
             this.imgEscudoUsuario.Visible = false;
             // 
             // imgDecaimentoUsuario
@@ -282,8 +257,6 @@
             this.imgDecaimentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDecaimentoUsuario.TabIndex = 4;
             this.imgDecaimentoUsuario.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgDecaimentoUsuario, "Tira 8 de saúde no final de cada turno.\r\nOs ataques Engajar e Medicar removem est" +
-        "e efeito.");
             this.imgDecaimentoUsuario.Visible = false;
             // 
             // imgEscudoOpositor
@@ -295,7 +268,6 @@
             this.imgEscudoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgEscudoOpositor.TabIndex = 4;
             this.imgEscudoOpositor.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgEscudoOpositor, "Reduz o dano recebido em 12.\r\nO ataque Perfurar remove este efeito.");
             this.imgEscudoOpositor.Visible = false;
             // 
             // imgDecaimentoOpositor
@@ -307,8 +279,6 @@
             this.imgDecaimentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDecaimentoOpositor.TabIndex = 4;
             this.imgDecaimentoOpositor.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgDecaimentoOpositor, "Tira 8 de saúde no final de cada turno.\r\nOs ataques Engajar e Medicar removem est" +
-        "e efeito.");
             this.imgDecaimentoOpositor.Visible = false;
             // 
             // btnRoubar
@@ -320,7 +290,6 @@
             this.btnRoubar.TabIndex = 1;
             this.btnRoubar.TabStop = false;
             this.btnRoubar.Text = "Roubar";
-            this.tipInfo.SetToolTip(this.btnRoubar, "Tira 28 de saúde do Opositor.\r\nRecupera 28 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnRoubar.UseVisualStyleBackColor = true;
             this.btnRoubar.Visible = false;
             this.btnRoubar.Click += new System.EventHandler(this.btnRoubar_Click);
@@ -334,8 +303,6 @@
             this.btnConfundir.TabIndex = 1;
             this.btnConfundir.TabStop = false;
             this.btnConfundir.Text = "Confundir";
-            this.tipInfo.SetToolTip(this.btnConfundir, "Tira 40 pontos de saúde do Opositor.\r\nReduz a precisão do Opositor em 20.\r\nPrecis" +
-        "ão - 100.");
             this.btnConfundir.UseVisualStyleBackColor = true;
             this.btnConfundir.Visible = false;
             this.btnConfundir.Click += new System.EventHandler(this.btnConfundir_Click);
@@ -349,8 +316,6 @@
             this.btnAtordoar.TabIndex = 1;
             this.btnAtordoar.TabStop = false;
             this.btnAtordoar.Text = "Atordoar";
-            this.tipInfo.SetToolTip(this.btnAtordoar, "Tira 40 de saúde do Opositor.\r\nAplica efeito de Atordoamento no Opositor.\r\nPrecis" +
-        "ão - 60.");
             this.btnAtordoar.UseVisualStyleBackColor = true;
             this.btnAtordoar.Visible = false;
             this.btnAtordoar.Click += new System.EventHandler(this.btnAtordoar_Click);
@@ -364,7 +329,6 @@
             this.imgAtordoamentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgAtordoamentoUsuario.TabIndex = 4;
             this.imgAtordoamentoUsuario.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgAtordoamentoUsuario, "Impede o turno de ser realizado.");
             this.imgAtordoamentoUsuario.Visible = false;
             // 
             // imgAtordoamentoOpositor
@@ -376,7 +340,6 @@
             this.imgAtordoamentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgAtordoamentoOpositor.TabIndex = 4;
             this.imgAtordoamentoOpositor.TabStop = false;
-            this.tipInfo.SetToolTip(this.imgAtordoamentoOpositor, "Impede o turno de ser realizado.");
             this.imgAtordoamentoOpositor.Visible = false;
             // 
             // btnColidir
@@ -388,7 +351,6 @@
             this.btnColidir.TabIndex = 3;
             this.btnColidir.TabStop = false;
             this.btnColidir.Text = "Colidir";
-            this.tipInfo.SetToolTip(this.btnColidir, "Tira 40 de saúde do Opositor.\r\nTira 16 de saúde do Usuário.\r\nPrecisão - 80.");
             this.btnColidir.UseVisualStyleBackColor = true;
             this.btnColidir.Visible = false;
             this.btnColidir.Click += new System.EventHandler(this.btnColidir_Click);
@@ -402,7 +364,6 @@
             this.btnDilacerar.TabIndex = 1;
             this.btnDilacerar.TabStop = false;
             this.btnDilacerar.Text = "Dilacerar";
-            this.tipInfo.SetToolTip(this.btnDilacerar, "Tira metade da saúde do Opositor.\r\nPrecisão - 60.\r\nTempo de espera - 4 turnos.");
             this.btnDilacerar.UseVisualStyleBackColor = true;
             this.btnDilacerar.Visible = false;
             this.btnDilacerar.Click += new System.EventHandler(this.btnDilacerar_Click);
@@ -416,16 +377,9 @@
             this.btnBloquear.TabIndex = 1;
             this.btnBloquear.TabStop = false;
             this.btnBloquear.Text = "Bloquear";
-            this.tipInfo.SetToolTip(this.btnBloquear, "Invoca 1 poder.\r\nAtordoa o Opositor.\r\nTempo de espera - 2 turnos.");
             this.btnBloquear.UseVisualStyleBackColor = true;
             this.btnBloquear.Visible = false;
             this.btnBloquear.Click += new System.EventHandler(this.btnBloquear_Click);
-            // 
-            // tipInfo
-            // 
-            this.tipInfo.IsBalloon = true;
-            this.tipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.tipInfo.ToolTipTitle = "Informações";
             // 
             // btnSacrificar
             // 
@@ -436,8 +390,6 @@
             this.btnSacrificar.TabIndex = 1;
             this.btnSacrificar.TabStop = false;
             this.btnSacrificar.Text = "Sacrificar";
-            this.tipInfo.SetToolTip(this.btnSacrificar, "Invoca 3 poderes.\r\nTira 16 de saúde do Usuário.\r\nNão pode ser usado se Usuário já" +
-        " tiver algum poder acumulado.\r\nTempo de espera - 4 turnos.");
             this.btnSacrificar.UseVisualStyleBackColor = true;
             this.btnSacrificar.Visible = false;
             this.btnSacrificar.Click += new System.EventHandler(this.btnSacrificar_Click);
@@ -451,8 +403,6 @@
             this.btnPrender.TabIndex = 1;
             this.btnPrender.TabStop = false;
             this.btnPrender.Text = "Prender";
-            this.tipInfo.SetToolTip(this.btnPrender, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
-        "");
             this.btnPrender.UseVisualStyleBackColor = true;
             this.btnPrender.Visible = false;
             this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
@@ -466,155 +416,9 @@
             this.btnAssaltar.TabIndex = 1;
             this.btnAssaltar.TabStop = false;
             this.btnAssaltar.Text = "Assaltar";
-            this.tipInfo.SetToolTip(this.btnAssaltar, "Tira 12 de saúde do Opositor.\r\nReduz a precisão do Opositor em 10.\r\nPrecisão - 60" +
-        ".");
             this.btnAssaltar.UseVisualStyleBackColor = true;
             this.btnAssaltar.Visible = false;
             this.btnAssaltar.Click += new System.EventHandler(this.btnAssaltar_Click);
-            // 
-            // btnEngajarAlt
-            // 
-            this.btnEngajarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEngajarAlt.Location = new System.Drawing.Point(476, 352);
-            this.btnEngajarAlt.Name = "btnEngajarAlt";
-            this.btnEngajarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnEngajarAlt.TabIndex = 14;
-            this.btnEngajarAlt.TabStop = false;
-            this.btnEngajarAlt.Text = "Engajar";
-            this.tipInfo.SetToolTip(this.btnEngajarAlt, "Aumenta a precisão em 20.\r\nRemove efeito de Decaimento do Usuário.");
-            this.btnEngajarAlt.UseVisualStyleBackColor = true;
-            this.btnEngajarAlt.Visible = false;
-            this.btnEngajarAlt.Click += new System.EventHandler(this.btnEngajar_Click);
-            // 
-            // btnUltrajarAlt
-            // 
-            this.btnUltrajarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUltrajarAlt.Location = new System.Drawing.Point(476, 352);
-            this.btnUltrajarAlt.Name = "btnUltrajarAlt";
-            this.btnUltrajarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnUltrajarAlt.TabIndex = 10;
-            this.btnUltrajarAlt.TabStop = false;
-            this.btnUltrajarAlt.Text = "Ultrajar";
-            this.tipInfo.SetToolTip(this.btnUltrajarAlt, "Tira 28 de saúde do Opositor.\r\nAplica efeito de Decaimento no Opositor.\r\nPrecisão" +
-        " - 60.");
-            this.btnUltrajarAlt.UseVisualStyleBackColor = true;
-            this.btnUltrajarAlt.Visible = false;
-            this.btnUltrajarAlt.Click += new System.EventHandler(this.btnUltrajar_Click);
-            // 
-            // btnPerfurarAlt
-            // 
-            this.btnPerfurarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPerfurarAlt.Location = new System.Drawing.Point(476, 352);
-            this.btnPerfurarAlt.Name = "btnPerfurarAlt";
-            this.btnPerfurarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnPerfurarAlt.TabIndex = 11;
-            this.btnPerfurarAlt.TabStop = false;
-            this.btnPerfurarAlt.Text = "Perfurar";
-            this.tipInfo.SetToolTip(this.btnPerfurarAlt, "Tira 28 de saúde do Opositor.\r\nDestrói Escudos do Opositor.\r\nTira 12 de saúde a m" +
-        "ais se destrói um Escudo.\r\nPrecisão - 80.");
-            this.btnPerfurarAlt.UseVisualStyleBackColor = true;
-            this.btnPerfurarAlt.Visible = false;
-            this.btnPerfurarAlt.Click += new System.EventHandler(this.btnPerfurar_Click);
-            // 
-            // btnProtegerAlt
-            // 
-            this.btnProtegerAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnProtegerAlt.Location = new System.Drawing.Point(476, 352);
-            this.btnProtegerAlt.Name = "btnProtegerAlt";
-            this.btnProtegerAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnProtegerAlt.TabIndex = 12;
-            this.btnProtegerAlt.TabStop = false;
-            this.btnProtegerAlt.Text = "Proteger";
-            this.tipInfo.SetToolTip(this.btnProtegerAlt, "Invoca um Escudo.");
-            this.btnProtegerAlt.UseVisualStyleBackColor = true;
-            this.btnProtegerAlt.Visible = false;
-            this.btnProtegerAlt.Click += new System.EventHandler(this.btnProteger_Click);
-            // 
-            // btnColidirAlt
-            // 
-            this.btnColidirAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnColidirAlt.Location = new System.Drawing.Point(476, 352);
-            this.btnColidirAlt.Name = "btnColidirAlt";
-            this.btnColidirAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnColidirAlt.TabIndex = 13;
-            this.btnColidirAlt.TabStop = false;
-            this.btnColidirAlt.Text = "Colidir";
-            this.tipInfo.SetToolTip(this.btnColidirAlt, "Tira 40 de saúde do Opositor.\r\nTira 16 de saúde do Usuário.\r\nPrecisão - 80.");
-            this.btnColidirAlt.UseVisualStyleBackColor = true;
-            this.btnColidirAlt.Visible = false;
-            this.btnColidirAlt.Click += new System.EventHandler(this.btnColidir_Click);
-            // 
-            // btnMedicarAlt
-            // 
-            this.btnMedicarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMedicarAlt.Location = new System.Drawing.Point(622, 352);
-            this.btnMedicarAlt.Name = "btnMedicarAlt";
-            this.btnMedicarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnMedicarAlt.TabIndex = 15;
-            this.btnMedicarAlt.TabStop = false;
-            this.btnMedicarAlt.Text = "Medicar";
-            this.tipInfo.SetToolTip(this.btnMedicarAlt, "Recupera 40 de saúde do Usuário.\r\nRemove efeito de Decaimento do Usuário.");
-            this.btnMedicarAlt.UseVisualStyleBackColor = true;
-            this.btnMedicarAlt.Visible = false;
-            this.btnMedicarAlt.Click += new System.EventHandler(this.btnMedicar_Click);
-            // 
-            // btnRoubarAlt
-            // 
-            this.btnRoubarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRoubarAlt.Location = new System.Drawing.Point(622, 352);
-            this.btnRoubarAlt.Name = "btnRoubarAlt";
-            this.btnRoubarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnRoubarAlt.TabIndex = 16;
-            this.btnRoubarAlt.TabStop = false;
-            this.btnRoubarAlt.Text = "Roubar";
-            this.tipInfo.SetToolTip(this.btnRoubarAlt, "Tira 28 de saúde do Opositor.\r\nRecupera 28 de saúde do Usuário.\r\nPrecisão - 80.");
-            this.btnRoubarAlt.UseVisualStyleBackColor = true;
-            this.btnRoubarAlt.Visible = false;
-            this.btnRoubarAlt.Click += new System.EventHandler(this.btnRoubar_Click);
-            // 
-            // btnPrenderAlt
-            // 
-            this.btnPrenderAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrenderAlt.Location = new System.Drawing.Point(622, 352);
-            this.btnPrenderAlt.Name = "btnPrenderAlt";
-            this.btnPrenderAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnPrenderAlt.TabIndex = 17;
-            this.btnPrenderAlt.TabStop = false;
-            this.btnPrenderAlt.Text = "Prender";
-            this.tipInfo.SetToolTip(this.btnPrenderAlt, "Aplica efeito de Atordoamento Recursivo no Opositor.\r\nTempo de espera - 6 turnos." +
-        "");
-            this.btnPrenderAlt.UseVisualStyleBackColor = true;
-            this.btnPrenderAlt.Visible = false;
-            this.btnPrenderAlt.Click += new System.EventHandler(this.btnPrender_Click);
-            // 
-            // btnAtordoarAlt
-            // 
-            this.btnAtordoarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAtordoarAlt.Location = new System.Drawing.Point(622, 352);
-            this.btnAtordoarAlt.Name = "btnAtordoarAlt";
-            this.btnAtordoarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnAtordoarAlt.TabIndex = 18;
-            this.btnAtordoarAlt.TabStop = false;
-            this.btnAtordoarAlt.Text = "Atordoar";
-            this.tipInfo.SetToolTip(this.btnAtordoarAlt, "Tira 40 de saúde do Opositor.\r\nAplica efeito de Atordoamento no Opositor.\r\nPrecis" +
-        "ão - 60.");
-            this.btnAtordoarAlt.UseVisualStyleBackColor = true;
-            this.btnAtordoarAlt.Visible = false;
-            this.btnAtordoarAlt.Click += new System.EventHandler(this.btnAtordoar_Click);
-            // 
-            // btnInfectarAlt
-            // 
-            this.btnInfectarAlt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnInfectarAlt.Location = new System.Drawing.Point(622, 352);
-            this.btnInfectarAlt.Name = "btnInfectarAlt";
-            this.btnInfectarAlt.Size = new System.Drawing.Size(140, 40);
-            this.btnInfectarAlt.TabIndex = 19;
-            this.btnInfectarAlt.TabStop = false;
-            this.btnInfectarAlt.Text = "Infectar";
-            this.tipInfo.SetToolTip(this.btnInfectarAlt, "Aplica efeito de Decaimento no Opositor.");
-            this.btnInfectarAlt.UseVisualStyleBackColor = true;
-            this.btnInfectarAlt.Visible = false;
-            this.btnInfectarAlt.Click += new System.EventHandler(this.btnInfectar_Click);
             // 
             // label5
             // 
@@ -683,12 +487,12 @@
             // 
             this.numAtaqueOpositorIII.Location = new System.Drawing.Point(53, 136);
             this.numAtaqueOpositorIII.Maximum = new decimal(new int[] {
-            17,
+            20,
             0,
             0,
             0});
             this.numAtaqueOpositorIII.Minimum = new decimal(new int[] {
-            15,
+            17,
             0,
             0,
             0});
@@ -697,7 +501,7 @@
             this.numAtaqueOpositorIII.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorIII.TabIndex = 1;
             this.numAtaqueOpositorIII.Value = new decimal(new int[] {
-            15,
+            17,
             0,
             0,
             0});
@@ -707,12 +511,12 @@
             // 
             this.numAtaqueOpositorII.Location = new System.Drawing.Point(10, 136);
             this.numAtaqueOpositorII.Maximum = new decimal(new int[] {
-            14,
+            16,
             0,
             0,
             0});
             this.numAtaqueOpositorII.Minimum = new decimal(new int[] {
-            10,
+            12,
             0,
             0,
             0});
@@ -721,7 +525,7 @@
             this.numAtaqueOpositorII.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorII.TabIndex = 1;
             this.numAtaqueOpositorII.Value = new decimal(new int[] {
-            10,
+            12,
             0,
             0,
             0});
@@ -789,7 +593,12 @@
             // 
             this.numAtaqueOpositor.Location = new System.Drawing.Point(10, 103);
             this.numAtaqueOpositor.Maximum = new decimal(new int[] {
+            1,
             0,
+            0,
+            0});
+            this.numAtaqueOpositor.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -797,13 +606,23 @@
             this.numAtaqueOpositor.ReadOnly = true;
             this.numAtaqueOpositor.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositor.TabIndex = 1;
+            this.numAtaqueOpositor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numAtaqueOpositor.ValueChanged += new System.EventHandler(this.numAtaqueOpositor_ValueChanged);
             // 
             // numEquipavelOpositor
             // 
             this.numEquipavelOpositor.Location = new System.Drawing.Point(96, 121);
             this.numEquipavelOpositor.Maximum = new decimal(new int[] {
-            4,
+            24,
+            0,
+            0,
+            0});
+            this.numEquipavelOpositor.Minimum = new decimal(new int[] {
+            21,
             0,
             0,
             0});
@@ -811,18 +630,23 @@
             this.numEquipavelOpositor.ReadOnly = true;
             this.numEquipavelOpositor.Size = new System.Drawing.Size(37, 27);
             this.numEquipavelOpositor.TabIndex = 1;
+            this.numEquipavelOpositor.Value = new decimal(new int[] {
+            21,
+            0,
+            0,
+            0});
             this.numEquipavelOpositor.ValueChanged += new System.EventHandler(this.numEquipavelOpositor_ValueChanged);
             // 
             // numAtaqueOpositorI
             // 
             this.numAtaqueOpositorI.Location = new System.Drawing.Point(53, 103);
             this.numAtaqueOpositorI.Maximum = new decimal(new int[] {
-            9,
+            11,
             0,
             0,
             0});
             this.numAtaqueOpositorI.Minimum = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});
@@ -831,7 +655,7 @@
             this.numAtaqueOpositorI.Size = new System.Drawing.Size(37, 27);
             this.numAtaqueOpositorI.TabIndex = 1;
             this.numAtaqueOpositorI.Value = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});
@@ -875,12 +699,25 @@
             this.btnFugir.UseVisualStyleBackColor = true;
             this.btnFugir.Click += new System.EventHandler(this.btnFugir_Click);
             // 
+            // provisorio
+            // 
+            this.provisorio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.provisorio.Location = new System.Drawing.Point(632, 98);
+            this.provisorio.Name = "provisorio";
+            this.provisorio.Size = new System.Drawing.Size(63, 40);
+            this.provisorio.TabIndex = 10;
+            this.provisorio.Text = "fudeu";
+            this.provisorio.UseVisualStyleBackColor = true;
+            this.provisorio.UseWaitCursor = true;
+            this.provisorio.Visible = false;
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 457);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.provisorio);
             this.Controls.Add(this.prgOpositor);
             this.Controls.Add(this.prgUsuario);
             this.Controls.Add(this.grpDebug);
@@ -908,24 +745,14 @@
             this.Controls.Add(this.btnInfectar);
             this.Controls.Add(this.btnPerfurar);
             this.Controls.Add(this.btnProteger);
-            this.Controls.Add(this.btnAssaltar);
             this.Controls.Add(this.btnFugir);
             this.Controls.Add(this.btnReanimar);
             this.Controls.Add(this.btnInvestir);
             this.Controls.Add(this.lblSaudeOpositor);
             this.Controls.Add(this.lblSaudeUsuario);
-            this.Controls.Add(this.btnColidirAlt);
-            this.Controls.Add(this.btnEngajarAlt);
-            this.Controls.Add(this.btnUltrajarAlt);
-            this.Controls.Add(this.btnPerfurarAlt);
-            this.Controls.Add(this.btnProtegerAlt);
-            this.Controls.Add(this.btnMedicarAlt);
-            this.Controls.Add(this.btnRoubarAlt);
-            this.Controls.Add(this.btnPrenderAlt);
-            this.Controls.Add(this.btnAtordoarAlt);
-            this.Controls.Add(this.btnInfectarAlt);
             this.Controls.Add(this.btnFlagelar);
             this.Controls.Add(this.btnDilacerar);
+            this.Controls.Add(this.btnAssaltar);
             this.Font = new System.Drawing.Font("Bodoni MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -979,7 +806,6 @@
         private System.Windows.Forms.Button btnColidir;
         private System.Windows.Forms.Button btnDilacerar;
         private System.Windows.Forms.Button btnBloquear;
-        private System.Windows.Forms.ToolTip tipInfo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSacrificar;
@@ -997,18 +823,9 @@
         private System.Windows.Forms.NumericUpDown numAtaqueOpositor;
         private System.Windows.Forms.ProgressBar prgUsuario;
         private System.Windows.Forms.ProgressBar prgOpositor;
-        private System.Windows.Forms.Button btnEngajarAlt;
-        private System.Windows.Forms.Button btnUltrajarAlt;
-        private System.Windows.Forms.Button btnPerfurarAlt;
-        private System.Windows.Forms.Button btnProtegerAlt;
-        private System.Windows.Forms.Button btnColidirAlt;
-        private System.Windows.Forms.Button btnMedicarAlt;
-        private System.Windows.Forms.Button btnRoubarAlt;
-        private System.Windows.Forms.Button btnPrenderAlt;
-        private System.Windows.Forms.Button btnAtordoarAlt;
-        private System.Windows.Forms.Button btnInfectarAlt;
         private System.Windows.Forms.NumericUpDown numEquipavelOpositor;
         private System.Windows.Forms.Button btnFugir;
+        private System.Windows.Forms.Button provisorio;
     }
 }
 
