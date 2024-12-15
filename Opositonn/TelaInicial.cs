@@ -20,7 +20,7 @@ namespace Opositonn
         public TelaInicial()
         {
             d = new int[6];
-            TelaLuta.Ataque = new int[2, 6];
+            TelaLuta.Build = new int[2, 6];
             InitializeComponent();
         }
 
@@ -37,7 +37,7 @@ namespace Opositonn
         private void btnConfrontar_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 6; i++)
-                TelaLuta.Ataque[0, i] = d[i];
+                TelaLuta.Build[0, i] = d[i];
 
             L.ShowDialog();
         }
@@ -45,6 +45,11 @@ namespace Opositonn
         private void btnInventario_Click(object sender, EventArgs e)
         {
             I.ShowDialog();
+        }
+
+        private void TelaInicial_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

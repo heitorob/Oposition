@@ -59,16 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnReanimar = new System.Windows.Forms.Button();
-            this.chkDebug = new System.Windows.Forms.CheckBox();
-            this.grpDebug = new System.Windows.Forms.GroupBox();
-            this.numAtaqueOpositorIII = new System.Windows.Forms.NumericUpDown();
-            this.numAtaqueOpositorII = new System.Windows.Forms.NumericUpDown();
-            this.numPrecisaoOpositor = new System.Windows.Forms.NumericUpDown();
-            this.numPrecisaoUsuario = new System.Windows.Forms.NumericUpDown();
-            this.numAtaqueOpositor = new System.Windows.Forms.NumericUpDown();
-            this.numEquipavelOpositor = new System.Windows.Forms.NumericUpDown();
-            this.numAtaqueOpositorI = new System.Windows.Forms.NumericUpDown();
-            this.lblPoderOpositor = new System.Windows.Forms.Label();
             this.prgUsuario = new System.Windows.Forms.ProgressBar();
             this.prgOpositor = new System.Windows.Forms.ProgressBar();
             this.btnFugir = new System.Windows.Forms.Button();
@@ -79,14 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).BeginInit();
-            this.grpDebug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorIII)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorII)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEquipavelOpositor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSaudeUsuario
@@ -149,7 +131,7 @@
             // btnMedicar
             // 
             this.btnMedicar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMedicar.Location = new System.Drawing.Point(476, 352);
+            this.btnMedicar.Location = new System.Drawing.Point(476, 398);
             this.btnMedicar.Name = "btnMedicar";
             this.btnMedicar.Size = new System.Drawing.Size(140, 40);
             this.btnMedicar.TabIndex = 1;
@@ -162,7 +144,7 @@
             // btnFlagelar
             // 
             this.btnFlagelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFlagelar.Location = new System.Drawing.Point(622, 352);
+            this.btnFlagelar.Location = new System.Drawing.Point(622, 444);
             this.btnFlagelar.Name = "btnFlagelar";
             this.btnFlagelar.Size = new System.Drawing.Size(140, 40);
             this.btnFlagelar.TabIndex = 1;
@@ -175,7 +157,7 @@
             // btnEngajar
             // 
             this.btnEngajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEngajar.Location = new System.Drawing.Point(330, 352);
+            this.btnEngajar.Location = new System.Drawing.Point(330, 444);
             this.btnEngajar.Name = "btnEngajar";
             this.btnEngajar.Size = new System.Drawing.Size(140, 40);
             this.btnEngajar.TabIndex = 3;
@@ -201,7 +183,7 @@
             // btnPerfurar
             // 
             this.btnPerfurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPerfurar.Location = new System.Drawing.Point(330, 352);
+            this.btnPerfurar.Location = new System.Drawing.Point(330, 536);
             this.btnPerfurar.Name = "btnPerfurar";
             this.btnPerfurar.Size = new System.Drawing.Size(140, 40);
             this.btnPerfurar.TabIndex = 1;
@@ -227,7 +209,7 @@
             // btnUltrajar
             // 
             this.btnUltrajar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUltrajar.Location = new System.Drawing.Point(330, 352);
+            this.btnUltrajar.Location = new System.Drawing.Point(330, 490);
             this.btnUltrajar.Name = "btnUltrajar";
             this.btnUltrajar.Size = new System.Drawing.Size(140, 40);
             this.btnUltrajar.TabIndex = 1;
@@ -284,7 +266,7 @@
             // btnRoubar
             // 
             this.btnRoubar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRoubar.Location = new System.Drawing.Point(476, 352);
+            this.btnRoubar.Location = new System.Drawing.Point(476, 444);
             this.btnRoubar.Name = "btnRoubar";
             this.btnRoubar.Size = new System.Drawing.Size(140, 40);
             this.btnRoubar.TabIndex = 1;
@@ -297,7 +279,7 @@
             // btnConfundir
             // 
             this.btnConfundir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConfundir.Location = new System.Drawing.Point(622, 352);
+            this.btnConfundir.Location = new System.Drawing.Point(622, 398);
             this.btnConfundir.Name = "btnConfundir";
             this.btnConfundir.Size = new System.Drawing.Size(140, 40);
             this.btnConfundir.TabIndex = 1;
@@ -310,7 +292,7 @@
             // btnAtordoar
             // 
             this.btnAtordoar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAtordoar.Location = new System.Drawing.Point(476, 352);
+            this.btnAtordoar.Location = new System.Drawing.Point(476, 536);
             this.btnAtordoar.Name = "btnAtordoar";
             this.btnAtordoar.Size = new System.Drawing.Size(140, 40);
             this.btnAtordoar.TabIndex = 1;
@@ -345,7 +327,7 @@
             // btnColidir
             // 
             this.btnColidir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnColidir.Location = new System.Drawing.Point(330, 352);
+            this.btnColidir.Location = new System.Drawing.Point(330, 398);
             this.btnColidir.Name = "btnColidir";
             this.btnColidir.Size = new System.Drawing.Size(140, 40);
             this.btnColidir.TabIndex = 3;
@@ -397,7 +379,7 @@
             // btnPrender
             // 
             this.btnPrender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrender.Location = new System.Drawing.Point(476, 352);
+            this.btnPrender.Location = new System.Drawing.Point(476, 490);
             this.btnPrender.Name = "btnPrender";
             this.btnPrender.Size = new System.Drawing.Size(140, 40);
             this.btnPrender.TabIndex = 1;
@@ -453,224 +435,6 @@
             this.btnReanimar.Visible = false;
             this.btnReanimar.Click += new System.EventHandler(this.btnReanimar_Click);
             // 
-            // chkDebug
-            // 
-            this.chkDebug.AutoSize = true;
-            this.chkDebug.Font = new System.Drawing.Font("Bodoni MT", 10F);
-            this.chkDebug.Location = new System.Drawing.Point(21, 12);
-            this.chkDebug.Name = "chkDebug";
-            this.chkDebug.Size = new System.Drawing.Size(104, 22);
-            this.chkDebug.TabIndex = 6;
-            this.chkDebug.Text = "Menu Debug";
-            this.chkDebug.UseVisualStyleBackColor = true;
-            this.chkDebug.CheckedChanged += new System.EventHandler(this.chkDebug_CheckedChanged);
-            // 
-            // grpDebug
-            // 
-            this.grpDebug.Controls.Add(this.numAtaqueOpositorIII);
-            this.grpDebug.Controls.Add(this.numAtaqueOpositorII);
-            this.grpDebug.Controls.Add(this.numPrecisaoOpositor);
-            this.grpDebug.Controls.Add(this.numPrecisaoUsuario);
-            this.grpDebug.Controls.Add(this.numAtaqueOpositor);
-            this.grpDebug.Controls.Add(this.numEquipavelOpositor);
-            this.grpDebug.Controls.Add(this.numAtaqueOpositorI);
-            this.grpDebug.Controls.Add(this.lblPoderOpositor);
-            this.grpDebug.Location = new System.Drawing.Point(21, 40);
-            this.grpDebug.Name = "grpDebug";
-            this.grpDebug.Size = new System.Drawing.Size(157, 180);
-            this.grpDebug.TabIndex = 7;
-            this.grpDebug.TabStop = false;
-            this.grpDebug.Text = "Menu Debug";
-            this.grpDebug.Visible = false;
-            // 
-            // numAtaqueOpositorIII
-            // 
-            this.numAtaqueOpositorIII.Location = new System.Drawing.Point(53, 136);
-            this.numAtaqueOpositorIII.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorIII.Minimum = new decimal(new int[] {
-            17,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorIII.Name = "numAtaqueOpositorIII";
-            this.numAtaqueOpositorIII.ReadOnly = true;
-            this.numAtaqueOpositorIII.Size = new System.Drawing.Size(37, 27);
-            this.numAtaqueOpositorIII.TabIndex = 1;
-            this.numAtaqueOpositorIII.Value = new decimal(new int[] {
-            17,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorIII.ValueChanged += new System.EventHandler(this.numAtaqueOpositorIII_ValueChanged);
-            // 
-            // numAtaqueOpositorII
-            // 
-            this.numAtaqueOpositorII.Location = new System.Drawing.Point(10, 136);
-            this.numAtaqueOpositorII.Maximum = new decimal(new int[] {
-            16,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorII.Minimum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorII.Name = "numAtaqueOpositorII";
-            this.numAtaqueOpositorII.ReadOnly = true;
-            this.numAtaqueOpositorII.Size = new System.Drawing.Size(37, 27);
-            this.numAtaqueOpositorII.TabIndex = 1;
-            this.numAtaqueOpositorII.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorII.ValueChanged += new System.EventHandler(this.numAtaqueOpositorII_ValueChanged);
-            // 
-            // numPrecisaoOpositor
-            // 
-            this.numPrecisaoOpositor.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numPrecisaoOpositor.Location = new System.Drawing.Point(64, 58);
-            this.numPrecisaoOpositor.Maximum = new decimal(new int[] {
-            125,
-            0,
-            0,
-            0});
-            this.numPrecisaoOpositor.Minimum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            this.numPrecisaoOpositor.Name = "numPrecisaoOpositor";
-            this.numPrecisaoOpositor.ReadOnly = true;
-            this.numPrecisaoOpositor.Size = new System.Drawing.Size(48, 27);
-            this.numPrecisaoOpositor.TabIndex = 1;
-            this.numPrecisaoOpositor.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            this.numPrecisaoOpositor.ValueChanged += new System.EventHandler(this.numPrecisaoOpositor_ValueChanged);
-            // 
-            // numPrecisaoUsuario
-            // 
-            this.numPrecisaoUsuario.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numPrecisaoUsuario.Location = new System.Drawing.Point(10, 58);
-            this.numPrecisaoUsuario.Maximum = new decimal(new int[] {
-            125,
-            0,
-            0,
-            0});
-            this.numPrecisaoUsuario.Minimum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            this.numPrecisaoUsuario.Name = "numPrecisaoUsuario";
-            this.numPrecisaoUsuario.ReadOnly = true;
-            this.numPrecisaoUsuario.Size = new System.Drawing.Size(48, 27);
-            this.numPrecisaoUsuario.TabIndex = 1;
-            this.numPrecisaoUsuario.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            this.numPrecisaoUsuario.ValueChanged += new System.EventHandler(this.numPrecisaoUsuario_ValueChanged);
-            // 
-            // numAtaqueOpositor
-            // 
-            this.numAtaqueOpositor.Location = new System.Drawing.Point(10, 103);
-            this.numAtaqueOpositor.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositor.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositor.Name = "numAtaqueOpositor";
-            this.numAtaqueOpositor.ReadOnly = true;
-            this.numAtaqueOpositor.Size = new System.Drawing.Size(37, 27);
-            this.numAtaqueOpositor.TabIndex = 1;
-            this.numAtaqueOpositor.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositor.ValueChanged += new System.EventHandler(this.numAtaqueOpositor_ValueChanged);
-            // 
-            // numEquipavelOpositor
-            // 
-            this.numEquipavelOpositor.Location = new System.Drawing.Point(96, 121);
-            this.numEquipavelOpositor.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.numEquipavelOpositor.Minimum = new decimal(new int[] {
-            21,
-            0,
-            0,
-            0});
-            this.numEquipavelOpositor.Name = "numEquipavelOpositor";
-            this.numEquipavelOpositor.ReadOnly = true;
-            this.numEquipavelOpositor.Size = new System.Drawing.Size(37, 27);
-            this.numEquipavelOpositor.TabIndex = 1;
-            this.numEquipavelOpositor.Value = new decimal(new int[] {
-            21,
-            0,
-            0,
-            0});
-            this.numEquipavelOpositor.ValueChanged += new System.EventHandler(this.numEquipavelOpositor_ValueChanged);
-            // 
-            // numAtaqueOpositorI
-            // 
-            this.numAtaqueOpositorI.Location = new System.Drawing.Point(53, 103);
-            this.numAtaqueOpositorI.Maximum = new decimal(new int[] {
-            11,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorI.Minimum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorI.Name = "numAtaqueOpositorI";
-            this.numAtaqueOpositorI.ReadOnly = true;
-            this.numAtaqueOpositorI.Size = new System.Drawing.Size(37, 27);
-            this.numAtaqueOpositorI.TabIndex = 1;
-            this.numAtaqueOpositorI.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numAtaqueOpositorI.ValueChanged += new System.EventHandler(this.numAtaqueOpositorI_ValueChanged);
-            // 
-            // lblPoderOpositor
-            // 
-            this.lblPoderOpositor.AutoSize = true;
-            this.lblPoderOpositor.Font = new System.Drawing.Font("Bodoni MT", 12F);
-            this.lblPoderOpositor.Location = new System.Drawing.Point(6, 23);
-            this.lblPoderOpositor.Name = "lblPoderOpositor";
-            this.lblPoderOpositor.Size = new System.Drawing.Size(17, 19);
-            this.lblPoderOpositor.TabIndex = 0;
-            this.lblPoderOpositor.Text = "0";
-            // 
             // prgUsuario
             // 
             this.prgUsuario.Location = new System.Drawing.Point(307, 226);
@@ -715,13 +479,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 590);
             this.ControlBox = false;
             this.Controls.Add(this.provisorio);
             this.Controls.Add(this.prgOpositor);
             this.Controls.Add(this.prgUsuario);
-            this.Controls.Add(this.grpDebug);
-            this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.imgAtordoamentoOpositor);
@@ -766,15 +528,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).EndInit();
-            this.grpDebug.ResumeLayout(false);
-            this.grpDebug.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorIII)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorII)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoOpositor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numPrecisaoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEquipavelOpositor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAtaqueOpositorI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -811,19 +564,9 @@
         private System.Windows.Forms.Button btnSacrificar;
         private System.Windows.Forms.Button btnPrender;
         private System.Windows.Forms.Button btnReanimar;
-        private System.Windows.Forms.CheckBox chkDebug;
-        private System.Windows.Forms.GroupBox grpDebug;
-        private System.Windows.Forms.Label lblPoderOpositor;
-        private System.Windows.Forms.NumericUpDown numAtaqueOpositorIII;
-        private System.Windows.Forms.NumericUpDown numAtaqueOpositorII;
-        private System.Windows.Forms.NumericUpDown numAtaqueOpositorI;
-        private System.Windows.Forms.NumericUpDown numPrecisaoUsuario;
-        private System.Windows.Forms.NumericUpDown numPrecisaoOpositor;
         private System.Windows.Forms.Button btnAssaltar;
-        private System.Windows.Forms.NumericUpDown numAtaqueOpositor;
         private System.Windows.Forms.ProgressBar prgUsuario;
         private System.Windows.Forms.ProgressBar prgOpositor;
-        private System.Windows.Forms.NumericUpDown numEquipavelOpositor;
         private System.Windows.Forms.Button btnFugir;
         private System.Windows.Forms.Button provisorio;
     }

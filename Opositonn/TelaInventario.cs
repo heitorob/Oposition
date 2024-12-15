@@ -40,10 +40,12 @@ namespace Opositonn
                 { 18, ("Confundir", btnConfundir) },
                 { 19, ("---Refletir---", btnRefletir) },
                 { 20, ("Dilacerar", btnDilacerar) },
-                { 21, (string.Empty, btnEquipavelDano) },
-                { 22, (string.Empty, btnEquipavelPrecisao) },
-                { 23, (string.Empty, btnEquipavelImunidade) },
-                { 24, (string.Empty, btnEquipavelPoder) },
+                { 21, (string.Empty, btnEquipavel) },
+                { 22, (string.Empty, btnEquipavelDano) },
+                { 23, (string.Empty, btnEquipavelPrecisao) },
+                { 24, (string.Empty, btnEquipavelImunidade) },
+                { 25, (string.Empty, btnEquipavelProtecao) },
+                { 26, (string.Empty, btnEquipavelPoder) },
             };
         }
 
@@ -51,7 +53,7 @@ namespace Opositonn
         {
             int n = 0;
 
-            for (int i = 1; i <= 24; i++)
+            for (int i = 1; i <= 26; i++)
             {
                 if (!Ataques[i].Botoes.Enabled)
                 {
@@ -161,22 +163,26 @@ namespace Opositonn
 
         private void btnEquipavelDano_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(21, 24, 21);
+            SelecionarAtaque(22, 26, 22);
         }
 
         private void btnEquipavelPrecisao_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(21, 24, 22);
+            SelecionarAtaque(22, 26, 23);
         }
 
         private void btnEquipavelImunidade_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(21, 24, 23);
+            SelecionarAtaque(22, 26, 24);
+        }
+        private void btnEquipavelProtecao_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(22, 26, 25);
         }
 
         private void btnEquipavelPoder_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(21, 24, 24);
+            SelecionarAtaque(22, 26, 26);
         }
 
         private void AindaNaoFunciona(object sender, EventArgs e)
@@ -189,11 +195,6 @@ namespace Opositonn
         {
             foreach (int i in TelaInicial.d)
                 if (i > 0) Ataques[i].Botoes.Enabled = false;
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -59,6 +59,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnEquipavel = new System.Windows.Forms.Button();
+            this.btnEquipavelProtecao = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEngajar
@@ -310,7 +312,7 @@
             // 
             this.btnEquipavelPrecisao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelPrecisao.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelPrecisao.Location = new System.Drawing.Point(689, 103);
+            this.btnEquipavelPrecisao.Location = new System.Drawing.Point(617, 165);
             this.btnEquipavelPrecisao.Name = "btnEquipavelPrecisao";
             this.btnEquipavelPrecisao.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelPrecisao.TabIndex = 2;
@@ -323,7 +325,7 @@
             // 
             this.btnEquipavelImunidade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelImunidade.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelImunidade.Location = new System.Drawing.Point(617, 165);
+            this.btnEquipavelImunidade.Location = new System.Drawing.Point(689, 165);
             this.btnEquipavelImunidade.Name = "btnEquipavelImunidade";
             this.btnEquipavelImunidade.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelImunidade.TabIndex = 3;
@@ -336,7 +338,7 @@
             // 
             this.btnEquipavelPoder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelPoder.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelPoder.Location = new System.Drawing.Point(689, 165);
+            this.btnEquipavelPoder.Location = new System.Drawing.Point(617, 227);
             this.btnEquipavelPoder.Name = "btnEquipavelPoder";
             this.btnEquipavelPoder.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelPoder.TabIndex = 4;
@@ -349,7 +351,7 @@
             // 
             this.btnEquipavelDano.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEquipavelDano.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipavelDano.Location = new System.Drawing.Point(617, 103);
+            this.btnEquipavelDano.Location = new System.Drawing.Point(689, 103);
             this.btnEquipavelDano.Name = "btnEquipavelDano";
             this.btnEquipavelDano.Size = new System.Drawing.Size(66, 56);
             this.btnEquipavelDano.TabIndex = 5;
@@ -438,7 +440,6 @@
             this.label5.Size = new System.Drawing.Size(54, 21);
             this.label5.TabIndex = 6;
             this.label5.Text = "Fortes";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -450,6 +451,32 @@
             this.label6.Size = new System.Drawing.Size(88, 21);
             this.label6.TabIndex = 6;
             this.label6.Text = "Equipáveis";
+            // 
+            // btnEquipavel
+            // 
+            this.btnEquipavel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEquipavel.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquipavel.Location = new System.Drawing.Point(617, 103);
+            this.btnEquipavel.Name = "btnEquipavel";
+            this.btnEquipavel.Size = new System.Drawing.Size(66, 56);
+            this.btnEquipavel.TabIndex = 0;
+            this.btnEquipavel.TabStop = false;
+            this.btnEquipavel.Text = "-Refletir-";
+            this.btnEquipavel.UseVisualStyleBackColor = true;
+            this.btnEquipavel.Click += new System.EventHandler(this.AindaNaoFunciona);
+            // 
+            // btnEquipavelProtecao
+            // 
+            this.btnEquipavelProtecao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEquipavelProtecao.Font = new System.Drawing.Font("Bodoni MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquipavelProtecao.Location = new System.Drawing.Point(689, 227);
+            this.btnEquipavelProtecao.Name = "btnEquipavelProtecao";
+            this.btnEquipavelProtecao.Size = new System.Drawing.Size(66, 56);
+            this.btnEquipavelProtecao.TabIndex = 0;
+            this.btnEquipavelProtecao.TabStop = false;
+            this.btnEquipavelProtecao.Text = "Proteção";
+            this.btnEquipavelProtecao.UseVisualStyleBackColor = true;
+            this.btnEquipavelProtecao.Click += new System.EventHandler(this.btnEquipavelProtecao_Click);
             // 
             // TelaInventario
             // 
@@ -480,6 +507,8 @@
             this.Controls.Add(this.btnBloquear);
             this.Controls.Add(this.btnProteger);
             this.Controls.Add(this.btnCanalizar);
+            this.Controls.Add(this.btnEquipavelProtecao);
+            this.Controls.Add(this.btnEquipavel);
             this.Controls.Add(this.btnRefletir);
             this.Controls.Add(this.btnEnganar);
             this.Controls.Add(this.btnDilacerar);
@@ -532,5 +561,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnEquipavel;
+        private System.Windows.Forms.Button btnEquipavelProtecao;
     }
 }

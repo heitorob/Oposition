@@ -15,7 +15,7 @@ namespace Opositonn
         int[] Saude, Poder, Precisao, TempoAtordoamento, TempoEscudo, TempoDecaimento, TempoRecursivo;
         int[,] TempoEspera;
 
-        public static int[,] Ataque { get; set; }
+        public static int[,] Build { get; set; }
 
         public Random rng = new Random();
 
@@ -61,25 +61,24 @@ namespace Opositonn
 
         private void TelaLuta_Load(object sender, EventArgs e)
         {
-            Ataque[1, 0] = 1;
-            Ataque[1, 1] = rng.Next(6, 11);
-            Ataque[1, 2] = rng.Next(12, 16);
-            Ataque[1, 3] = rng.Next(17, 20);
-            Ataque[1, 4] = rng.Next(21, 23);
+            Build[1, 0] = 1;
+            Build[1, 1] = rng.Next(6, 12);
+            Build[1, 2] = rng.Next(12, 17);
+            Build[1, 3] = rng.Next(17, 21);
+            Build[1, 4] = rng.Next(22, 26);
 
-            for (int User = 0; User <= 1; User++) Saude[User] = 200;
-            for (int User = 0; User <= 1; User++) Poder[User] = 0;
-            for (int User = 0; User <= 1; User++) Precisao[User] = (Ataque[User, 5 - User] == 22) ? 100 : 80;
-            for (int User = 0; User <= 1; User++) TempoEscudo[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoDecaimento[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoAtordoamento[User] = 0;
-            for (int User = 0; User <= 1; User++) TempoRecursivo[User] = 0;
-
-            numAtaqueOpositor.Text = Ataque[1, 0].ToString();
-            numAtaqueOpositorI.Text = Ataque[1, 1].ToString();
-            numAtaqueOpositorII.Text = Ataque[1, 2].ToString();
-            numAtaqueOpositorIII.Text = Ataque[1, 3].ToString();
-            numEquipavelOpositor.Text = Ataque[1, 4].ToString();
+            for (int User = 0; User <= 1; User++)
+            {
+                Saude[User] = 200;
+                Poder[User] = 0;
+                Precisao[User] = (Build[User, 5 - User] == 23) ? 100 : 80;
+                TempoEscudo[User] = 0;
+                TempoDecaimento[User] = 0;
+                TempoAtordoamento[User] = 0;
+                TempoRecursivo[User] = 0;
+                for (int i = 0; i < 5; i++)
+                    TempoEspera[User, i] = 0;
+            }
 
             for (int Botao = 1; Botao <= 20; Botao++)
                 Bglhs[Botao].Botoes[0].Visible = false;
@@ -121,13 +120,9 @@ namespace Opositonn
 
             lblSaudeOpositor.ForeColor = Saude[1] <= 60 ? Color.Red : Color.Black;
 
-            lblPoder.ForeColor = Poder[0] == (Ataque[0, 5] == 4 ? 4 : 3) ? Color.DarkTurquoise : Color.Black;
+            lblPoder.ForeColor = Poder[0] == ((Build[0, 5] == 26) ? 4 : 3) ? Color.DarkTurquoise : Color.Black;
 
             btnReanimar.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
-
-            lblPoderOpositor.Text = Poder[1].ToString();
-            numPrecisaoUsuario.Text = Precisao[0].ToString();
-            numPrecisaoOpositor.Text = Precisao[1].ToString();
 
             for (int Botao = 1; Botao <= 20; Botao++)
                 for (int Alt = 0; Alt <= 1; Alt++)
@@ -170,7 +165,7 @@ namespace Opositonn
                 return false;
             }
             else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Bglhs[Ataque].Custo);
-            else if (Bglhs[Ataque].Custo > 0) Poder[User] = 0;
+            else if (Ataque > 5) Poder[User] = 0;
 
             return true;
         }
@@ -196,24 +191,25 @@ namespace Opositonn
         {
             for (int User = 0; User <= 1; User++)
             {
-                if (Precisao[User] < (Ataque[User, 5] == 2 ? 100 : 80)) Precisao[User] = Math.Min(Ataque[User, 5] == 2 ? 100 : 80, Precisao[User] + 5);
-                else if (Precisao[User] > (Ataque[User, 5] == 2 ? 100 : 80)) Precisao[User] = Math.Max(Ataque[User, 5] == 2 ? 100 : 80, Precisao[User] - 5);
-            }
-
-            for (int User = 0; User <= 1; User++)
-                for (int Ataque = 0; Ataque <= 4; Ataque++) 
+                if (Precisao[User] < (Build[User, 5] == 23 ? 100 : 80)) Precisao[User] = Math.Min(Build[User, 5] == 23 ? 100 : 80, Precisao[User] + 5);
+                else if (Precisao[User] > (Build[User, 5] == 23 ? 100 : 80)) Precisao[User] = Math.Max(Build[User, 5] == 23 ? 100 : 80, Precisao[User] - 5);
+            
+                for (int Ataque = 0; Ataque <= 4; Ataque++)
                     TempoEspera[User, Ataque] = Math.Max(0, TempoEspera[User, Ataque] - 1);
-
-            for (int User = 0; User <= 1; User++)
+                
                 TempoEscudo[User] = Math.Max(0, TempoEscudo[User] - 1);
 
-            for (int User = 0; User <= 1; User++)
-                if (TempoDecaimento[User] > 0) 
-                { 
+                if (TempoDecaimento[User] > 0)
+                {
                     Saude[User] = Math.Max(0, Saude[User] - 8);
                     TempoDecaimento[User]--;
-                    Atualizar();
                 }
+
+                if (Build[User, 5 - User] == 25)
+                    Saude[User] = Math.Min(200, Saude[User] + 8);
+
+                Atualizar();
+            }
         }
 
         private void Usuario(int Ataque)
@@ -274,7 +270,7 @@ namespace Opositonn
             if (Saude[1] < 180) Poder[1] = Math.Min(Poder[1] + 1, 4);
 
             int _escolha = rng.Next(0, Poder[1]);
-            int Escolha = Ataque[1, _escolha];
+            int Escolha = Build[1, _escolha];
 
             if (!Condicional(1, Escolha)) return;
 
@@ -282,8 +278,9 @@ namespace Opositonn
             {
                 default:
                     Investir(1); break;
-                case 6:
-                    Bloquear(1); break;
+                case 6 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 1] == 0:
+                    Bloquear(1);
+                    break;
                 case 7:
                     Engajar(1); break;
                 case 8:
@@ -302,7 +299,7 @@ namespace Opositonn
                     Roubar(1); break;
                 case 15:
                     Infectar(1); break;
-                case 16:
+                case 16 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 2] == 0:
                     Prender(1); break;
                 case 17:
                     Flagelar(1); break;
@@ -320,7 +317,7 @@ namespace Opositonn
         private int CalcularDano(int User, double Dano)
         {
             if (TempoEscudo[1 - User] > 0) Dano *= 0.5;
-            if (Ataque[User, 5 - User] == 21) Dano *= 1.25;
+            if (Build[User, 5 - User] == 22) Dano *= 1.25;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - (int)Dano);
 
@@ -350,7 +347,7 @@ namespace Opositonn
 
         private void Canalizar(int User)
         {
-            Poder[User] = Math.Min(Ataque[User, 5] == 24 ? 4 : 3, Poder[User] + 1);
+            Poder[User] = Math.Min((Build[User, 5] == 26) ? 4 : 3, Poder[User] + 1);
 
             MessageBox.Show("Usou Canalizar.", "Canalizar", MessageBoxButtons.OK);
         }
@@ -403,7 +400,7 @@ namespace Opositonn
 
         private void Infectar(int User)
         {
-            TempoDecaimento[1 - User] += (Ataque[1 - User, 5] == 23) ? 0 : 4;
+            TempoDecaimento[1 - User] += (Build[1 - User, 5] == 24) ? 0 : 4;
 
             MessageBox.Show("Usou Infectar.", "Infectar", MessageBoxButtons.OK);
         }
@@ -414,7 +411,7 @@ namespace Opositonn
 
             CalcularDano(User, 28);
 
-            TempoDecaimento[1 - User] += (Ataque[1 - User, 5] == 3) ? 0 : 4;
+            TempoDecaimento[1 - User] += (Build[1 - User, 5] == 24) ? 0 : 4;
 
             MessageBox.Show("Usou Ultrajar.", "Ultrajar", MessageBoxButtons.OK);
         }
@@ -445,7 +442,7 @@ namespace Opositonn
 
             CalcularDano(User, 40);
 
-            TempoAtordoamento[1 - User] = Ataque[1 - User, 5] == 23 ? 0 : 1;
+            TempoAtordoamento[1 - User] = Build[1 - User, 5] == 24 ? 0 : 1;
 
             MessageBox.Show("Usou Atordoar.", "Atordoar", MessageBoxButtons.OK);
         }
@@ -472,9 +469,9 @@ namespace Opositonn
 
         private void Bloquear(int User)
         {
-            if (User == 0) Poder[User] = Math.Min(Ataque[User, 5] == 24 ? 4 : 3, Poder[User] + 1);
+            if (User == 0) Poder[User] = Math.Min((Build[User, 5] == 26) ? 4 : 3, Poder[User] + 1);
 
-            TempoAtordoamento[1 - User] = Ataque[1 - User, 5] == 23 ? 0 : 1;
+            TempoAtordoamento[1 - User] = Build[1 - User, 5] == 24 ? 0 : 1;
 
             TempoEspera[User, 1] = 3;
 
@@ -483,7 +480,7 @@ namespace Opositonn
 
         private void Sacrificar(int User)
         {
-            Poder[User] = Math.Min(Ataque[User, 5] == 24 ? 4 : 3, Poder[User] + Ataque[User, 5] == 4 ? 4 : 3);
+            Poder[User] = Math.Min((Build[User, 5] == 26) ? 4 : 3, Poder[User] + Build[User, 5] == 26 ? 4 : 3);
 
             Saude[0] = Math.Max(0, Saude[0] - 16);
 
@@ -494,7 +491,7 @@ namespace Opositonn
 
         private void Prender(int User)
         {
-            if (Ataque[1 - User, 5] != 23) TempoRecursivo[1 - User] = 4;
+            if (Build[1 - User, 5] != 24) TempoRecursivo[1 - User] = 4;
 
             TempoEspera[User, 2] = 7;
 
@@ -528,7 +525,7 @@ namespace Opositonn
 
         private void btnCanalizar_Click(object sender, EventArgs e)
         {
-            if (Poder[0] == (Ataque[0, 5] == 21 ? 4 : 3)) return;
+            if (Poder[0] == (Build[0, 5] == 26 ? 4 : 3)) return;
 
             Usuario(4);
 
@@ -646,7 +643,26 @@ namespace Opositonn
 
         private void btnReanimar_Click(object sender, EventArgs e)
         {
-            Condicional(0, 0);
+            if (TempoRecursivo[0] > 0)
+            {
+                if (rng.Next(0, 5) > TempoRecursivo[0] || TempoRecursivo[0] == 1)
+                {
+                    TempoRecursivo[0] = 0;
+                    MessageBox.Show("Está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                    MessageBox.Show("Atordoamento Recursivo acabou.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    TempoRecursivo[0]--;
+                    MessageBox.Show("Está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                }
+            }
+
+            if (TempoAtordoamento[0] > 0)
+            {
+                TempoAtordoamento[0]--;
+                MessageBox.Show("Está atordoado.", "Atordoamento", MessageBoxButtons.OK);
+            }
 
             Opositor();
 
@@ -659,46 +675,6 @@ namespace Opositonn
             {
                 this.Close();
             }
-        }
-
-        private void chkDebug_CheckedChanged(object sender, EventArgs e)
-        {
-            grpDebug.Visible = chkDebug.Checked;
-        }
-
-        private void numAtaqueOpositor_ValueChanged(object sender, EventArgs e)
-        {
-            Ataque[1, 0] = (int)numAtaqueOpositor.Value;
-        }
-
-        private void numAtaqueOpositorI_ValueChanged(object sender, EventArgs e)
-        {
-            Ataque[1, 1] = (int)numAtaqueOpositorI.Value;
-        }
-
-        private void numAtaqueOpositorII_ValueChanged(object sender, EventArgs e)
-        {
-            Ataque[1, 2] = (int)numAtaqueOpositorII.Value;
-        }
-
-        private void numAtaqueOpositorIII_ValueChanged(object sender, EventArgs e)
-        {
-            Ataque[1, 3] = (int)numAtaqueOpositorIII.Value;
-        }
-
-        private void numPrecisaoUsuario_ValueChanged(object sender, EventArgs e)
-        {
-            Precisao[0] = (int)numPrecisaoUsuario.Value;
-        }
-
-        private void numPrecisaoOpositor_ValueChanged(object sender, EventArgs e)
-        {
-            Precisao[1] = (int)numPrecisaoOpositor.Value;
-        }
-
-        private void numEquipavelOpositor_ValueChanged(object sender, EventArgs e)
-        {
-            Ataque[1, 4] = (int)numEquipavelOpositor.Value;
         }
     }
 }
