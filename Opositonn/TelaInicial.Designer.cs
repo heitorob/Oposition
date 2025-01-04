@@ -32,22 +32,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnConfrontar = new System.Windows.Forms.Button();
             this.btnInventario = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblMaisLonga = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bodoni MT", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(199, 62);
+            this.label1.Location = new System.Drawing.Point(303, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 75);
+            this.label1.Size = new System.Drawing.Size(187, 75);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Use Os Verbos";
+            this.label1.Text = "U-Fig";
             // 
             // label2
             // 
@@ -88,44 +84,11 @@
             this.btnInventario.UseVisualStyleBackColor = true;
             this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lblMaisLonga);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(129, 260);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 56);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Placares de Líderes";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Bodoni MT", 8F);
-            this.label3.Location = new System.Drawing.Point(12, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Partida Mais Longa";
-            // 
-            // lblMaisLonga
-            // 
-            this.lblMaisLonga.AutoSize = true;
-            this.lblMaisLonga.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblMaisLonga.Font = new System.Drawing.Font("Bodoni MT", 10F);
-            this.lblMaisLonga.Location = new System.Drawing.Point(126, 24);
-            this.lblMaisLonga.Name = "lblMaisLonga";
-            this.lblMaisLonga.Size = new System.Drawing.Size(15, 20);
-            this.lblMaisLonga.TabIndex = 4;
-            this.lblMaisLonga.Text = "-";
-            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnInventario);
             this.Controls.Add(this.btnConfrontar);
             this.Controls.Add(this.label2);
@@ -137,8 +100,6 @@
             this.Text = "TelaInicial";
             this.Load += new System.EventHandler(this.TelaInicial_Load);
             this.Shown += new System.EventHandler(this.TelaInicial_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,8 +111,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnConfrontar;
         private System.Windows.Forms.Button btnInventario;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblMaisLonga;
     }
 }

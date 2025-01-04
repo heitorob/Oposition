@@ -19,7 +19,7 @@ namespace Opositonn
 
         public Random rng = new Random();
 
-        public static Dictionary<int, (string Nome, int Custo, int Precisao, Button[] Botoes)> Bglhs;
+        public static Dictionary<int, (string Nome, int Custo, int Precisao)> Bglhs;
 
         public TelaLuta()
         {
@@ -31,31 +31,31 @@ namespace Opositonn
             TempoEscudo = new int[2];
             TempoDecaimento = new int[2];
             TempoAtordoamento = new int[2];
-            TempoEspera = new int[2, 5];
+            TempoEspera = new int[2, 6];
             TempoRecursivo = new int[2];
 
-            Bglhs = new Dictionary<int, (string, int, int, Button[])>
+            Bglhs = new Dictionary<int, (string, int, int)>
             {                
-                { 1,  ("Investir",   0, 80,  new Button[] { btnInvestir,   null } ) },
-                { 2,  ("Assaltar",   0, 80,  new Button[] { btnAssaltar,   null } ) },
-                { 3,  ("---Enganar---",   0, 80,  new Button[] { provisorio,   null } ) },
-                { 4,  ("Canalizar",  0, 0,   new Button[] { btnCanalizar,  null } ) },
-                { 5,  ("Sacrificar", 0, 0,   new Button[] { btnSacrificar, null } ) },
-                { 6,  ("Bloquear",   0, 0,   new Button[] { btnBloquear,   null } ) },
-                { 7,  ("Engajar",    1, 0,   new Button[] { btnEngajar,    null } ) },
-                { 8,  ("Proteger",   1, 0,   new Button[] { btnProteger,   null } ) },
-                { 9,  ("Colidir",    1, 80,  new Button[] { btnColidir,    null } ) },
-                { 10, ("Perfurar",   1, 80,  new Button[] { btnPerfurar,   null } ) },
-                { 11, ("Ultrajar",   1, 60,  new Button[] { btnUltrajar,   null } ) },
-                { 12, ("Medicar",    2, 0,   new Button[] { btnMedicar,    null } ) },
-                { 13, ("Atordoar",   2, 60,  new Button[] { btnAtordoar,   null } ) },
-                { 14, ("Roubar",     2, 80,  new Button[] { btnRoubar,     null } ) },
-                { 15, ("Infectar",   2, 0,   new Button[] { btnInfectar,   null } ) },
-                { 16, ("Prender",    2, 0,   new Button[] { btnPrender,    null } ) },
-                { 17, ("Flagelar",   3, 80,  new Button[] { btnFlagelar,   null } ) },
-                { 18, ("Confundir",  3, 100, new Button[] { btnConfundir,  null } ) },
-                { 19, ("---Refletir---",  3, 100, new Button[] { provisorio,  null } ) },
-                { 20, ("Dilacerar",  3, 60,  new Button[] { btnDilacerar,  null } ) }
+                { 1,  ("Investir",   0, 80) },
+                { 2,  ("Assaltar",   0, 80) },
+                { 3,  ("Sufocar", 0, 80) },
+                { 4,  ("Canalizar", 0, 0) },
+                { 5,  ("Sacrificar", 0, 0) },
+                { 6,  ("Bloquear", 0, 0) },
+                { 7,  ("Engajar", 1, 0) },
+                { 8,  ("Proteger", 1, 0) },
+                { 9,  ("Colidir", 1, 80) },
+                { 10, ("Perfurar", 1, 80) },
+                { 11, ("Ultrajar", 1, 60) },
+                { 12, ("Medicar", 2, 0) },
+                { 13, ("Atordoar", 2, 60) },
+                { 14, ("Roubar", 2, 80) },
+                { 15, ("Infectar", 2, 0 ) },
+                { 16, ("Prender", 2, 0  ) },
+                { 17, ("Flagelar", 3, 80) },
+                { 18, ("Confundir", 3, 100) },
+                { 19, ("---Refletir---", 3, 100) },
+                { 20, ("Dilacerar", 3, 60) }
             };
         }
 
@@ -76,20 +76,15 @@ namespace Opositonn
                 TempoDecaimento[User] = 0;
                 TempoAtordoamento[User] = 0;
                 TempoRecursivo[User] = 0;
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     TempoEspera[User, i] = 0;
             }
 
-            for (int Botao = 1; Botao <= 20; Botao++)
-                Bglhs[Botao].Botoes[0].Visible = false;
-
-            foreach (int i in TelaInicial.d)
-                if (i > 0 && i < 21) Bglhs[i].Botoes[0].Visible = true;
-
-            for (int Botao = 1; Botao <= 20; Botao++)
-                for (int Alt = 0; Alt <= 1; Alt++)
-                    if (Bglhs[Botao].Botoes[Alt] != null)
-                        Bglhs[Botao].Botoes[Alt].Enabled = Poder[0] >= Bglhs[Botao].Custo;
+            btnAtaqueBasico.Text = Bglhs[Build[0, 0]].Nome;
+            btnEspecialLivre.Text = Bglhs[Build[0, 1]].Nome;
+            btnEspecialFraco.Text = Bglhs[Build[0, 2]].Nome;
+            btnEspecialMedio.Text = Bglhs[Build[0, 3]].Nome;
+            btnEspecialForte.Text = Bglhs[Build[0, 4]].Nome;
 
             Atualizar();
         }
@@ -124,10 +119,10 @@ namespace Opositonn
 
             btnReanimar.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
 
-            for (int Botao = 1; Botao <= 20; Botao++)
-                for (int Alt = 0; Alt <= 1; Alt++)
-                    if (Bglhs[Botao].Botoes[Alt] != null) 
-                        Bglhs[Botao].Botoes[Alt].Enabled = !btnReanimar.Visible && Poder[0] >= Bglhs[Botao].Custo;
+            btnEspecialLivre.Enabled = TempoEspera[0, 1] == 0 && TempoEspera[0, 2] == 0;
+            btnEspecialFraco.Enabled = Poder[0] > 0;
+            btnEspecialMedio.Enabled = Poder[0] >= Bglhs[Build[0, 3]].Custo;
+            btnEspecialForte.Enabled = Poder[0] >= Bglhs[Build[0, 4]].Custo;
 
             if (TestarFim()) return true;
 
@@ -174,7 +169,8 @@ namespace Opositonn
         {
             if (Saude[1] == 0)
             {
-                MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                
+                MessageBox.Show("Triunfo", "Triunfo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                TelaInicial.c += Build[1, 5] == 21 ? 30 : 20;
                 this.Close();
                 return true;
             }
@@ -194,7 +190,7 @@ namespace Opositonn
                 if (Precisao[User] < (Build[User, 5] == 23 ? 100 : 80)) Precisao[User] = Math.Min(Build[User, 5] == 23 ? 100 : 80, Precisao[User] + 5);
                 else if (Precisao[User] > (Build[User, 5] == 23 ? 100 : 80)) Precisao[User] = Math.Max(Build[User, 5] == 23 ? 100 : 80, Precisao[User] - 5);
             
-                for (int Ataque = 0; Ataque <= 4; Ataque++)
+                for (int Ataque = 0; Ataque < 6; Ataque++)
                     TempoEspera[User, Ataque] = Math.Max(0, TempoEspera[User, Ataque] - 1);
                 
                 TempoEscudo[User] = Math.Max(0, TempoEscudo[User] - 1);
@@ -223,7 +219,7 @@ namespace Opositonn
                 case 2:
                     Assaltar(0); break;
                 case 3:
-                    break;
+                    Sufocar(0); break;
                 case 4:
                     Canalizar(0); break;
                 case 5:
@@ -278,7 +274,7 @@ namespace Opositonn
             {
                 default:
                     Investir(1); break;
-                case 6 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 1] == 0:
+                case 6 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 2] == 0:
                     Bloquear(1);
                     break;
                 case 7:
@@ -299,7 +295,7 @@ namespace Opositonn
                     Roubar(1); break;
                 case 15:
                     Infectar(1); break;
-                case 16 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 2] == 0:
+                case 16 when TempoAtordoamento[0] == 0 && TempoRecursivo[0] == 0 && TempoEspera[1, 3] == 0:
                     Prender(1); break;
                 case 17:
                     Flagelar(1); break;
@@ -473,7 +469,7 @@ namespace Opositonn
 
             TempoAtordoamento[1 - User] = Build[1 - User, 5] == 24 ? 0 : 1;
 
-            TempoEspera[User, 1] = 3;
+            TempoEspera[User, 2] = 3;
 
             MessageBox.Show("Usou Bloquear.", "Bloquear", MessageBoxButtons.OK);
         }
@@ -484,7 +480,7 @@ namespace Opositonn
 
             Saude[0] = Math.Max(0, Saude[0] - 16);
 
-            TempoEspera[User, 0] = 5;
+            TempoEspera[User, 1] = 5;
 
             MessageBox.Show("Usou Sacrificar.", "Sacrificar", MessageBoxButtons.OK);
         }
@@ -493,7 +489,7 @@ namespace Opositonn
         {
             if (Build[1 - User, 5] != 24) TempoRecursivo[1 - User] = 4;
 
-            TempoEspera[User, 2] = 7;
+            TempoEspera[User, 3] = 7;
 
             MessageBox.Show("Usou Prender.", "Prender", MessageBoxButtons.OK);
         }
@@ -509,134 +505,50 @@ namespace Opositonn
             MessageBox.Show("Usou Assaltar.", "Assaltar", MessageBoxButtons.OK);
         }
 
-        private void btnInvestir_Click(object sender, EventArgs e)
+        private void Sufocar(int User)
         {
-            Usuario(1);
+            if (!CalcularAcerto(User, 3)) return;
+
+            CalcularDano(User, 20 - 4 * TempoEspera[User, 1]);
+
+            TempoEspera[User, 1] = 3;
+
+            MessageBox.Show("Usou Sufocar.", "Sufocar", MessageBoxButtons.OK);
+        }
+
+        private void btnAtaqueBasico_Click(object sender, EventArgs e)
+        {
+            Usuario(Build[0, 0]);
 
             Rodada();
         }
 
-        private void btnAssaltar_Click(object sender, EventArgs e)
-        {
-            Usuario(2);
-
-            Rodada();
-        }
-
-        private void btnCanalizar_Click(object sender, EventArgs e)
+        private void btnEspecialLivre_Click(object sender, EventArgs e)
         {
             if (Poder[0] == (Build[0, 5] == 26 ? 4 : 3)) return;
 
-            Usuario(4);
+            Usuario(Build[0, 1]);
 
             Rodada();
         }
 
-        private void btnSacrificar_Click(object sender, EventArgs e)
+        private void btnEspecialFraco_Click(object sender, EventArgs e)
         {
-            if (TempoEspera[0, 0] > 0 || Poder[0] > 0) return;
-
-            Usuario(5);
+            Usuario(Build[0, 2]);
 
             Rodada();
         }
 
-        private void btnBloquear_Click(object sender, EventArgs e)
+        private void btnEspecialMedio_Click(object sender, EventArgs e)
         {
-            if (TempoEspera[0, 1] > 0) return;
-
-            Usuario(6);
+            Usuario(Build[0, 3]);
 
             Rodada();
         }
 
-        private void btnEngajar_Click(object sender, EventArgs e)
+        private void btnEspecialForte_Click(object sender, EventArgs e)
         {
-            Usuario(7);
-
-            Rodada();
-        }
-
-        private void btnProteger_Click(object sender, EventArgs e)
-        {
-            Usuario(8);
-
-            Rodada();
-        }
-
-        private void btnColidir_Click(object sender, EventArgs e)
-        {
-            Usuario(9);
-
-            Rodada();
-        }
-
-        private void btnPerfurar_Click(object sender, EventArgs e)
-        {
-            Usuario(10);
-
-            Rodada();
-        }
-
-        private void btnUltrajar_Click(object sender, EventArgs e)
-        {
-            Usuario(11);
-
-            Rodada();
-        }
-
-        private void btnMedicar_Click(object sender, EventArgs e)
-        {
-            Usuario(12);
-
-            Rodada();
-        }
-
-        private void btnAtordoar_Click(object sender, EventArgs e)
-        {
-            Usuario(13);
-
-            Rodada();
-        }
-
-        private void btnRoubar_Click(object sender, EventArgs e)
-        {
-            Usuario(14);
-
-            Rodada();
-        }
-
-        private void btnInfectar_Click(object sender, EventArgs e)
-        {
-            Usuario(15);
-
-            Rodada();
-        }
-
-        private void btnPrender_Click(object sender, EventArgs e)
-        {
-            Usuario(16);
-
-            Rodada();
-        }
-
-        private void btnFlagelar_Click(object sender, EventArgs e)
-        {
-            Usuario(17);
-
-            Rodada();
-        }
-
-        private void btnConfundir_Click(object sender, EventArgs e)
-        {
-            Usuario(18);
-
-            Rodada();
-        }
-
-        private void btnDilacerar_Click(object sender, EventArgs e)
-        {
-            Usuario(20);
+            Usuario(Build[0, 4]);
 
             Rodada();
         }

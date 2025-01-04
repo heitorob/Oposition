@@ -13,6 +13,7 @@ namespace Opositonn
     public partial class TelaInicial : Form
     {
         public static int[] d { get; set; }
+        public static int c { get; set; }
 
         TelaInventario I = new TelaInventario();
         TelaLuta L = new TelaLuta();
@@ -31,7 +32,7 @@ namespace Opositonn
             d[2] = 7;
             d[3] = 12;
             d[4] = 17;
-            d[5] = 0;
+            d[5] = 21;
         }
 
         private void btnConfrontar_Click(object sender, EventArgs e)

@@ -22,7 +22,7 @@ namespace Opositonn
             {
                 { 1,  ("Investir", btnInvestir) },
                 { 2,  ("Assaltar", btnAssaltar) },
-                { 3,  ("---Enganar---", btnEnganar) },
+                { 3,  ("Sufocar", btnSufocar) },
                 { 4,  ("Canalizar", btnCanalizar) },
                 { 5,  ("Sacrificar", btnSacrificar) },
                 { 6,  ("Bloquear", btnBloquear) },
@@ -40,7 +40,7 @@ namespace Opositonn
                 { 18, ("Confundir", btnConfundir) },
                 { 19, ("---Refletir---", btnRefletir) },
                 { 20, ("Dilacerar", btnDilacerar) },
-                { 21, (string.Empty, btnEquipavel) },
+                { 21, (string.Empty, btnEquipavelDinheiro) },
                 { 22, (string.Empty, btnEquipavelDano) },
                 { 23, (string.Empty, btnEquipavelPrecisao) },
                 { 24, (string.Empty, btnEquipavelImunidade) },
@@ -79,6 +79,11 @@ namespace Opositonn
         private void btnAssaltar_Click(object sender, EventArgs e)
         {
             SelecionarAtaque(1, 3, 2);
+        }
+
+        private void btnSufocar_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(1, 3, 3);
         }
 
         private void btnCanalizar_Click(object sender, EventArgs e)
@@ -161,28 +166,33 @@ namespace Opositonn
             SelecionarAtaque(17, 20, 20);
         }
 
+        private void btnEquipavelDinheiro_Click(object sender, EventArgs e)
+        {
+            SelecionarAtaque(21, 26, 21);
+        }
+
         private void btnEquipavelDano_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(22, 26, 22);
+            SelecionarAtaque(21, 26, 22);
         }
 
         private void btnEquipavelPrecisao_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(22, 26, 23);
+            SelecionarAtaque(21, 26, 23);
         }
 
         private void btnEquipavelImunidade_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(22, 26, 24);
+            SelecionarAtaque(21, 26, 24);
         }
         private void btnEquipavelProtecao_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(22, 26, 25);
+            SelecionarAtaque(21, 26, 25);
         }
 
         private void btnEquipavelPoder_Click(object sender, EventArgs e)
         {
-            SelecionarAtaque(22, 26, 26);
+            SelecionarAtaque(21, 26, 26);
         }
 
         private void AindaNaoFunciona(object sender, EventArgs e)
@@ -195,6 +205,8 @@ namespace Opositonn
         {
             foreach (int i in TelaInicial.d)
                 if (i > 0) Ataques[i].Botoes.Enabled = false;
+
+            lblDinheiro.Text = TelaInicial.c.ToString();
         }
     }
 }
