@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Opositonn
@@ -19,7 +14,7 @@ namespace Opositonn
 
         public Random rng = new Random();
 
-        public static Dictionary<int, (string Nome, int Custo, int Precisao)> Bglhs;
+        public static Dictionary<int, (string Nome, int Custo, int Precisao)> Movimentos;
 
         public TelaLuta()
         {
@@ -34,7 +29,7 @@ namespace Opositonn
             TempoEspera = new int[2, 6];
             TempoRecursivo = new int[2];
 
-            Bglhs = new Dictionary<int, (string, int, int)>
+            Movimentos = new Dictionary<int, (string, int, int)>
             {                
                 { 1,  ("Investir",   0, 80) },
                 { 2,  ("Assaltar",   0, 80) },
@@ -80,16 +75,16 @@ namespace Opositonn
                     TempoEspera[User, i] = 0;
             }
 
-            btnAtaqueBasico.Text = Bglhs[Build[0, 0]].Nome;
-            btnEspecialLivre.Text = Bglhs[Build[0, 1]].Nome;
-            btnEspecialFraco.Text = Bglhs[Build[0, 2]].Nome;
-            btnEspecialMedio.Text = Bglhs[Build[0, 3]].Nome;
-            btnEspecialForte.Text = Bglhs[Build[0, 4]].Nome;
+            btnAtaqueBasico.Text = Movimentos[Build[0, 0]].Nome;
+            btnEspecialLivre.Text = Movimentos[Build[0, 1]].Nome;
+            btnEspecialFraco.Text = Movimentos[Build[0, 2]].Nome;
+            btnEspecialMedio.Text = Movimentos[Build[0, 3]].Nome;
+            btnEspecialForte.Text = Movimentos[Build[0, 4]].Nome;
 
             Atualizar();
         }
 
-        private bool Atualizar()
+        private void Atualizar()
         {
             lblSaudeUsuario.Text = Saude[0].ToString();
             lblSaudeOpositor.Text = Saude[1].ToString();
@@ -121,12 +116,8 @@ namespace Opositonn
 
             btnEspecialLivre.Enabled = TempoEspera[0, 1] == 0 && TempoEspera[0, 2] == 0;
             btnEspecialFraco.Enabled = Poder[0] > 0;
-            btnEspecialMedio.Enabled = Poder[0] >= Bglhs[Build[0, 3]].Custo;
-            btnEspecialForte.Enabled = Poder[0] >= Bglhs[Build[0, 4]].Custo;
-
-            if (TestarFim()) return true;
-
-            return false;
+            btnEspecialMedio.Enabled = Poder[0] >= Movimentos[Build[0, 3]].Custo;
+            btnEspecialForte.Enabled = Poder[0] >= Movimentos[Build[0, 4]].Custo;
         }
 
         private bool Condicional(int User, int Ataque)
@@ -136,13 +127,13 @@ namespace Opositonn
                 if (rng.Next(0, 5) > TempoRecursivo[User] || TempoRecursivo[User] == 1)
                 { 
                     TempoRecursivo[User] = 0;
-                    MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                    MessageBox.Show("Tentou usar " + Movimentos[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                     MessageBox.Show("Atordoamento Recursivo acabou.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 else
                 {
                     TempoRecursivo[User]--;
-                    MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
+                    MessageBox.Show("Tentou usar " + Movimentos[Ataque].Nome + ", mas está atordoado.", "Atordoamento Recursivo", MessageBoxButtons.OK);
                 }
                 return false;
             }
@@ -150,16 +141,16 @@ namespace Opositonn
             if (TempoAtordoamento[User] > 0)
             {
                 TempoAtordoamento[User]--;
-                MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas está atordoado.", "Atordoamento", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar " + Movimentos[Ataque].Nome + ", mas está atordoado.", "Atordoamento", MessageBoxButtons.OK);
                 return false;
             }
 
-            if (Poder[User] < Bglhs[Ataque].Custo)
+            if (Poder[User] < Movimentos[Ataque].Custo)
             {
-                MessageBox.Show("Não acumulou Poderes suficientes.\nPrecisa de " + Bglhs[Ataque].Custo + ".", "Sem Poderes Suficientes.", MessageBoxButtons.OK);
+                MessageBox.Show("Não acumulou Poderes suficientes.\nPrecisa de " + Movimentos[Ataque].Custo + ".", "Sem Poderes Suficientes.", MessageBoxButtons.OK);
                 return false;
             }
-            else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Bglhs[Ataque].Custo);
+            else if (User == 0) Poder[User] = Math.Max(0, Poder[User] - Movimentos[Ataque].Custo);
             else if (Ataque > 5) Poder[User] = 0;
 
             return true;
@@ -256,7 +247,8 @@ namespace Opositonn
                     Dilacerar(0); break;
             }
 
-            if (Atualizar()) return;
+            Atualizar();
+            if (TestarFim()) return;
 
             Opositor();
         }
@@ -308,6 +300,7 @@ namespace Opositonn
             }
 
             Atualizar();
+            TestarFim();
         }
 
         private int CalcularDano(int User, double Dano)
@@ -322,9 +315,9 @@ namespace Opositonn
 
         private bool CalcularAcerto(int User, int Ataque)
         {
-            if (rng.Next(0, 100) > Precisao[User] + Bglhs[Ataque].Precisao - 80)
+            if (rng.Next(0, 100) > Precisao[User] + Movimentos[Ataque].Precisao - 80)
             {
-                MessageBox.Show("Tentou usar " + Bglhs[Ataque].Nome + ", mas errou.", "Errou", MessageBoxButtons.OK);
+                MessageBox.Show("Tentou usar " + Movimentos[Ataque].Nome + ", mas errou.", "Errou", MessageBoxButtons.OK);
                 Atualizar();
                 return false;
             }
@@ -509,9 +502,9 @@ namespace Opositonn
         {
             if (!CalcularAcerto(User, 3)) return;
 
-            CalcularDano(User, 20 - 4 * TempoEspera[User, 1]);
+            CalcularDano(User, 20 - 4 * TempoEspera[User, 0]);
 
-            TempoEspera[User, 1] = 3;
+            TempoEspera[User, 0] = 3;
 
             MessageBox.Show("Usou Sufocar.", "Sufocar", MessageBoxButtons.OK);
         }

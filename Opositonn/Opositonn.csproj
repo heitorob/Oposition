@@ -101,5 +101,14 @@
   <ItemGroup>
     <None Include="Resources\placeholder icones.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icone-escudo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icone-decaimento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icone-atordoamento.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

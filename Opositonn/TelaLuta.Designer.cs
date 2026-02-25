@@ -37,12 +37,6 @@
             this.btnEspecialMedio = new System.Windows.Forms.Button();
             this.btnEspecialForte = new System.Windows.Forms.Button();
             this.btnEspecialFraco = new System.Windows.Forms.Button();
-            this.imgEscudoUsuario = new System.Windows.Forms.PictureBox();
-            this.imgDecaimentoUsuario = new System.Windows.Forms.PictureBox();
-            this.imgEscudoOpositor = new System.Windows.Forms.PictureBox();
-            this.imgDecaimentoOpositor = new System.Windows.Forms.PictureBox();
-            this.imgAtordoamentoUsuario = new System.Windows.Forms.PictureBox();
-            this.imgAtordoamentoOpositor = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnReanimar = new System.Windows.Forms.Button();
@@ -50,12 +44,18 @@
             this.prgOpositor = new System.Windows.Forms.ProgressBar();
             this.btnFugir = new System.Windows.Forms.Button();
             this.provisorio = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
+            this.imgAtordoamentoOpositor = new System.Windows.Forms.PictureBox();
+            this.imgDecaimentoOpositor = new System.Windows.Forms.PictureBox();
+            this.imgAtordoamentoUsuario = new System.Windows.Forms.PictureBox();
+            this.imgEscudoOpositor = new System.Windows.Forms.PictureBox();
+            this.imgDecaimentoUsuario = new System.Windows.Forms.PictureBox();
+            this.imgEscudoUsuario = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSaudeUsuario
@@ -149,72 +149,6 @@
             this.btnEspecialFraco.UseVisualStyleBackColor = true;
             this.btnEspecialFraco.Click += new System.EventHandler(this.btnEspecialFraco_Click);
             // 
-            // imgEscudoUsuario
-            // 
-            this.imgEscudoUsuario.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgEscudoUsuario.Location = new System.Drawing.Point(365, 200);
-            this.imgEscudoUsuario.Name = "imgEscudoUsuario";
-            this.imgEscudoUsuario.Size = new System.Drawing.Size(20, 20);
-            this.imgEscudoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgEscudoUsuario.TabIndex = 4;
-            this.imgEscudoUsuario.TabStop = false;
-            this.imgEscudoUsuario.Visible = false;
-            // 
-            // imgDecaimentoUsuario
-            // 
-            this.imgDecaimentoUsuario.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgDecaimentoUsuario.Location = new System.Drawing.Point(391, 200);
-            this.imgDecaimentoUsuario.Name = "imgDecaimentoUsuario";
-            this.imgDecaimentoUsuario.Size = new System.Drawing.Size(20, 20);
-            this.imgDecaimentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgDecaimentoUsuario.TabIndex = 4;
-            this.imgDecaimentoUsuario.TabStop = false;
-            this.imgDecaimentoUsuario.Visible = false;
-            // 
-            // imgEscudoOpositor
-            // 
-            this.imgEscudoOpositor.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgEscudoOpositor.Location = new System.Drawing.Point(365, 79);
-            this.imgEscudoOpositor.Name = "imgEscudoOpositor";
-            this.imgEscudoOpositor.Size = new System.Drawing.Size(20, 20);
-            this.imgEscudoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgEscudoOpositor.TabIndex = 4;
-            this.imgEscudoOpositor.TabStop = false;
-            this.imgEscudoOpositor.Visible = false;
-            // 
-            // imgDecaimentoOpositor
-            // 
-            this.imgDecaimentoOpositor.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgDecaimentoOpositor.Location = new System.Drawing.Point(391, 79);
-            this.imgDecaimentoOpositor.Name = "imgDecaimentoOpositor";
-            this.imgDecaimentoOpositor.Size = new System.Drawing.Size(20, 20);
-            this.imgDecaimentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgDecaimentoOpositor.TabIndex = 4;
-            this.imgDecaimentoOpositor.TabStop = false;
-            this.imgDecaimentoOpositor.Visible = false;
-            // 
-            // imgAtordoamentoUsuario
-            // 
-            this.imgAtordoamentoUsuario.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgAtordoamentoUsuario.Location = new System.Drawing.Point(416, 200);
-            this.imgAtordoamentoUsuario.Name = "imgAtordoamentoUsuario";
-            this.imgAtordoamentoUsuario.Size = new System.Drawing.Size(20, 20);
-            this.imgAtordoamentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgAtordoamentoUsuario.TabIndex = 4;
-            this.imgAtordoamentoUsuario.TabStop = false;
-            this.imgAtordoamentoUsuario.Visible = false;
-            // 
-            // imgAtordoamentoOpositor
-            // 
-            this.imgAtordoamentoOpositor.Image = global::Opositonn.Properties.Resources.placeholder_icones;
-            this.imgAtordoamentoOpositor.Location = new System.Drawing.Point(416, 79);
-            this.imgAtordoamentoOpositor.Name = "imgAtordoamentoOpositor";
-            this.imgAtordoamentoOpositor.Size = new System.Drawing.Size(20, 20);
-            this.imgAtordoamentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgAtordoamentoOpositor.TabIndex = 4;
-            this.imgAtordoamentoOpositor.TabStop = false;
-            this.imgAtordoamentoOpositor.Visible = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -288,6 +222,72 @@
             this.provisorio.UseWaitCursor = true;
             this.provisorio.Visible = false;
             // 
+            // imgAtordoamentoOpositor
+            // 
+            this.imgAtordoamentoOpositor.Image = global::Opositonn.Properties.Resources.icone_atordoamento;
+            this.imgAtordoamentoOpositor.Location = new System.Drawing.Point(416, 79);
+            this.imgAtordoamentoOpositor.Name = "imgAtordoamentoOpositor";
+            this.imgAtordoamentoOpositor.Size = new System.Drawing.Size(20, 20);
+            this.imgAtordoamentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgAtordoamentoOpositor.TabIndex = 4;
+            this.imgAtordoamentoOpositor.TabStop = false;
+            this.imgAtordoamentoOpositor.Visible = false;
+            // 
+            // imgDecaimentoOpositor
+            // 
+            this.imgDecaimentoOpositor.Image = global::Opositonn.Properties.Resources.icone_decaimento;
+            this.imgDecaimentoOpositor.Location = new System.Drawing.Point(391, 79);
+            this.imgDecaimentoOpositor.Name = "imgDecaimentoOpositor";
+            this.imgDecaimentoOpositor.Size = new System.Drawing.Size(20, 20);
+            this.imgDecaimentoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDecaimentoOpositor.TabIndex = 4;
+            this.imgDecaimentoOpositor.TabStop = false;
+            this.imgDecaimentoOpositor.Visible = false;
+            // 
+            // imgAtordoamentoUsuario
+            // 
+            this.imgAtordoamentoUsuario.Image = global::Opositonn.Properties.Resources.icone_atordoamento;
+            this.imgAtordoamentoUsuario.Location = new System.Drawing.Point(416, 200);
+            this.imgAtordoamentoUsuario.Name = "imgAtordoamentoUsuario";
+            this.imgAtordoamentoUsuario.Size = new System.Drawing.Size(20, 20);
+            this.imgAtordoamentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgAtordoamentoUsuario.TabIndex = 4;
+            this.imgAtordoamentoUsuario.TabStop = false;
+            this.imgAtordoamentoUsuario.Visible = false;
+            // 
+            // imgEscudoOpositor
+            // 
+            this.imgEscudoOpositor.Image = global::Opositonn.Properties.Resources.icone_escudo;
+            this.imgEscudoOpositor.Location = new System.Drawing.Point(365, 79);
+            this.imgEscudoOpositor.Name = "imgEscudoOpositor";
+            this.imgEscudoOpositor.Size = new System.Drawing.Size(20, 20);
+            this.imgEscudoOpositor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEscudoOpositor.TabIndex = 4;
+            this.imgEscudoOpositor.TabStop = false;
+            this.imgEscudoOpositor.Visible = false;
+            // 
+            // imgDecaimentoUsuario
+            // 
+            this.imgDecaimentoUsuario.Image = global::Opositonn.Properties.Resources.icone_decaimento;
+            this.imgDecaimentoUsuario.Location = new System.Drawing.Point(391, 200);
+            this.imgDecaimentoUsuario.Name = "imgDecaimentoUsuario";
+            this.imgDecaimentoUsuario.Size = new System.Drawing.Size(20, 20);
+            this.imgDecaimentoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDecaimentoUsuario.TabIndex = 4;
+            this.imgDecaimentoUsuario.TabStop = false;
+            this.imgDecaimentoUsuario.Visible = false;
+            // 
+            // imgEscudoUsuario
+            // 
+            this.imgEscudoUsuario.Image = global::Opositonn.Properties.Resources.icone_escudo;
+            this.imgEscudoUsuario.Location = new System.Drawing.Point(365, 200);
+            this.imgEscudoUsuario.Name = "imgEscudoUsuario";
+            this.imgEscudoUsuario.Size = new System.Drawing.Size(20, 20);
+            this.imgEscudoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgEscudoUsuario.TabIndex = 4;
+            this.imgEscudoUsuario.TabStop = false;
+            this.imgEscudoUsuario.Visible = false;
+            // 
             // TelaLuta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -322,12 +322,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contra o Opositor";
             this.Load += new System.EventHandler(this.TelaLuta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoOpositor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgAtordoamentoOpositor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoOpositor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDecaimentoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEscudoUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

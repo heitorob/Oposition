@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Opositonn
 {
     public partial class TelaInventario : Form
     {
-        Dictionary<int, (string Nome, Button Botoes)> Ataques;
+        Dictionary<int, (string Nome, Button Botoes)> Gizmos;
 
         public TelaInventario()
         {
             InitializeComponent();
 
-            Ataques = new Dictionary<int, (string, Button)>
+            Gizmos = new Dictionary<int, (string, Button)>
             {
                 { 1,  ("Investir", btnInvestir) },
                 { 2,  ("Assaltar", btnAssaltar) },
@@ -55,7 +49,7 @@ namespace Opositonn
 
             for (int i = 1; i <= 26; i++)
             {
-                if (!Ataques[i].Botoes.Enabled)
+                if (!Gizmos[i].Botoes.Enabled)
                 {
                     TelaInicial.d[n] = i;
                     n++;
@@ -68,7 +62,7 @@ namespace Opositonn
         private void SelecionarAtaque(int m, int n, int s)
         {
             for (int i = m; i <= n; i++)
-                Ataques[i].Botoes.Enabled = i != s;
+                Gizmos[i].Botoes.Enabled = i != s;
         }
 
         private void btnInvestir_Click(object sender, EventArgs e)
@@ -204,7 +198,7 @@ namespace Opositonn
         private void TelaInventario_Load(object sender, EventArgs e)
         {
             foreach (int i in TelaInicial.d)
-                if (i > 0) Ataques[i].Botoes.Enabled = false;
+                if (i > 0) Gizmos[i].Botoes.Enabled = false;
 
             lblDinheiro.Text = TelaInicial.c.ToString();
         }
