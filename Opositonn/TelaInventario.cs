@@ -8,6 +8,8 @@ namespace Opositonn
     {
         Dictionary<int, (string Nome, Button Botoes)> Gizmos;
 
+        private static int SkylabEE = 0;
+
         public TelaInventario()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Opositonn
                 { 16, ("Prender", btnPrender) },
                 { 17, ("Flagelar", btnFlagelar) },
                 { 18, ("Confundir", btnConfundir) },
-                { 19, ("---Refletir---", btnRefletir) },
+                { 19, ("Refletir", btnRefletir) },
                 { 20, ("Dilacerar", btnDilacerar) },
                 { 21, (string.Empty, btnEquipavelDinheiro) },
                 { 22, (string.Empty, btnEquipavelDano) },
@@ -195,12 +197,61 @@ namespace Opositonn
                 "Controle Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void InfoPadrao(object sender, EventArgs e)
+        {
+            lblInfo.Text = "Passe o cursor sobre qualquer ícone para obter informações sobre o seu conteúdo.";
+            SkylabEE = 0;
+        }
+
+        private void lblInfo_MouseEnter(object sender, EventArgs e)
+        {
+            lblInfo.Text = "Aqui você pode equipar os Gizmos que deseja usar durante as batalhas. Cada Gizmo tem um efeito diferente, então escolha com sabedoria!";
+        }
+
         private void TelaInventario_Load(object sender, EventArgs e)
         {
             foreach (int i in TelaInicial.d)
                 if (i > 0) Gizmos[i].Botoes.Enabled = false;
 
             lblDinheiro.Text = TelaInicial.c.ToString();
+        }
+
+        private void lblInfo_Click(object sender, EventArgs e)
+        {
+            SkylabEE++;
+            string SkySong = "";
+
+            switch (SkylabEE)
+            {
+                case 1:
+                    SkySong = "Quer que eu cante uma música?";
+                    break;
+                case 2:
+                    SkySong = "Pois bem, vou cantar.";
+                    break;
+                case 3:
+                    SkySong = "Essa aqui se chama 'Seguem as Fotos', do disco 'Caos e Cosmos 1'. Ela é mais ou menos assim:";
+                    break;
+                case 4:
+                    SkySong = "🎶 O meu contracanto não possui mensagem, sentimento 🎶";
+                    break;
+                case 5:
+                    SkySong = "🎶 Uma história estranha, não tem nem epílogo, mal termina 🎶";
+                    break;
+                case 6:
+                    SkySong = "🎶 Folhas mortas, cão sem dono, rua deserta 🎶";
+                    break;
+                case 7:
+                    SkySong = "🎶 Tudo a palo seco, linha contra linha, sobrepostas 🎶";
+                    break;
+                case 8:
+                    SkySong = "🎶 Nova paisagem, um outro planeta, seguem as fotos: 🎶";
+                    break;
+                default:
+                    SkySong = "🎶 Pa-ra-pa-pah Pa-pa-pah🎶";
+                    break;
+            }
+            lblInfo.Text = SkySong;
         }
     }
 }

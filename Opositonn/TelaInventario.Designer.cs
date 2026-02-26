@@ -66,6 +66,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.lblDinheiro = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEngajar
@@ -387,7 +388,7 @@
             this.btnRefletir.Size = new System.Drawing.Size(65, 30);
             this.btnRefletir.TabIndex = 0;
             this.btnRefletir.TabStop = false;
-            this.btnRefletir.Text = "-Refletir-";
+            this.btnRefletir.Text = "Refletir";
             this.btnRefletir.UseVisualStyleBackColor = true;
             this.btnRefletir.Click += new System.EventHandler(this.AindaNaoFunciona);
             // 
@@ -558,12 +559,26 @@
             this.lblDinheiro.TabIndex = 17;
             this.lblDinheiro.Text = "0";
             // 
+            // lblInfo
+            // 
+            this.lblInfo.Cursor = System.Windows.Forms.Cursors.Help;
+            this.lblInfo.Location = new System.Drawing.Point(326, 340);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(380, 76);
+            this.lblInfo.TabIndex = 18;
+            this.lblInfo.Text = "Passe o cursor sobre qualquer ícone para obter informações sobre o seu conteúdo.";
+            this.lblInfo.UseVisualStyleBackColor = true;
+            this.lblInfo.Click += new System.EventHandler(this.lblInfo_Click);
+            this.lblInfo.MouseEnter += new System.EventHandler(this.lblInfo_MouseEnter);
+            this.lblInfo.MouseLeave += new System.EventHandler(this.InfoPadrao);
+            // 
             // TelaInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnInvestir);
             this.Controls.Add(this.btnSufocar);
             this.Controls.Add(this.btnAssaltar);
@@ -653,5 +668,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label lblDinheiro;
+        private System.Windows.Forms.Button lblInfo;
     }
 }

@@ -49,7 +49,7 @@ namespace Opositonn
                 { 16, ("Prender", 2, 0  ) },
                 { 17, ("Flagelar", 3, 80) },
                 { 18, ("Confundir", 3, 100) },
-                { 19, ("---Refletir---", 3, 100) },
+                { 19, ("Refletir", 3, 100) },
                 { 20, ("Dilacerar", 3, 60) }
             };
         }
@@ -106,13 +106,19 @@ namespace Opositonn
 
             imgAtordoamentoOpositor.Visible = TempoAtordoamento[1] > 0 || TempoRecursivo[1] > 0;
 
-            lblSaudeUsuario.ForeColor = Saude[0] <= 60 ? Color.Red : Color.Black;
+            lblSaudeUsuario.ForeColor = Build[0, 5] == 25 && Saude[0] > 100 ? Color.Olive : Saude[0] <= 60 ? Color.Red : Color.Black;
 
-            lblSaudeOpositor.ForeColor = Saude[1] <= 60 ? Color.Red : Color.Black;
+            lblSaudeOpositor.ForeColor = Build[1, 4] == 25 && Saude[1] > 100 ? Color.Olive : Saude[1] <= 60 ? Color.Red : Color.Black;
 
             lblPoder.ForeColor = Poder[0] == ((Build[0, 5] == 26) ? 4 : 3) ? Color.DarkTurquoise : Color.Black;
 
             btnReanimar.Visible = TempoAtordoamento[0] > 0 || TempoRecursivo[0] > 0;
+
+            btnAtaqueBasico.Visible = !btnReanimar.Visible;
+            btnEspecialLivre.Visible = !btnReanimar.Visible;
+            btnEspecialFraco.Visible = !btnReanimar.Visible;
+            btnEspecialMedio.Visible = !btnReanimar.Visible;
+            btnEspecialForte.Visible = !btnReanimar.Visible;
 
             btnEspecialLivre.Enabled = TempoEspera[0, 1] == 0 && TempoEspera[0, 2] == 0;
             btnEspecialFraco.Enabled = Poder[0] > 0;
@@ -191,9 +197,6 @@ namespace Opositonn
                     Saude[User] = Math.Max(0, Saude[User] - 8);
                     TempoDecaimento[User]--;
                 }
-
-                if (Build[User, 5 - User] == 25)
-                    Saude[User] = Math.Min(200, Saude[User] + 8);
 
                 Atualizar();
             }
