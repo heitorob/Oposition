@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Opositonn
@@ -7,8 +8,7 @@ namespace Opositonn
     public partial class TelaInventario : Form
     {
         Dictionary<int, (string Nome, Button Botoes)> Gizmos;
-
-        private static int SkylabEE = 0;
+        int InfoEgg = 0;
 
         public TelaInventario()
         {
@@ -51,7 +51,7 @@ namespace Opositonn
 
             for (int i = 1; i <= 26; i++)
             {
-                if (!Gizmos[i].Botoes.Enabled)
+                if (Gizmos[i].Botoes.ForeColor == Color.LightGray)
                 {
                     TelaInicial.d[n] = i;
                     n++;
@@ -64,7 +64,8 @@ namespace Opositonn
         private void SelecionarAtaque(int m, int n, int s)
         {
             for (int i = m; i <= n; i++)
-                Gizmos[i].Botoes.Enabled = i != s;
+                Gizmos[i].Botoes.ForeColor = Color.Black;
+            Gizmos[s].Botoes.ForeColor = Color.LightGray;
         }
 
         private void btnInvestir_Click(object sender, EventArgs e)
@@ -196,62 +197,109 @@ namespace Opositonn
             MessageBox.Show("Este controle ainda não está pronto. Aproveite os outros.", 
                 "Controle Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-        private void InfoPadrao(object sender, EventArgs e)
-        {
-            lblInfo.Text = "Passe o cursor sobre qualquer ícone para obter informações sobre o seu conteúdo.";
-            SkylabEE = 0;
-        }
-
-        private void lblInfo_MouseEnter(object sender, EventArgs e)
-        {
-            lblInfo.Text = "Aqui você pode equipar os Gizmos que deseja usar durante as batalhas. Cada Gizmo tem um efeito diferente, então escolha com sabedoria!";
-        }
-
         private void TelaInventario_Load(object sender, EventArgs e)
         {
             foreach (int i in TelaInicial.d)
-                if (i > 0) Gizmos[i].Botoes.Enabled = false;
+                if (i > 0) Gizmos[i].Botoes.ForeColor = Color.LightGray;
 
-            lblDinheiro.Text = TelaInicial.c.ToString();
+            lblDinheiro.Text = "$" + TelaInicial.c.ToString();
         }
 
-        private void lblInfo_Click(object sender, EventArgs e)
+        private void InfoPadrao(object sender, EventArgs e)
         {
-            SkylabEE++;
-            string SkySong = "";
+            lblInformar.Text = "Obtenha informações sobre cada ataque ou item pairando sobre algum botão com seu ponteiro.";
+        }
 
-            switch (SkylabEE)
+        private void lblInformar_Click(object sender, EventArgs e)
+        {
+            InfoEgg++;
+            string egg = "";
+            switch (InfoEgg)
             {
-                case 1:
-                    SkySong = "Quer que eu cante uma música?";
-                    break;
-                case 2:
-                    SkySong = "Pois bem, vou cantar.";
-                    break;
-                case 3:
-                    SkySong = "Essa aqui se chama 'Seguem as Fotos', do disco 'Caos e Cosmos 1'. Ela é mais ou menos assim:";
-                    break;
-                case 4:
-                    SkySong = "🎶 O meu contracanto não possui mensagem, sentimento 🎶";
-                    break;
-                case 5:
-                    SkySong = "🎶 Uma história estranha, não tem nem epílogo, mal termina 🎶";
-                    break;
-                case 6:
-                    SkySong = "🎶 Folhas mortas, cão sem dono, rua deserta 🎶";
-                    break;
-                case 7:
-                    SkySong = "🎶 Tudo a palo seco, linha contra linha, sobrepostas 🎶";
-                    break;
-                case 8:
-                    SkySong = "🎶 Nova paisagem, um outro planeta, seguem as fotos: 🎶";
-                    break;
-                default:
-                    SkySong = "🎶 Pa-ra-pa-pah Pa-pa-pah🎶";
-                    break;
+                default: egg = "🎶 VOCÊ É GAY!! 🎶"; break;
+                case 1: egg = "🎶 Atenção: 🎶"; break;
+                case 2: egg = "🎶 Mãozinha p'ra cima! 🎶"; break;
+                case 3: egg = "🎶 Mãozinha p'ra baixo! 🎶"; break;
+                case 4: egg = "🎶 Olha pr'um lado! 🎶"; break;
+                case 5: egg = "🎶 Olha pr'o outro! 🎶"; break;
+                case 6: egg = "🎶 Eu vou dizer... 🎶"; break;
+                case 7: egg = "🎶 Barra! 🎶"; break;
+                case 8: egg = "🎶 Flexão! 🎶"; break;
+                case 9: egg = "🎶 Esteira! 🎶"; break;
+                case 10: egg = "🎶 Bicicleta! 🎶"; break;
+                case 11: egg = "🎶 Pulando Corda! 🎶"; break;
+                case 12: egg = "🎶 Não para! 🎶"; break;
+                case 13: egg = "🎶 Eu vou dizer... 🎶"; break;
+                case 14: egg = "🎶 Inspira pelo nariz! 🎶"; break;
+                case 15: egg = "🎶 Expira pela boca! 🎶"; break;
+                case 16: egg = "🎶 Abre as pernas! 🎶"; break;
+                case 17: egg = "🎶 Encosta a mão no chão! 🎶"; break;
+                case 18: egg = "🎶 Eu vou dizer... 🎶"; break;
+                case 19: egg = "🎶 Abaixa! 🎶"; break;
+                case 20: egg = "🎶 Sobe! 🎶"; break;
+                case 21: egg = "🎶 Mão nas cadeiras! 🎶"; break;
+                case 22: egg = "🎶 Olha p'ra mim! 🎶"; break;
+                case 23: egg = "🎶 Tá acabando! 🎶"; break;
+                case 24: egg = "🎶 Mais um pouco! 🎶"; break;
+                case 25: egg = "🎶 Eu vou dizer... 🎶"; break;
+                case 26: egg = "🎶 Você é gay! 🎶"; break;
             }
-            lblInfo.Text = SkySong;
+            lblInformar.Text = egg;
+        }
+
+        private void btnInvestir_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "INVESTIR - Subtrai 16 pontos de saúde do Opositor.";
+        }
+
+        private void btnAssaltar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "ASSALTAR - Subtrai 12 pontos de saúde e 10 pontos de precisão do Opositor.";
+        }
+
+        private void btnSufocar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "SUFOCAR - Subtrai 20 pontos de saúde do Opositor. Usá-lo repetidamente vai fazê-lo perder dano progressivamente.";
+        }
+
+        private void btnCanalizar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "CANALIZAR - Aumenta o poder em um ponto.";
+        }
+
+        private void btnSacrificar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "SACRIFICAR - Maximiza o poder, mas subtrai 16 pontos de saúde do Usuário. Possui tempo de espera de 4 turnos para poder ser usado novamente.";
+        }
+
+        private void btnBloquear_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "BLOQUEAR - Aumenta o poder em um ponto e atordoa o Opositor por um turno. Possui tempo de espera de 2 turnos para poder ser usado novamente.";
+        }
+
+        private void btnEngajar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "ENGAJAR - Aumenta a precisão do Usuário em 20 pontos e remove efeitos negativos.";
+        }
+
+        private void btnProteger_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "PROTEGER - Invoca 4 turnos de escudo, que reduz danos recebidos diretamente pela metade.";
+        }
+
+        private void btnUltrajar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "ULTRAJAR - Subtrai 28 pontos de saúde e aplica efeito de decaimento por 4 turnos no Opositor. Pode errar com maior frequência.";
+        }
+
+        private void btnColidir_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "COLIDIR - Subtrai 40 pontos de saúde do Opositor, mas também subtrai 16 pontos de saúde do Usuário.";
+        }
+
+        private void btnPerfurar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "PERFURAR - Subtrai 28 pontos de saúde do Opositor. Pode destruir escudos e reflexões do Opositor, aumentando o dano causado significativamente.";
         }
     }
 }
