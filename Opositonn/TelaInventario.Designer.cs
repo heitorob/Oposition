@@ -163,6 +163,8 @@
             this.btnMedicar.Text = "Medicar";
             this.btnMedicar.UseVisualStyleBackColor = true;
             this.btnMedicar.Click += new System.EventHandler(this.btnMedicar_Click);
+            this.btnMedicar.MouseEnter += new System.EventHandler(this.btnMedicar_MouseEnter);
+            this.btnMedicar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnRoubar
             // 
@@ -176,6 +178,8 @@
             this.btnRoubar.Text = "Roubar";
             this.btnRoubar.UseVisualStyleBackColor = true;
             this.btnRoubar.Click += new System.EventHandler(this.btnRoubar_Click);
+            this.btnRoubar.MouseEnter += new System.EventHandler(this.btnRoubar_MouseEnter);
+            this.btnRoubar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnAtordoar
             // 
@@ -189,6 +193,8 @@
             this.btnAtordoar.Text = "Atordoar";
             this.btnAtordoar.UseVisualStyleBackColor = true;
             this.btnAtordoar.Click += new System.EventHandler(this.btnAtordoar_Click);
+            this.btnAtordoar.MouseEnter += new System.EventHandler(this.btnAtordoar_MouseEnter);
+            this.btnAtordoar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnInfectar
             // 
@@ -202,6 +208,8 @@
             this.btnInfectar.Text = "Infectar";
             this.btnInfectar.UseVisualStyleBackColor = true;
             this.btnInfectar.Click += new System.EventHandler(this.btnInfectar_Click);
+            this.btnInfectar.MouseEnter += new System.EventHandler(this.btnInfectar_MouseEnter);
+            this.btnInfectar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnPrender
             // 
@@ -215,6 +223,7 @@
             this.btnPrender.Text = "Prender";
             this.btnPrender.UseVisualStyleBackColor = true;
             this.btnPrender.Click += new System.EventHandler(this.btnPrender_Click);
+            this.btnPrender.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnFlagelar
             // 
@@ -228,6 +237,7 @@
             this.btnFlagelar.Text = "Flagelar";
             this.btnFlagelar.UseVisualStyleBackColor = true;
             this.btnFlagelar.Click += new System.EventHandler(this.btnFlagelar_Click);
+            this.btnFlagelar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnDilacerar
             // 
@@ -241,6 +251,7 @@
             this.btnDilacerar.Text = "Dilacerar";
             this.btnDilacerar.UseVisualStyleBackColor = true;
             this.btnDilacerar.Click += new System.EventHandler(this.btnDilacerar_Click);
+            this.btnDilacerar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnConfundir
             // 
@@ -254,6 +265,7 @@
             this.btnConfundir.Text = "Confundir";
             this.btnConfundir.UseVisualStyleBackColor = true;
             this.btnConfundir.Click += new System.EventHandler(this.btnConfundir_Click);
+            this.btnConfundir.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnInvestir
             // 
@@ -342,6 +354,7 @@
             this.btnEquipavelPrecisao.Text = "Precisão";
             this.btnEquipavelPrecisao.UseVisualStyleBackColor = true;
             this.btnEquipavelPrecisao.Click += new System.EventHandler(this.btnEquipavelPrecisao_Click);
+            this.btnEquipavelPrecisao.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnEquipavelImunidade
             // 
@@ -355,6 +368,7 @@
             this.btnEquipavelImunidade.Text = "Imunidade";
             this.btnEquipavelImunidade.UseVisualStyleBackColor = true;
             this.btnEquipavelImunidade.Click += new System.EventHandler(this.btnEquipavelImunidade_Click);
+            this.btnEquipavelImunidade.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnEquipavelPoder
             // 
@@ -368,6 +382,7 @@
             this.btnEquipavelPoder.Text = "Poder";
             this.btnEquipavelPoder.UseVisualStyleBackColor = true;
             this.btnEquipavelPoder.Click += new System.EventHandler(this.btnEquipavelPoder_Click);
+            this.btnEquipavelPoder.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnEquipavelDano
             // 
@@ -381,6 +396,7 @@
             this.btnEquipavelDano.Text = "Dano";
             this.btnEquipavelDano.UseVisualStyleBackColor = true;
             this.btnEquipavelDano.Click += new System.EventHandler(this.btnEquipavelDano_Click);
+            this.btnEquipavelDano.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnSufocar
             // 
@@ -409,6 +425,8 @@
             this.btnRefletir.Text = "Refletir";
             this.btnRefletir.UseVisualStyleBackColor = true;
             this.btnRefletir.Click += new System.EventHandler(this.AindaNaoFunciona);
+            this.btnRefletir.MouseEnter += new System.EventHandler(this.btnRefletir_MouseEnter);
+            this.btnRefletir.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnEquipavelDinheiro
             // 
@@ -422,6 +440,7 @@
             this.btnEquipavelDinheiro.Text = "Dinheiro";
             this.btnEquipavelDinheiro.UseVisualStyleBackColor = true;
             this.btnEquipavelDinheiro.Click += new System.EventHandler(this.btnEquipavelDinheiro_Click);
+            this.btnEquipavelDinheiro.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // btnEquipavelProtecao
             // 
@@ -435,6 +454,7 @@
             this.btnEquipavelProtecao.Text = "Proteção";
             this.btnEquipavelProtecao.UseVisualStyleBackColor = true;
             this.btnEquipavelProtecao.Click += new System.EventHandler(this.btnEquipavelProtecao_Click);
+            this.btnEquipavelProtecao.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // lblDinheiro
             // 
@@ -460,6 +480,7 @@
     "ponteiro.";
             this.lblInformar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblInformar.Click += new System.EventHandler(this.lblInformar_Click);
+            this.lblInformar.MouseLeave += new System.EventHandler(this.InfoPadrao);
             // 
             // label1
             // 

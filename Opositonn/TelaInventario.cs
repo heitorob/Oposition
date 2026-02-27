@@ -45,6 +45,12 @@ namespace Opositonn
             };
         }
 
+        private void InfoPadrao(object sender, EventArgs e)
+        {
+            InfoEgg = 0;
+            lblInformar.Text = "Obtenha informações sobre cada ataque ou item pairando sobre algum botão com seu ponteiro.";
+        }
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             int n = 0;
@@ -194,7 +200,7 @@ namespace Opositonn
 
         private void AindaNaoFunciona(object sender, EventArgs e)
         {
-            MessageBox.Show("Este controle ainda não está pronto. Aproveite os outros.", 
+            MessageBox.Show("Este controle ainda não está pronto. Aproveite os outros.",
                 "Controle Incompleto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void TelaInventario_Load(object sender, EventArgs e)
@@ -205,18 +211,22 @@ namespace Opositonn
             lblDinheiro.Text = "$" + TelaInicial.c.ToString();
         }
 
-        private void InfoPadrao(object sender, EventArgs e)
-        {
-            lblInformar.Text = "Obtenha informações sobre cada ataque ou item pairando sobre algum botão com seu ponteiro.";
-        }
-
         private void lblInformar_Click(object sender, EventArgs e)
         {
             InfoEgg++;
             string egg = "";
+            Random rng = new Random();
             switch (InfoEgg)
             {
-                default: egg = "🎶 VOCÊ É GAY!! 🎶"; break;
+                default:
+                    egg = "🎶 VOCÊ É GAY!! 🎶";
+                    SelecionarAtaque(1, 3, rng.Next(1, 3));
+                    SelecionarAtaque(4, 6, rng.Next(4, 6));
+                    SelecionarAtaque(7, 11, rng.Next(7, 11));
+                    SelecionarAtaque(12, 16, rng.Next(12, 16));
+                    SelecionarAtaque(17, 20, rng.Next(17, 20));
+                    SelecionarAtaque(21, 26, rng.Next(21, 26));
+                    break;
                 case 1: egg = "🎶 Atenção: 🎶"; break;
                 case 2: egg = "🎶 Mãozinha p'ra cima! 🎶"; break;
                 case 3: egg = "🎶 Mãozinha p'ra baixo! 🎶"; break;
@@ -279,12 +289,12 @@ namespace Opositonn
 
         private void btnEngajar_MouseEnter(object sender, EventArgs e)
         {
-            lblInformar.Text = "ENGAJAR - Aumenta a precisão do Usuário em 20 pontos e remove efeitos negativos.";
+            lblInformar.Text = "ENGAJAR - Aumenta a precisão do Usuário em 20 pontos e remove efeitos negativos do Usuário.";
         }
 
         private void btnProteger_MouseEnter(object sender, EventArgs e)
         {
-            lblInformar.Text = "PROTEGER - Invoca 4 turnos de escudo, que reduz danos recebidos diretamente pela metade.";
+            lblInformar.Text = "PROTEGER - Invoca 4 turnos de escudo para o Usuário.";
         }
 
         private void btnUltrajar_MouseEnter(object sender, EventArgs e)
@@ -300,6 +310,51 @@ namespace Opositonn
         private void btnPerfurar_MouseEnter(object sender, EventArgs e)
         {
             lblInformar.Text = "PERFURAR - Subtrai 28 pontos de saúde do Opositor. Pode destruir escudos e reflexões do Opositor, aumentando o dano causado significativamente.";
+        }
+
+        private void btnMedicar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "MEDICAR - Restaura 40 pontos de saúde e remove efeitos negativos do Usuário.";
+        }
+
+        private void btnAtordoar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "ATORDOAR - Subtrai 40 pontos de saúde e atordoa o Opositor por um turno. Pode errar com maior frequência.";
+        }
+
+        private void btnRoubar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "ROUBAR - Subtrai 28 pontos de saúde do Opositor e os adiciona à saúde do Usuário.";
+        }
+
+        private void btnInfectar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "INFECTAR - Aplica o efeito de decaimento por 4 turnos no Opositor.";
+        }
+
+        private void btnPrender_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "PRENDER - Aplica o efeito de atordoamento recursivo no Opositor. Possui tempo de espera de 6 turnos para poder ser usado novamente.";
+        }
+
+        private void btnFlagelar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "FLAGELAR - Subtrai 60 pontos de saúde do Opositor.";
+        }
+
+        private void btnConfundir_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "CONFUNDIR - Subtrai 40 pontos de saúde e 20 pontos de precisão do Opositor. Nunca vai errar enquanto o Usuário estiver com suas faculdades em dia.";
+        }
+
+        private void btnDilacerar_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "DILACERAR - Subtrai metade da saúde do Opositor. Pode errar com maior frequência.";
+        }
+
+        private void btnRefletir_MouseEnter(object sender, EventArgs e)
+        {
+            lblInformar.Text = "REFLETIR - Reflete o próximo ataque do Opositor de volta para ele.";
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Opositonn
                 { 13, ("Atordoar", 2, 60) },
                 { 14, ("Roubar", 2, 80) },
                 { 15, ("Infectar", 2, 0 ) },
-                { 16, ("Prender", 2, 0  ) },
+                { 16, ("Prender", 2, 80  ) },
                 { 17, ("Flagelar", 3, 80) },
                 { 18, ("Confundir", 3, 100) },
                 { 19, ("Refletir", 3, 100) },
@@ -309,7 +309,7 @@ namespace Opositonn
         private int CalcularDano(int User, double Dano)
         {
             if (TempoEscudo[1 - User] > 0) Dano *= 0.5;
-            if (Build[User, 5 - User] == 22) Dano *= 1.25;
+            if (Build[User, 5 - User] == 22) Dano *= 1.2;
 
             Saude[1 - User] = Math.Max(0, Saude[1 - User] - (int)Dano);
 
@@ -346,7 +346,6 @@ namespace Opositonn
 
         private void Medicar(int User)
         {
-
             Saude[User] = Math.Min(200, Saude[User] + 40);
 
             TempoDecaimento[User] = 0;
@@ -483,6 +482,8 @@ namespace Opositonn
 
         private void Prender(int User)
         {
+            if (!CalcularAcerto(User, 16)) return;
+
             if (Build[1 - User, 5] != 24) TempoRecursivo[1 - User] = 4;
 
             TempoEspera[User, 3] = 7;
